@@ -20,9 +20,8 @@ LyfeOn is an interactive web application which will take active user data to rec
 1. Project Description
 2. User Stories and Design Diagrams
 3. Project Tasks and Timelines
-4. ABET Concerns Essay
-5. PPT Slideshow
-6. Self-Assessmant Essays
-7. Professional Biographies
-8. Budget
-9. Appendix
+4. PPT Slideshow
+5. Self-Assessmant Essays
+6. Professional Biographies
+7. Budget
+8. Appendix
