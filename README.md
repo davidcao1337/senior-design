@@ -3,6 +3,11 @@
 University of Cincinnati Senior Capstone Project, 2022 - 2023 School Year
 
 Team Members:
+- David Cao - caodv@mail.uc.edu
+- Sarah Ramsey - ramseys2@mail.uc.edu
+- Youmin Zhou - zhou2ym@mail.uc.edu
+- Twisha Anshu - anshuta@mail.uc.edu
+
 
 Faculty Advisor:
 
