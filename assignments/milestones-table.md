@@ -48,4 +48,4 @@
 7              | Research website hosting | 10/20/22 | 11/20/22 | Twisha
 
 ## **Effort Matrix**
-<img src="https://github.com/davidcao1337/senior-design/blob/main/effort-matrix.png">
+<img src="https://github.com/davidcao1337/senior-design/assignments/blob/main/effort-matrix.png">
