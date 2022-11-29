@@ -19,9 +19,25 @@ LyfeOn is an interactive web application which will take active user data to rec
 #### Project Navigation
 1. [Project Description](https://github.com/davidcao1337/senior-design/blob/main/assignments/project-description.md)
 2. User Stories and Design Diagrams
+- [User Stories](https://github.com/davidcao1337/senior-design/blob/main/assignments/user-stories.md)
+- Design Diagrams:
+  - [D0](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D0.png)
+  - [D1](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D1.png)
+  - [D2](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D2.png)
 3. Project Tasks and Timelines
-4. PPT Slideshow
+- [Tasklist](https://github.com/davidcao1337/senior-design/blob/main/assignments/task-list.md)
+- [Milestones Table](https://github.com/davidcao1337/senior-design/blob/main/assignments/milestones-table.md)
+4. [PPT Slideshow](https://docs.google.com/presentation/d/1S2nOp2JjXoYmQpBGL4Jdbmn3u9XlAGZldg46kK1Oppk/edit?usp=sharing)
 5. Self-Assessmant Essays
+- [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-cao.docx)
+- [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-zhou.docx)
+- [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
+- [Twisha]()
 6. Professional Biographies
+- [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-cao.md)
+- [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-zhou.md)
+- [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
+- [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/Professional%20Biography%20Twisha.md)
 7. Budget
+- We're going to budget around $200. The only major cost that we have is website hosting which we plan on using Microsoft Azure and their data analytics tool which will add on to the cost.
 8. Appendix
