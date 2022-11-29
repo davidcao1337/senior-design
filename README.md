@@ -39,5 +39,5 @@ LyfeOn is an interactive web application which will take active user data to rec
 - [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
 - [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/Professional%20Biography%20Twisha.md)
 7. Budget
-- We're going to budget around $200. The only major cost that we have is website hosting which we plan on using Microsoft Azure and their data analytics tool which will add on to the cost.
+- We're going to budget around $100 of free credit provided by Microsoft Azure through their student plans. We plan on using Azure for our website hosting as well as their data analytics tools.
 8. Appendix
