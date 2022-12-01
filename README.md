@@ -31,8 +31,8 @@ LyfeOn is an interactive web application which will take active user data to rec
 5. Self-Assessmant Essays
 - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-cao.docx)
 - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-zhou.docx)
-- [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
-- [Twisha]()
+- [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-ramsey.docx)
+- [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-anshu.pdf)
 6. Professional Biographies
 - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-cao.md)
 - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-zhou.md)
