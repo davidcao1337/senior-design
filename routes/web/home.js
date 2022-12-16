@@ -21,5 +21,9 @@ router.get("/sleep", function(req, res){
     res.render("pages/sleep");
 });
 
+router.get("/login", function(req, res){
+    res.render("pages/login");
+});
+
 
 module.exports = router;
