@@ -9,4 +9,28 @@ router.get('/dashboard', (req, res) => {
     res.end(JSON.stringify(str))
 });
 
+router.get('/exercise', (req, res) => {
+    const str = [{
+        "name": "Exercise",
+        "msg": "Time to workout!"
+    }];
+    res.end(JSON.stringify(str))
+});
+
+router.get('/diet', (req, res) => {
+    const str = [{
+        "name": "Diet",
+        "msg": "Eating healthy!"
+    }];
+    res.end(JSON.stringify(str))
+});
+
+router.get('/sleep', (req, res) => {
+    const str = [{
+        "name": "Sleep",
+        "msg": "Well rested!"
+    }];
+    res.end(JSON.stringify(str))
+});
+
 export default router
