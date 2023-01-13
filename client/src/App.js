@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar />
+        {/* <NavBar /> (Hiding navbar temp)*/}
         <Routes>
           <Route exact path="/" element={currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />} /> {/* This will need to be changed in the future; user must be authenticated and logged in to redirect to the dashboard. If not, then landing page */}
           <Route path="/dashboard" element={<Dashboard />} />
