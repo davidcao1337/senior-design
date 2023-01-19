@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { Bar } from "react-chartjs-2";
 
 const Sleep = () => {
+    /*
     useEffect( ()=> {
         fetchItems();
     }, []);
@@ -12,11 +13,11 @@ const Sleep = () => {
         const data = await fetch('/sleep');
         const items = await data.json();
         setItems(items);
-    };
+    }; */
 
     return (
-        <div className="App">
-          <h1>GEEKSFORGEEKS BAR CHART REACTJS</h1>
+        <div className="Sleep">
+          <h1>BAR CHART REACTJS</h1>
           <div style={{ maxWidth: "650px" }}>
             <Bar
               data={{
