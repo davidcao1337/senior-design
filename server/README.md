@@ -2,6 +2,10 @@
 
 ## Getting Started
 
+### `npm install`
+
+This will install dependencies and packages necessary for the app to run. This command will need to be run in both the client and server directories.
+
 ### `npm run dev`
 
 This will run the server and client simultaneously, avoiding the need for two runs in seperate terminals.
