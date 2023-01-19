@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import NavBar from '../NavBar';
+import './diet.css';
 
 const Diet = () => {
     useEffect( ()=> {
@@ -15,14 +17,20 @@ const Diet = () => {
 
     return (
         <section>
-            {
-                items.map(item => (
-                    <div>
-                        <p>{item.name}</p>
-                        <p>{item.msg}</p>
-                    </div>
-                ))
-            }
+            <NavBar />
+            <content>
+                <contentContainer>
+                <div>Nutrition</div>
+                {
+                    items.map(item => (
+                        <div>
+                            <p>{item.name}</p>
+                            <p>{item.msg}</p>
+                        </div>
+                    ))
+                }
+                </contentContainer>
+            </content>
         </section>
     );
 }

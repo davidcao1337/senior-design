@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import './exercise.css';
+import NavBar from '../NavBar';
 
 const Exercise = () => {
     useEffect( ()=> {
@@ -15,6 +17,8 @@ const Exercise = () => {
 
     return (
         <section>
+            <NavBar />
+            <content>
             {
                 items.map(item => (
                     <div>
@@ -23,6 +27,7 @@ const Exercise = () => {
                     </div>
                 ))
             }
+            </content>
         </section>
     );
 }

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+navContainer {
+    height: 100%;
+    width: 5%;
+    float: left;
+    position: relative;
+}
+
+navItems {
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+
