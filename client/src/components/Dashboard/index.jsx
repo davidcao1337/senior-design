@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import NavBar from '../NavBar';
+import './dashboard.css';
 
 const Dashboard = () => {
     useEffect( ()=> {
@@ -15,6 +17,8 @@ const Dashboard = () => {
 
     return (
         <section>
+            <NavBar />
+            <content>
             {
                 items.map(item => (
                     <div>
@@ -23,6 +27,7 @@ const Dashboard = () => {
                     </div>
                 ))
             }
+            </content>
         </section>
     );
 }

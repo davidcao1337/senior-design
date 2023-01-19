@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+content {
+    height: 100%;
+    overflow: hidden;
+    float: right;
+    background-color: #F5F6FA;
+}
+
+contentContainer {
+    
+}

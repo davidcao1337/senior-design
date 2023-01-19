@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+    height: 100%;
+}
+
+content {
+    height: 100%;
+    overflow: hidden;
+    float: right;
+    width: 95%;
+}
