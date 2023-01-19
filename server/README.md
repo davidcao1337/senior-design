@@ -2,9 +2,13 @@
 
 ## Getting Started
 
-### `npm install`
+### Linux/Unix:
+### `bash install_packages.sh`
 
-This will install dependencies and packages necessary for the app to run. This command will need to be run in both the client and server directories.
+### Windows (Powershell):
+### `.\install_packages.bat`
+
+This script will install dependencies and packages necessary for the app to run.
 
 ### `npm run dev`
 
