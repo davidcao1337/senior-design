@@ -29,7 +29,7 @@ export const Login = (props) => {
                         <input className="border-2 w-full rounded-[5px] px-2 py-2" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                     </div>
                     <div className="mt-2">
-                        <p className="float-left text-[#A1A1A1]"><input className="accent-lyfeon-green" type="checkbox" />  Remember Me</p>
+                        <p className="float-left text-[#A1A1A1]"><input className="accent-lyfeon-green checked:checkmark-white" type="checkbox" />  Remember Me</p>
                         <button className="float-right text-semibold text-lyfeon-green">Forgot Password?</button>
                     </div>
                     <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit">Log In</button>
