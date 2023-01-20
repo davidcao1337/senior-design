@@ -22,7 +22,7 @@ export const Register = (props) => {
                 <p className="float-right font-bold text-[#828282]">Continue with Google</p>
             </button>
             <p className="m-10 font-semibold text-[#A1A1A1]">---------- or Sign up with Email ----------</p>
-            <div className="auth-form-container">
+            <div className="auth-form-container w-5/12">
                 <form onSubmit={handleSubmit}>
                     <div className="text-left text-[#828282]">
                         <label className="font-semibold" htlmfor="name">Full Name</label>
