@@ -2,11 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import routesHandler from "./routes/handler.js"
-
+import * as dotenv from 'dotenv'
 
 const app = express();
+dotenv.config();
 
-const uri = 'mongodb+srv://lyfeonadmin:lfdPxA378lJdsQ9o@lyfeoncluster.7xvhbkd.mongodb.net/?retryWrites=true&w=majority'
+const uri = process.env.MONGO_DB_URI;
 
 async function connect() {
     try {
