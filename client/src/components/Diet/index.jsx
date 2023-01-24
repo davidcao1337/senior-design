@@ -19,8 +19,9 @@ const Diet = () => {
         <section>
             <NavBar />
             <content>
-                <contentContainer>
+                <titleContainer>
                 <div>Nutrition</div>
+                </titleContainer>
                 {
                     items.map(item => (
                         <div>
@@ -29,7 +30,6 @@ const Diet = () => {
                         </div>
                     ))
                 }
-                </contentContainer>
             </content>
         </section>
     );
