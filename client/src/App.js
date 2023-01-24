@@ -24,7 +24,7 @@ function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/diet" element={<Diet />} />
           <Route path="/sleep" element={<Sleep />} />
-          <Route path="/testChart" component={<TestChart />} /> {/* TO DO: Chart does not display */}
+          <Route path="/testChart" component={<TestChart />} /> {/* TO DO: Chart does not display, may be use <link> instead */}
         </Routes>
       </BrowserRouter>
     </div>
