@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+section {
+    background-color: #F5F6FA;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
 content {
     height: 100%;
     overflow: hidden;
     float: right;
     background-color: #F5F6FA;
+    padding-left: 44px;
+    padding-top: 22px;
+    display: flex;
 }
 
-contentContainer {
+titleContainer {
     
 }

@@ -1,22 +1,32 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import './navBar.css';
-import testDumbbell from '../../assets/testdumbbell.png';
-import dashboard from '../../assets/dashboard.png';
-import diet from '../../assets/diet.png';
-import sleep from '../../assets/sleep.png';
+// import testDumbbell from '../../assets/testdumbbell.png';
+// import dashboard from '../../assets/dashboard.png';
+// import diet from '../../assets/diet.png';
+// import sleep from '../../assets/sleep.png';
 
 const NavBar = () => {
     return (
-        <navContainer>
-            <navItems>
-                <ul> <Link to='/dashboard'><img src={dashboard} alt="" width="100%" height="50px" /></Link> </ul>
-                <ul> <Link to='/exercise'><img src={testDumbbell} alt="" width="100%" height="50px" /></Link> </ul>
-                <ul> <Link to='/diet'><img src={diet} alt="" width="100%" height="50px" /></Link> </ul>
-                <ul> <Link to='/sleep'><img src={sleep} alt="" width="100%" height="50px" /></Link> </ul>
-            </navItems>
-        </navContainer>
-    )
+        <>
+          <div className="navContainer">
+                  
+                  <div className="sidebar">
+                    <p>Profile</p>
+                    <ul className="navItems">
+                      <li><Link to='/dashboard'><span><i className="fa fa-home"></i></span><span>Dashboard</span></Link></li>
+                      <li><Link to='/exercise'><span><i className="fa fa-home"></i></span><span>Exercise</span></Link></li>
+                      <li><Link to='/diet'><span><i className="fa fa-dashboard"></i></span><span>Diet</span></Link></li>
+                      <li><Link to='/sleep'><span><i className="fa fa-users"></i></span><span>Sleep</span></Link></li>         
+                    </ul>         
+                  </div>
+                  
+                  <div className="content">
+                     
+                  </div>
+          </div>
+        </>
+    );
 }
 
 export default NavBar;
