@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { Login } from './components/Login/index_login';
 import { Register } from './components/Login/index_register';
 import Dashboard from './components/Dashboard';
@@ -9,17 +9,13 @@ import Sleep from './components/Sleep';
 import TestChart from './components/TestChart';
 import './index.css';
 function App() {
-  const [currentForm, setCurrentForm] = useState('login')
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />} /> {/* This will need to be changed in the future; user must be authenticated and logged in to redirect to the dashboard. If not, then landing page */}
+          <Route path="/" element={<Navigate to="/login" />} /> {/* TODO: If user is authenticated, navigate to /dashboard */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/diet" element={<Diet />} />

@@ -2,10 +2,17 @@ import React, { useState } from "react"
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 import googleLogo from '../../assets/google-logo.png'
 import './login.css';
+import { useNavigate } from "react-router-dom";
 export const Register = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+
+    let navigate = useNavigate();
+    const routeChange = () =>{
+        let path = '/login'
+        navigate(path);
+    }
 
     // This will need to be modified to send data to the back-end/Database
     const handleSubmit = (e) => {
@@ -36,7 +43,7 @@ export const Register = (props) => {
                 </form>
                 <div className="mt-24">
                     <p className="text-[#828282]">Already have an account?</p>
-                    <button className="text-semibold text-lyfeon-green" onClick={() => props.onFormSwitch('login')}>Sign in here</button>
+                    <button className="text-semibold text-lyfeon-green" onClick={routeChange}>Sign in here</button>
                 </div>
             </div>
         </div>

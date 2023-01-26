@@ -2,9 +2,16 @@ import React, { useState } from "react"
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 import googleLogo from '../../assets/google-logo.png'
 import './login.css';
+import { useNavigate } from "react-router-dom";
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    let navigate = useNavigate();
+    const routeChange = () =>{
+        let path = '/register'
+        navigate(path);
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -36,7 +43,7 @@ export const Login = (props) => {
                 </form>
                 <div className="mt-24">
                     <p className="text-[#828282]">Not registered yet?</p>
-                    <button className="text-semibold text-lyfeon-green" onClick={() => props.onFormSwitch('register')}>Create an account</button>
+                    <button className="text-semibold text-lyfeon-green" onClick={routeChange}>Create an account</button>
                 </div>
             </div>
         </div>
