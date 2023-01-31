@@ -13,7 +13,7 @@ export const Login = (props) => {
         navigate(path);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
     }

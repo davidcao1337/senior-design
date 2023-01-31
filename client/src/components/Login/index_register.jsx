@@ -15,7 +15,7 @@ export const Register = (props) => {
     }
 
     // This will need to be modified to send data to the back-end/Database
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(email);
     }
