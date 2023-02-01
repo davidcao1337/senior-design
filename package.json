@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "antd": "^5.1.6",
+    "echarts": "^5.4.1"
+  }
+}
