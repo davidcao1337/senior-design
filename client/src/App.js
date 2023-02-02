@@ -6,7 +6,6 @@ import Dashboard from './components/Dashboard';
 import Exercise from './components/Exercise';
 import Diet from './components/Diet';
 import Sleep from './components/Sleep';
-import TestChart from './components/TestChart';
 import './index.css';
 function App() {
   const [currentForm, setCurrentForm] = useState('login')
@@ -24,7 +23,6 @@ function App() {
           <Route path="/exercise" element={<Exercise />} />
           <Route path="/diet" element={<Diet />} />
           <Route path="/sleep" element={<Sleep />} />
-          <Route path="/testChart" component={<TestChart />} /> {/* TO DO: Chart does not display, may be use <link> instead */}
         </Routes>
       </BrowserRouter>
     </div>

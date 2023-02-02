@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+section {
+    flex-direction: row;
+    background-color: #F5F6FA;
+}
+
+test {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    height: 100%;
+    width: 144px;
+}
+
+content {
+    height: 100%;
+    width: -webkit-calc(100% - 130px);
+    overflow: hidden;
+    float: right;
+    order: 2;
+}
