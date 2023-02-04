@@ -2,10 +2,13 @@ import React, { useState } from "react"
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 import googleLogo from '../../assets/google-logo.png'
 import './login.css';
-import { useNavigate } from "react-router-dom";
-export const Login = (props) => {
+import { useNavigate } from "react-router-dom"
+import { useLogin } from "../../hooks/useLogin"
+
+export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {login, error, isLoading} = useLogin();
 
     let navigate = useNavigate();
     const routeChange = () =>{
@@ -15,7 +18,8 @@ export const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        
+        await login(email, password);
     }
 
     return(
@@ -39,7 +43,8 @@ export const Login = (props) => {
                         <p className="float-left text-[#A1A1A1]"><input className="accent-lyfeon-green checked:checkmark-white" type="checkbox" />  Remember Me</p>
                         <button className="float-right text-semibold text-lyfeon-green">Forgot Password?</button>
                     </div>
-                    <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit">Log In</button>
+                    <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit" disabled={isLoading}>Log In</button>
+                    {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{error}</div>}
                 </form>
                 <div className="mt-24">
                     <p className="text-[#828282]">Not registered yet?</p>
