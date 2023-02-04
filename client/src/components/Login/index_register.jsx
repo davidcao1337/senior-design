@@ -18,7 +18,6 @@ export const Register = () => {
         navigate(path);
     }
 
-    // This will need to be modified to send data to the back-end/Database
     const handleSubmit = async (e) => {
         e.preventDefault();
         

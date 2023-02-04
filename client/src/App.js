@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { Login } from './components/Login/index_login';
 import { Register } from './components/Login/index_register';
@@ -8,6 +8,7 @@ import Diet from './components/Diet';
 import Sleep from './components/Sleep';
 import TestChart from './components/TestChart';
 import './index.css';
+
 function App() {
   return (
     <div className="App">
