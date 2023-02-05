@@ -2,15 +2,25 @@ import React, { useState } from "react"
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 import googleLogo from '../../assets/google-logo.png'
 import './login.css';
-export const Register = (props) => {
+import { useNavigate } from "react-router-dom"
+import { useRegister } from "../../hooks/useRegister"
+
+export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const {register, error, isLoading} = useRegister();
 
-    // This will need to be modified to send data to the back-end/Database
-    const handleSubmit = (e) => {
+    let navigate = useNavigate();
+    const routeChange = () =>{
+        let path = '/login'
+        navigate(path);
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+        
+        await register(name, email, password);
     }
 
     return(
@@ -32,11 +42,12 @@ export const Register = (props) => {
                         <label className="font-semibold" htlmfor="password">Password</label>
                         <input className="border-2 w-full rounded-[5px] px-2 py-2" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="********" id="password" name="password" />
                     </div>
-                    <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit">Register</button>
+                    <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit" disabled={isLoading}>Register</button>
+                    {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{error}</div>}
                 </form>
                 <div className="mt-24">
                     <p className="text-[#828282]">Already have an account?</p>
-                    <button className="text-semibold text-lyfeon-green" onClick={() => props.onFormSwitch('login')}>Sign in here</button>
+                    <button className="text-semibold text-lyfeon-green" onClick={routeChange}>Sign in here</button>
                 </div>
             </div>
         </div>
