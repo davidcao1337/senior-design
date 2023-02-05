@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext'
 import { Login } from './components/Login/index_login';
 import { Register } from './components/Login/index_register';
 import Dashboard from './components/Dashboard';
@@ -10,17 +11,19 @@ import TestChart from './components/TestChart';
 import './index.css';
 
 function App() {
+  const { user } = useAuthContext();
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} /> {/* TODO: If user is authenticated, navigate to /dashboard */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/exercise" element={<Exercise />} />
-          <Route path="/diet" element={<Diet />} />
-          <Route path="/sleep" element={<Sleep />} />
+          <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+          <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
+          <Route path="/register" element={!user ? <Register /> : <Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
+          <Route path="/exercise" element={user ? <Exercise /> : <Navigate to="/login" />} />
+          <Route path="/diet" element={user ? <Diet /> : <Navigate to="/login" />} />
+          <Route path="/sleep" element={user ? <Sleep /> : <Navigate to="/login" />} />
           <Route path="/testChart" component={<TestChart />} /> {/* TO DO: Chart does not display, may be use <link> instead */}
         </Routes>
       </BrowserRouter>
