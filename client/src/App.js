@@ -7,7 +7,6 @@ import Dashboard from './components/Dashboard';
 import Exercise from './components/Exercise';
 import Diet from './components/Diet';
 import Sleep from './components/Sleep';
-import TestChart from './components/TestChart';
 import './index.css';
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           <Route path="/exercise" element={user ? <Exercise /> : <Navigate to="/login" />} />
           <Route path="/diet" element={user ? <Diet /> : <Navigate to="/login" />} />
           <Route path="/sleep" element={user ? <Sleep /> : <Navigate to="/login" />} />
-          <Route path="/testChart" component={<TestChart />} /> {/* TO DO: Chart does not display, may be use <link> instead */}
         </Routes>
       </BrowserRouter>
     </div>
