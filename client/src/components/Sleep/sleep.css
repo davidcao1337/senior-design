@@ -25,3 +25,27 @@ content {
     float: right;
     order: 2;
 }
+
+.Title{
+    font-size: 2.8125rem/* 45px */;
+    line-height: 3.375rem/* 54px */;
+    margin-bottom: 1.5rem/* 40px */;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+    color: rgb(82 82 82 / var(--tw-text-opacity))
+}
+
+.SleepTracker{
+    width: 75%;
+    height: max-content;
+    flex-direction: column;
+}
+
+.SleepStats{
+    margin: auto;
+    flex-direction: column;
+}
+
+.BarChart{
+    margin-top: 1.5rem/* 40px */;
+}

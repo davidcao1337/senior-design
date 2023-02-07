@@ -5,6 +5,12 @@ function SleepLine() {
     const chartInit = () => {
         const myChart = echarts.init(domRef.current)
         myChart.setOption({
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'none'
+                }
+              },
             title: {
                 text: "7 days average sleep time: 7 hours 22 minutes"
             },
@@ -36,7 +42,7 @@ function SleepLine() {
 
     return (
         <div>
-            <div ref={domRef} style={{width:'700px',height:'400px'}}></div>
+            <div ref={domRef} style={{width:'650px',height:'380px'}}></div>
         </div>
     )
 }

@@ -8,6 +8,12 @@ function SleepBar() {
 
         const myChart = echarts.init(domRef.current)
         myChart.setOption({
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'shadow'
+            }
+          },
             xAxis: {
                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
               },
@@ -30,6 +36,7 @@ function SleepBar() {
                 }
               ],
             toolbox: {
+              left: '80%',
                 feature: {
                     myTool1:{
                         show: true,
@@ -101,7 +108,7 @@ function SleepBar() {
 
     return (
         <div>
-            <div ref={domRef} style={{width:'700px',height:'400px'}}></div>
+            <div className="Bar" ref={domRef} style={{width:'650px',height:'380px'}}></div>
         </div>
     )
 }
