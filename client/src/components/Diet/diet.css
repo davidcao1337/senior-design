@@ -5,6 +5,15 @@
 section {
     background-color: #F5F6FA;
     height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+testSection {
+    background-color: #F5F6FA;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
 }
@@ -15,10 +24,72 @@ content {
     float: right;
     background-color: #F5F6FA;
     padding-left: 44px;
-    padding-top: 22px;
+    padding-top: 28px;
+    padding-right: 5px;
     display: flex;
+    flex-direction: column;
+}
+
+rightBar {
+    height: 100vh;
+    width: 260px;
+    order: 3;
+    background-color: pink;
 }
 
 titleContainer {
-    
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    font-family: emoji;
+}
+
+foodLogContainer {
+    height: 45%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-top: 48px;
+    padding-bottom: 22px;
+}
+
+foodLogSection {
+    height: 100%;
+    background-color: #F5F6FA;
+    width: 100%;
+}
+
+addFood{
+
+}
+
+popupContainer {
+    height: fit-content;
+    width: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+popupContainer .popupTitle{
+    text-align: center;
+    height: 48px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+popupDivider {
+    min-height: 48px;
+    border-color: black;
+    border-top-width: 2px;
+}
+
+typeSelect {
+    display: flex;
+    flex-direction: row;
 }

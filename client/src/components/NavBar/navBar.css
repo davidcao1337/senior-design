@@ -58,8 +58,13 @@
     border-bottom-right-radius:5px;
 }
 
+.navItems .navIcon{
+    color: #B8C5D3;
+    padding-left: 12px;
+}
+
 .navItems li span{
-    font-size:16px;
+    font-size:14px;
 }
 
 .navItems li:hover{
@@ -69,6 +74,12 @@
     transition:all 0.5s;
 }
  
+.logout{
+    position: absolute;
+    bottom: 0;
+    padding-left: 14px;
+    padding-bottom: 14px;
+}
 
 .navContainer .content{
     
