@@ -18,7 +18,7 @@ const NavBar = () => {
           <div className="navContainer">
                   
                   <div className="sidebar">
-                    <p>Profile</p>
+                  <Link to='/profile'><p><span>Profile</span></p></Link>
                     <ul className="navItems">
                     <Link to='/dashboard'><li><span><FontAwesomeIcon icon={faChartSimple} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>
                     <Link to='/exercise'><li><span><FontAwesomeIcon icon={faDumbbell} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>

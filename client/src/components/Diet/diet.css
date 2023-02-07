@@ -51,10 +51,45 @@ foodLogContainer {
     flex-direction: row;
     padding-left: 22px;
     padding-right: 22px;
+    padding-top: 48px;
+    padding-bottom: 22px;
 }
 
 foodLogSection {
-    height: 75%;
+    height: 100%;
     background-color: #F5F6FA;
-    width: 15%;
+    width: 100%;
+}
+
+addFood{
+
+}
+
+popupContainer {
+    height: fit-content;
+    width: 250px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+popupContainer .popupTitle{
+    text-align: center;
+    height: 48px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+popupDivider {
+    min-height: 48px;
+    border-color: black;
+    border-top-width: 2px;
+}
+
+typeSelect {
+    display: flex;
+    flex-direction: row;
 }

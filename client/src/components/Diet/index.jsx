@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from '../NavBar';
 import './diet.css';
+import Popup from 'reactjs-popup';
+import DiaryEntry from './diary';
 
 const Diet = () => {
     useEffect( ()=> {
@@ -15,6 +17,12 @@ const Diet = () => {
         setItems(items);
     };
 
+    // const { logout } = useLogout();
+
+    const handleClick = () => {
+      console.log('test');
+    }
+
     return (
         <section>
             <NavBar />
@@ -26,17 +34,11 @@ const Diet = () => {
                 <foodLogSection>
 
                 </foodLogSection>
-                <foodLogSection>
-                    
-                </foodLogSection>
-                <foodLogSection>
-                    
-                </foodLogSection>
-                <foodLogSection>
-                    
-                </foodLogSection>
-                
-
+                <addFood>
+                    <Popup trigger={<button> Click to add food </button>} position="left center">
+                        <DiaryEntry />
+                    </Popup>
+                </addFood>
             </foodLogContainer>
                 {
                     items.map(item => (
@@ -46,7 +48,11 @@ const Diet = () => {
                         </div>
                     ))
                 }
-
+            <addFood>
+                <Popup trigger={<button> Click to add food </button>} position="right center">
+                    <DiaryEntry />
+                </Popup>
+            </addFood>
             </content>
             <rightBar></rightBar>
 
