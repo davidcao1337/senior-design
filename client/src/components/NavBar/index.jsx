@@ -1,11 +1,10 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './navBar.css';
 import { useLogout } from "../../hooks/useLogout";
-// import testDumbbell from '../../assets/testdumbbell.png';
-// import dashboard from '../../assets/dashboard.png';
-// import diet from '../../assets/diet.png';
-// import sleep from '../../assets/sleep.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDumbbell, faUtensils, faMoon, faChartSimple } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () => {
     const { logout } = useLogout();
@@ -21,12 +20,12 @@ const NavBar = () => {
                   <div className="sidebar">
                     <p>Profile</p>
                     <ul className="navItems">
-                      <li><Link to='/dashboard'><span><i className="fa fa-home"></i></span><span>Dashboard</span></Link></li>
-                      <li><Link to='/exercise'><span><i className="fa fa-home"></i></span><span>Exercise</span></Link></li>
-                      <li><Link to='/diet'><span><i className="fa fa-dashboard"></i></span><span>Diet</span></Link></li>
-                      <li><Link to='/sleep'><span><i className="fa fa-users"></i></span><span>Sleep</span></Link></li>
+                    <Link to='/dashboard'><li><span><FontAwesomeIcon icon={faChartSimple} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>
+                    <Link to='/exercise'><li><span><FontAwesomeIcon icon={faDumbbell} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>
+                    <Link to='/diet'><li><span><FontAwesomeIcon icon={faUtensils} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>
+                    <Link to='/sleep'><li><span><FontAwesomeIcon icon={faMoon} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>
                     </ul>
-                    <div>
+                    <div className="logout">
                       <button onClick={handleClick}>Logout</button> {/* TEMP; Change location later */}
                     </div>
                   </div>

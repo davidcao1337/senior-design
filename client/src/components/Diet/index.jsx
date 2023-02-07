@@ -19,9 +19,25 @@ const Diet = () => {
         <section>
             <NavBar />
             <content>
-                <titleContainer>
+            <titleContainer>
                 <div>Nutrition</div>
-                </titleContainer>
+            </titleContainer>
+            <foodLogContainer>
+                <foodLogSection>
+
+                </foodLogSection>
+                <foodLogSection>
+                    
+                </foodLogSection>
+                <foodLogSection>
+                    
+                </foodLogSection>
+                <foodLogSection>
+                    
+                </foodLogSection>
+                
+
+            </foodLogContainer>
                 {
                     items.map(item => (
                         <div>
@@ -30,7 +46,10 @@ const Diet = () => {
                         </div>
                     ))
                 }
+
             </content>
+            <rightBar></rightBar>
+
         </section>
     );
 }
