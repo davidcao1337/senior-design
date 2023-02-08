@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext'
 import { Login } from './pages/Login/index_login';
 import { Register } from './pages/Login/index_register';
+import Account from './pages/Account';
 import Dashboard from './pages/Dashboard';
 import Exercise from './pages/Exercise';
 import Nutrition from './pages/Nutrition';
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/dashboard" />} />
+          <Route path="/account" element={user ? <Account /> : <Navigate to="/login" />} />
           <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/exercise" element={user ? <Exercise /> : <Navigate to="/login" />} />
           <Route path="/nutrition" element={user ? <Nutrition /> : <Navigate to="/login" />} />

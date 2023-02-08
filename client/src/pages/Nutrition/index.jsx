@@ -4,7 +4,7 @@ import './nutrition.css';
 import Popup from 'reactjs-popup';
 import DiaryEntry from './diary';
 
-const Diet = () => {
+const Nutrition = () => {
     useEffect( ()=> {
         fetchItems();
     }, []);
@@ -12,7 +12,7 @@ const Diet = () => {
     const [items, setItems] = useState([]);
 
     const fetchItems = async() => {
-        const data = await fetch('/diet');
+        const data = await fetch('/nutrition');
         const items = await data.json();
         setItems(items);
     };
@@ -60,4 +60,4 @@ const Diet = () => {
     );
 }
 
-export default Diet;
+export default Nutrition;
