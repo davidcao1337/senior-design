@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './diet.css';
+import './nutrition.css';
 import Select from 'react-select';
 
 const DiaryEntry = () => {

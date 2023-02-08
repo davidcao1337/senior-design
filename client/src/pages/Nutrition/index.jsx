@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import NavBar from '../NavBar';
-import './diet.css';
+import NavBar from '../../components/NavBar';
+import './nutrition.css';
 import Popup from 'reactjs-popup';
 import DiaryEntry from './diary';
 
