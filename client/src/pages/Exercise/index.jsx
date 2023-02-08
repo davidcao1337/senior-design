@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './exercise.css';
-import NavBar from '../NavBar';
+import NavBar from '../../components/NavBar';
 
 const Exercise = () => {
     useEffect( ()=> {

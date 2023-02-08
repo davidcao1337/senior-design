@@ -17,9 +17,9 @@ router.get('/exercise', (req, res) => {
     res.end(JSON.stringify(str))
 });
 
-router.get('/diet', (req, res) => {
+router.get('/nutrition', (req, res) => {
     const str = [{
-        "name": "Diet",
+        "name": "Nutrition",
         "msg": "Eating healthy!"
     }];
     res.end(JSON.stringify(str))

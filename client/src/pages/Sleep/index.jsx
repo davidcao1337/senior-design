@@ -1,6 +1,6 @@
-import NavBar from '../NavBar';
-import SleepBarChart from '../Charts/SleepBarChart';
-import SleepLineChart from '../Charts/SleepLineChart';
+import NavBar from '../../components/NavBar';
+import SleepBarChart from '../../components/Charts/SleepBarChart';
+import SleepLineChart from '../../components/Charts/SleepLineChart';
 import './sleep.css';
 const Sleep = () => {
 
