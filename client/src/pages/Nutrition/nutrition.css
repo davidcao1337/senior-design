@@ -45,24 +45,53 @@ titleContainer {
 }
 
 foodLogContainer {
-    height: 45%;
+    height: 310px;
+    width: -webkit-calc(100% - 49px);
     background-color: white;
-    display: flex;
-    flex-direction: row;
     padding-left: 22px;
     padding-right: 22px;
-    padding-top: 48px;
     padding-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+cardHeader {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+cardTitle {
+    font-size: 20px;
+}
+
+addFood {
+    margin-left: auto;
+}
+
+diaryContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    height: 100%;
 }
 
 foodLogSection {
     height: 100%;
     background-color: #F5F6FA;
     width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-addFood{
-
+mealLabel {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 popupContainer {
@@ -92,4 +121,50 @@ popupDivider {
 typeSelect {
     display: flex;
     flex-direction: row;
+}
+
+bottomContent {
+    height: 340px;
+    width: -webkit-calc(100% - 49px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+nutritionBreakdownContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+nutritionBreakdown {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+summaryContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+summaryContent {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
 }
