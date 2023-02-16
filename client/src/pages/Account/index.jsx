@@ -2,7 +2,7 @@ import React from "react"
 import './account.css'
 import NavBar from '../../components/NavBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const Account = () => {
     return (
@@ -20,50 +20,54 @@ const Account = () => {
                             <li><a>Preferences</a></li>
                         </ul>
                     </div>
-                    <div className="profile-goals-container flex flex-col space-y-5 w-full">
-                        <div className="profile-container card bg-base-100 h-1/2">
-                            <div className="card-body flex flex-row space-x-10">
-                                <FontAwesomeIcon className="mt-6" icon={faCircleUser} size="10x"></FontAwesomeIcon>
-                                <div className="profile-info flex flex-col">
-                                    <p>Name</p>
-                                    <p>Age</p>
-                                    <p>Height</p>
-                                    <p>Weight</p>
-                                    <p>BMI</p>
-                                    <a className="text-lyfeon-green underline">Edit Profile</a>
+                    <div className="profile-goals-container flex flex-row space-x-8">
+                        <div className="profile-container card bg-base-100">
+                            <div className="card-body flex flex-col">
+                                <FontAwesomeIcon className="m-6" icon={faCircleUser} size="10x"></FontAwesomeIcon>
+                                <div className="full-name mb-5 flex flex-row justify-center">
+                                    <h1>Jane Doe</h1>
                                 </div>
+                                <div className="profile-info mt-5 flex flex-row space-x-10 justify-center">
+                                    <div className="profile-labels flex flex-col space-y-3">
+                                        <p>Age</p>
+                                        <p>Height</p>
+                                        <p>Weight</p>
+                                        <p>BMI</p>
+                                    </div>
+                                    <div className="profile-values text-[#748AA1] flex flex-col space-y-3">
+                                        <p>22</p>
+                                        <p>5'5</p>
+                                        <p>128</p>
+                                        <p>68</p>
+                                    </div>
+                                </div>
+                                <button className="mt-20 p-2 text-lg text-white bg-lyfeon-green rounded-[6px]">Edit Profile</button>
                             </div>
                         </div>
-                        <div className="goals-container card bg-base-100 h-1/2">
+                        <div className="goals-container card bg-base-100">
                             <div className="card-body">
-                                <h2 className="card-title mb-2">Goals</h2>
-                                <div className="goal-cards flex flex-row space-x-8">
+                                <div className="card-title mb-2 flex flex-row justify-center">
+                                    <h2>Goals</h2>
+                                </div>
+                                <div className="goal-cards flex flex-col space-y-8">
                                     <div className="card border border-gray-300">
                                         <div className="card-body">
-                                            <div>
-                                                <h2>Card</h2>
+                                            <div className="flex flex-row">
+                                                <FontAwesomeIcon className="mr-5" icon={faTrophy} size="2x" />
+                                                <p className="mr-20">Goal Text</p>
+                                                <div className="ml-20 mr-20" />
+                                                <button className="ml-20"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="card border border-gray-300">
+                                    <div className="card border border-gray-300 border-dashed">
                                         <div className="card-body">
-                                            <div>
-                                                <h2>Card</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card border border-gray-300">
-                                        <div className="card-body">
-                                            <div>
-                                                <h2>Card</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="card border border-gray-300">
-                                        <div className="card-body">
-                                            <div>
-                                                <h2>Card</h2>
-                                            </div>
+                                            <button>
+                                                <span className="flex flex-row">
+                                                    <FontAwesomeIcon className="mr-5" icon={faPlus} size="2x" />
+                                                    <p className="text-[#748AA1]">Add Goal</p>
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
