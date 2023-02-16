@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import './navBar.css';
 import { useLogout } from "../../hooks/useLogout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,7 +17,7 @@ const NavBar = () => {
           <div className="navContainer">
                   <div className="sidebar">
                     <div className="mt-5 flex items-center justify-center">
-                      <Link to='/account'><FontAwesomeIcon icon={faCircleUser} size="2x"></FontAwesomeIcon></Link>
+                      <Link to='/account/profile'><FontAwesomeIcon icon={faCircleUser} size="2x"></FontAwesomeIcon></Link>
                     </div>
                     <ul className="navItems">
                       <Link to='/dashboard'><li><span><FontAwesomeIcon icon={faChartSimple} size="2x" className="navIcon"></FontAwesomeIcon></span></li></Link>

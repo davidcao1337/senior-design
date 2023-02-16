@@ -1,25 +1,18 @@
 import React from "react"
 import './account.css'
 import NavBar from '../../components/NavBar'
+import AccountNavMenu from "../../components/AccountNavMenu";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
-const Account = () => {
+const Profile = () => {
     return (
         <section>
             <NavBar />
             <content>
                 <h1 className="Title">My Account</h1>
                 <div className="flex flex-row space-x-12 h-full pb-6">
-                    <div className="account-menu-nav flex">
-                        <ul className="menu bg-base-100 w-56 text-[#748AA1] rounded-md float-left">
-                            <li><a className="active: bg-lyfeon-green text-white">Profile</a></li>
-                            <li><a>Account Settings</a></li>
-                            <li><a>Privacy</a></li>
-                            <li><a>Notifications</a></li>
-                            <li><a>Preferences</a></li>
-                        </ul>
-                    </div>
+                    <AccountNavMenu />
                     <div className="profile-goals-container flex flex-row space-x-8">
                         <div className="profile-container card bg-base-100">
                             <div className="card-body flex flex-col">
@@ -54,7 +47,7 @@ const Account = () => {
                                         <div className="card-body">
                                             <div className="flex flex-row">
                                                 <FontAwesomeIcon className="mr-5" icon={faTrophy} size="2x" />
-                                                <p className="mr-20">Goal Text</p>
+                                                <p>Goal Text</p>
                                                 <div className="ml-20 mr-20" />
                                                 <button className="ml-20"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
                                             </div>
@@ -64,7 +57,7 @@ const Account = () => {
                                         <div className="card-body">
                                             <button>
                                                 <span className="flex flex-row">
-                                                    <FontAwesomeIcon className="mr-5" icon={faPlus} size="2x" />
+                                                    <FontAwesomeIcon icon={faPlus} size="2x" />
                                                     <p className="text-[#748AA1]">Add Goal</p>
                                                 </span>
                                             </button>
@@ -80,4 +73,4 @@ const Account = () => {
     )
 }
 
-export default Account;
+export default Profile;
