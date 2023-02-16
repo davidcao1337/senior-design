@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './navBar.css';
 import { useLogout } from "../../hooks/useLogout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
