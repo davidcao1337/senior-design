@@ -12,8 +12,23 @@ const Settings = () => {
                 <h1 className="Title">My Account</h1>
                 <div className="flex flex-row space-x-12 h-full pb-6">
                     <AccountNavMenu />
-                    <div>
-                        <h1>Settings</h1>
+                    <div className="settings-container card bg-base-100">
+                        <div className="card-body flex flex-col space-y-8">
+                            <div className="email-container flex flex-row space-x-20">
+                                <div>
+                                    <label>Email</label>
+                                    <p className="text-[#748AA1]">johndoe@myemailaddress.com</p>
+                                </div>
+                                <button className="btn btn-outline btn-primary">CHANGE</button>
+                            </div>
+                            <div className="password-container flex flex-row space-x-20">
+                                <div>
+                                    <label>Password</label>
+                                    <p className="text-[#748AA1]">**********</p>
+                                </div>
+                                <button className="btn btn-outline btn-primary">CHANGE</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </content>

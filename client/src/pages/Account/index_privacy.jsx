@@ -12,8 +12,10 @@ const Privacy = () => {
                 <h1 className="Title">My Account</h1>
                 <div className="flex flex-row space-x-12 h-full pb-6">
                     <AccountNavMenu />
-                    <div>
-                        <h1>Privacy</h1>
+                    <div className="privacy-container card bg-base-100">
+                        <div className="card-body">
+                            <h1>Privacy</h1>
+                        </div>
                     </div>
                 </div>
             </content>
