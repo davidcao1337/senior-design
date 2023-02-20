@@ -3,25 +3,209 @@
 @tailwind utilities;
 
 section {
-    flex-direction: row;
     background-color: #F5F6FA;
-}
-
-test {
     height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: row;
 }
 
-nav {
-    height: 100%;
-    width: 144px;
+testSection {
+    background-color: #F5F6FA;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
 }
 
 content {
     height: 100%;
-    width: -webkit-calc(100% - 130px);
     overflow: hidden;
     float: right;
-    order: 2;
+    background-color: #F5F6FA;
+    padding-left: 44px;
+    padding-top: 28px;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
 }
+
+rightBar {
+    height: 100vh;
+    width: 260px;
+    order: 3;
+    background-color: pink;
+}
+/* Title */
+titleContainer {
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    font-family: emoji;
+}
+
+/* Top Container */
+exerciseLogContainer {
+    height: 200px;
+    width: -webkit-calc(100% - 49px);
+    background-color: white;
+    border-radius: 15px;
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+}
+/* # Card Header # */
+cardHeader {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+/* # Inner Container # */
+innerContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    height: 100%;
+}
+/* ## Card content ## */
+exerciseLogSection {
+    height: 100%;
+    background-color: #97dcc7;
+    width: 100%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+/* ### Exercise Display ### */
+exerciseDisplay{
+    font-weight: bold;
+    font-size: 2rem;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ### Summary Label ### */
+exerciseLabel {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bottom Container */
+activityContent {
+    height: 500px;
+    width: -webkit-calc(100% - 49px);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+/* # Activity # */
+activityContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+/* ## Activity Title ## */
+activityTitleText {
+    font-weight: bold;
+    font-size: 25px;
+    padding-left: 20px;
+}
+/* ## Bottom Label ## */
+cardHeaderTypeTwo {
+    height: 20%;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+/* ## Activity Breakdown ## */
+activityBreakdown {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+activityBreakdownTypeTwo {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    padding: 20px;
+    grid-template: 
+            "a" auto
+            "a" auto
+            "a" auto;
+}
+/* ### Cross Card List ### */
+activityList{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    
+    grid-template: 
+            "a a" auto
+            "b c" auto
+            "d e" auto;
+}
+.tag{
+    font-weight: bold;
+}
+/* ### activityBreakdownContent ### */
+activityBreakdownContent{
+    height: 100%;
+}
+
+/* # Chart # */
+chartContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+/* ## Chart Title ## */
+cardTitle {
+    font-size: 20px;
+}
+/* ## Chart Content ## */
+chartContent {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
