@@ -1,42 +1,51 @@
+import React from 'react';
+import { useState } from 'react';
 import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
 import SleepLineChart from '../../components/Charts/SleepLineChart';
+
 import './sleep.css';
 const Sleep = () => {
-
+    
     return(
         <section>
             <NavBar />
             <content>
-                <div className="SleepTracker">
-                    <h1 className="Title">Sleep</h1>
-                        <div className="SleepStats">
-                            <div className="stats shadow">
-                                <div className="stat place-items-center">
-                                    <div className="stat-title">Sleep Score</div>
-                                    <div className="stat-value">78</div>
-                                    <div className="stat-desc">Yesterday</div>
-                                </div>
-                                <div className="stat place-items-center">
-                                    <div className="stat-title">Sleep Time</div>
-                                    <div className="stat-value">8 h 15 min</div>
-                                    <div className="stat-desc">↗︎ Sleep duration (8%)</div>
-                                </div>
-                                <div className="stat place-items-center">
-                                    <div className="stat-title">Deep Sleep</div>
-                                    <div className="stat-value">1 h 5 min</div>
-                                    <div className="stat-desc">↘︎ Deep sleep duration(14%)</div>
-                                </div>
-                            </div>
-                            
-                            <div className="BarChart">
-                                <SleepBarChart />
-                            </div>
-                        </div>
-                    <SleepLineChart />
-            </div>
+                    <titleContainer>
+                        <div>Sleep</div>
+                    </titleContainer>
+                    <sleepLogContainer>
+                        <statusContainer>
+                            <statusContent>
+                                <sleepLogSection>
+                                    <sleepLabel><div> Sleep Score </div></sleepLabel>
+                                    <sleepScore><div> 87 </div></sleepScore>
+                                </sleepLogSection>
+                                <sleepLogSection>
+                                    <sleepLabel><div> Sleep Time </div></sleepLabel>
+                                    <sleepTime><div> 7 hrs 48 mins </div></sleepTime>
+                                </sleepLogSection>
+                                <sleepLogSection>
+                                    <sleepLabel><div> Sleep Goal </div></sleepLabel>
+                                    <sleepTime><div> 8 hrs 30 mins </div></sleepTime>
+                                </sleepLogSection>
+                            </statusContent>
+                            <sleepBarChart>
+                                <SleepBarChart/>
+                            </sleepBarChart>
+                        </statusContainer>
+                    </sleepLogContainer>
+
+                    <sleepAveContainer>
+                    <sleepLineChart>
+                        <cardTitle>
+                            7 days average sleep time: 7 hours 22 minutes
+                        </cardTitle>
+                        <SleepLineChart />
+                    </sleepLineChart>
+                    </sleepAveContainer>    
             </content>
-            
+            <rightBar></rightBar>
         </section>
         
     )
