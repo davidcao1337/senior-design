@@ -44,7 +44,7 @@ titleContainer {
     font-family: emoji;
 }
 
-foodLogContainer {
+card-container {
     height: 310px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
@@ -53,21 +53,53 @@ foodLogContainer {
     padding-bottom: 22px;
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
 }
 
 cardHeader {
-    height: 60px;
+    height: 80px;
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+cardHeaderBottom {
+    height: 80px;
+    width: 100%;
+    background-color: #97dcc7;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
     display: flex;
     align-items: center;
 }
 
 cardTitle {
     font-size: 20px;
+    margin-left: 20px;
+    align-items: center;
+    display: flex;
+}
+
+foodLogSection .addFood {
+    position: absolute;
+    margin-left: auto;
+    bottom: 0px;
 }
 
 addFood {
     margin-left: auto;
+}
+
+foodLog {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+foodLog .grid-item {
+    display: flex;
+    justify-content: center;
 }
 
 diaryContainer {
@@ -92,6 +124,16 @@ mealLabel {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 22px;
+    background-color: #1aa981;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+labels {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
 }
 
 popupContainer {
@@ -137,7 +179,6 @@ nutritionBreakdownContainer {
     height: 100%;
     background-color: #fff;
     border-radius: 15px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -148,6 +189,7 @@ nutritionBreakdown {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
+    padding-left: 20px;
 }
 
 summaryContainer {
@@ -155,7 +197,6 @@ summaryContainer {
     height: 100%;
     background-color: #fff;
     border-radius: 15px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -167,4 +208,32 @@ summaryContent {
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     justify-content: center;
+}
+
+summarySection {
+    display: flex;
+    justify-content: center;
+}
+
+userCalc { 
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold
+}
+
+activeSel {
+    background-color: #1aa981;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+inactiveSel {
+    margin-right: 20px;
+}
+
+selectionGoal{
+    display: flex;
 }

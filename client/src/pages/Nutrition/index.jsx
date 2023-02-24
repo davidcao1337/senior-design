@@ -3,6 +3,7 @@ import NavBar from '../../components/NavBar';
 import './nutrition.css';
 import Popup from 'reactjs-popup';
 import DiaryEntry from './diary';
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 const Nutrition = () => {
     useEffect( ()=> {
@@ -30,36 +31,108 @@ const Nutrition = () => {
             <titleContainer>
                 <div>Nutrition</div>
             </titleContainer>
-            <foodLogContainer>
+            <card-container>
                 <cardHeader>
                     <cardTitle>Food Diary</cardTitle>
+                </cardHeader>
+                <diaryContainer>
+                <foodLogSection>
+                    <mealLabel><div> Breakfast </div></mealLabel>
+                    <labels>
+                        <div>Item</div>
+                        <div>Servings</div>
+                        <div>Calories</div>
+                    </labels>
+                    <foodLog>
+                        <div class="grid-item">Egg</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">182</div>
+                        <div class="grid-item">Bacon</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">203</div>
+                        <div class="grid-item">Coffee</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">25</div>
+                    </foodLog>
                     <addFood>
                         <Popup trigger={<button> Click to add food </button>} position="left center">
                             <DiaryEntry />
                         </Popup>
                     </addFood>
-                </cardHeader>
-                <diaryContainer>
-                <foodLogSection>
-                    <mealLabel><div> Breakfast </div></mealLabel>
                 </foodLogSection>
                 <foodLogSection>
                     <mealLabel><div> Lunch </div></mealLabel>
+                    <labels>
+                        <div>Item</div>
+                        <div>Servings</div>
+                        <div>Calories</div>
+                    </labels>
+                    <foodLog>
+                        <div class="grid-item">Chicken</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">172</div>
+                        <div class="grid-item">Lettuce</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">30</div>
+                        <div class="grid-item">Dressing</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">45</div>
+                    </foodLog>
+                    <addFood>
+                        <Popup trigger={<button> Click to add food </button>} position="left center">
+                            <DiaryEntry />
+                        </Popup>
+                    </addFood>
                 </foodLogSection>
                 <foodLogSection>
                     <mealLabel><div> Dinner </div></mealLabel>
+                    <labels>
+                        <div>Item</div>
+                        <div>Servings</div>
+                        <div>Calories</div>
+                    </labels>
+                    <foodLog>
+                        <div class="grid-item">Salmon</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">292</div>
+                        <div class="grid-item">Asparagus</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">45</div>
+                        <div class="grid-item">Butter</div>
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">64</div>
+                    </foodLog>
+                    <addFood>
+                        <Popup trigger={<button> Click to add food </button>} position="left center">
+                            <DiaryEntry />
+                        </Popup>
+                    </addFood>
                 </foodLogSection>
                 <foodLogSection>
                     <mealLabel><div> Snack </div></mealLabel>
+                    <labels>
+                        <div>Item</div>
+                        <div>Servings</div>
+                        <div>Calories</div>
+                    </labels>
+                    <foodLog>
+                        <div class="grid-item">Rice Cake</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">162</div>
+                    </foodLog>
+                    <addFood>
+                        <Popup trigger={<button> Click to add food </button>} position="left center">
+                            <DiaryEntry />
+                        </Popup>
+                    </addFood>
                 </foodLogSection>
                 </diaryContainer>
-
-            </foodLogContainer>
+            </card-container>
             <bottomContent>
                 <nutritionBreakdownContainer>
-                    <cardHeader>
+                    <cardHeaderBottom>
                         <cardTitle>Nutrition Breakdown</cardTitle>
-                    </cardHeader>
+                    </cardHeaderBottom>
                     <nutritionBreakdown>
                         <protein> Protein </protein>
                         <carbs> Carbs </carbs>
@@ -67,16 +140,42 @@ const Nutrition = () => {
                     </nutritionBreakdown>
                 </nutritionBreakdownContainer>
                 <summaryContainer>
-                    <cardHeader>
+                    <cardHeaderBottom>
                         <cardTitle> Summary </cardTitle>
-                    </cardHeader>
+                    </cardHeaderBottom>
                     <summaryContent>
-                        <calorieInfo> You have eaten </calorieInfo>
-                        <calorieInfo> Your BMR is </calorieInfo>
-                        <goal> Lose Gain Maintain </goal>
-                        <div> 1 pounds per week </div>
-                        <div> you have 1000 calories remaining </div>
-                        <div> estimated weight in </div>
+                        <summarySection> 
+                            <div>You have eaten </div> 
+                            <userCalc> 1220 </userCalc>
+                            <div> calories today </div>
+                        </summarySection>
+                        <summarySection>
+                            <div> Your BMR is </div>
+                            <userCalc> 1263 </userCalc>
+                        </summarySection>
+                        <summarySection>
+                            <selectionGoal>
+                                <activeSel>Lose</activeSel>
+                                <inactiveSel> Maintain </inactiveSel>
+                                <inactiveSel> Gain </inactiveSel>
+                            </selectionGoal>
+                        </summarySection>
+                        <summarySection>
+                            <userCalc> 2 </userCalc>
+                            <div>pounds per week </div>
+                        </summarySection>
+                        <summarySection>
+                            <div> You have </div>
+                            <userCalc> 108 </userCalc>
+                            <div> calories remaining </div>
+                        </summarySection>
+                        <summarySection>
+                            <div> Estimated weight in </div>
+                            <userCalc> 5 </userCalc>
+                            <div> weeks: </div>
+                            <userCalc> 116 </userCalc>
+                            <div> lbs </div>
+                        </summarySection>
                     </summaryContent>
                 </summaryContainer>
             </bottomContent>

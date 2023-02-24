@@ -20,7 +20,6 @@ nav {
 
 content {
     height: 100%;
-    width: -webkit-calc(100% - 130px);
     overflow: hidden;
     float: right;
     order: 2;
