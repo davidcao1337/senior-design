@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 import googleLogo from '../../assets/google-logo.png'
-import './login.css';
+import './login.css'
 import { useNavigate } from "react-router-dom"
 import { useRegister } from "../../hooks/useRegister"
 

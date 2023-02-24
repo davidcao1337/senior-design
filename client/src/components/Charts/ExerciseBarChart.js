@@ -1,22 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
-import Popup from 'reactjs-popup';
-import AddSleepData from '../../pages/Sleep/sleepData';
-
-//var dataWeek = [8.8, 11.0, 9.5, 8.9, 7.6, 7.9, 10.3];
-var dataMonth = [8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0];
-function SleepBar() {
+function ExerciseBar() {
     const domRef = useRef()
-    const [dataWeek, setDataWeek] = useState([8.8, 11.0, 9.5, 8.9, 7.6, 7.9, 10.3]);
-    const getData = (data) => {
-      setDataWeek(dataWeek.push(Number(data)));
-      setDataWeek(dataWeek.slice(1));
-      console.log(dataWeek);
+    const chartInit = () => {
+        var dataWeek = [2.2, 1.8, 2, 1.2, 2.5, 1.8, 1, 1.6]
+        var dataNight = [2.1, 2.2, 2.1, 2, 1.9, 2.1, 2.3, 2.2, 2.1, 2.1, 2, 1.8]
 
-    };
-    
-    function chartInit(){
         const myChart = echarts.init(domRef.current)
+
         myChart.setOption({
           tooltip: {
             trigger: 'axis',
@@ -25,13 +16,10 @@ function SleepBar() {
             }
           },
             xAxis: {
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Avg']
               },
               yAxis: {
-                show: true,
-                axisLabel: {
-                  formatter: '{value} h'
-                }
+                show: true
               },
               series: [
                 {
@@ -66,7 +54,7 @@ function SleepBar() {
                                   series: [
                                     {
                                       type: 'bar',
-                                      data: dataMonth,
+                                      data: dataNight,
                                         itemStyle: {
                                             barBorderRadius: 5,
                                             borderWidth: 1,
@@ -88,13 +76,10 @@ function SleepBar() {
                         onclick: function (){
                             myChart.setOption({
                                 xAxis: {
-                                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Avg']
                                   },
                                   yAxis: {
-                                    show: true,
-                                    axisLabel: {
-                                      formatter: '{value} h'
-                                    }
+                                    show: true
                                   },
                                   series: [
                                     {
@@ -127,23 +112,12 @@ function SleepBar() {
     useEffect( () => {
         chartInit()
     }, [])
-
-    const clickHandler = (event) => {
-      getData(event);
-      chartInit();
-    }
     
     return (
         <div>
-          <addSleep>
-            <Popup trigger={<button> Click to add sleep time </button>} position="right center">
-              <AddSleepData onSubmit={clickHandler} />
-            </Popup>
-          </addSleep>
-          <div className="Bar" ref={domRef} style={{width:'100%',height:'250px'}}></div>
+            <div className="Bar" ref={domRef} style={{width:'90%',height:'380px'}}></div>
         </div>
     )
 }
 
-
-export default SleepBar
+export default ExerciseBar
