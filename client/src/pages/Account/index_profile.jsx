@@ -1,11 +1,34 @@
-import React from "react"
+import React, { useState, useEffect} from "react"
 import './account.css'
 import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
+const user_id = String(JSON.parse(localStorage.getItem('user')).user_id);
+
 const Profile = () => {
+    const [user, setUser] = useState([]);
+
+    useEffect( ()=> {
+        const fetchUser = async() => {
+            const userData = await fetch('/user/' + user_id);
+            const user = await userData.json();
+            setUser(user);
+        }
+
+        fetchUser();
+    }, []);
+
+    // Fetched Values
+    const userName = user.name || "N/A"
+    const userHeight = user.height || "N/A"
+    const userWeight = user.weight || "N/A"
+
+    // Calculated Values
+    var age = "N/A"
+    var bmi = "N/A"
+
     return (
         <section>
             <NavBar />
@@ -18,7 +41,7 @@ const Profile = () => {
                             <div className="card-body flex flex-col">
                                 <FontAwesomeIcon className="m-6" icon={faCircleUser} size="10x"></FontAwesomeIcon>
                                 <div className="full-name mb-5 flex flex-row justify-center">
-                                    <h1>Jane Doe</h1>
+                                    <h1>{userName}</h1>
                                 </div>
                                 <div className="profile-info mt-5 flex flex-row space-x-10 justify-center">
                                     <div className="profile-labels flex flex-col space-y-3">
@@ -28,10 +51,10 @@ const Profile = () => {
                                         <p>BMI</p>
                                     </div>
                                     <div className="profile-values text-[#748AA1] flex flex-col space-y-3">
-                                        <p>22</p>
-                                        <p>5'5</p>
-                                        <p>128</p>
-                                        <p>68</p>
+                                        <p>{age}</p>
+                                        <p>{userHeight}</p>
+                                        <p>{userWeight}</p>
+                                        <p>{bmi}</p>
                                     </div>
                                 </div>
                                 <button className="mt-20 p-2 text-lg text-white bg-lyfeon-green rounded-[6px]">Edit Profile</button>
