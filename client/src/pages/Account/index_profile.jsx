@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from "react"
 import './account.css'
 import NavBar from '../../components/NavBar'
-import AccountNavMenu from "../../components/AccountNavMenu";
+import AccountNavMenu from "../../components/AccountNavMenu"
+import EditProfileModal from "../../components/Modals/EditProfileModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,14 +10,28 @@ const user_id = String(JSON.parse(localStorage.getItem('user')).user_id);
 
 const Profile = () => {
     const [user, setUser] = useState([]);
+    const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
+
+    const fetchUser = async() => {
+        const userData = await fetch('/user/' + user_id);
+        const user = await userData.json();
+        setUser(user);
+    }
+
+    // Toggle modal without saving
+    const toggleProfileModal = () => {
+        setIsUserProfileModalOpen(!isUserProfileModalOpen)
+    }
+
+    // Save changes made in modal and toggle
+    const saveToggleProfileModal = () => {
+        // TODO: Save changes and update user's info in DB
+        console.log("Saved!")
+        
+        setIsUserProfileModalOpen(!isUserProfileModalOpen)
+    }
 
     useEffect( ()=> {
-        const fetchUser = async() => {
-            const userData = await fetch('/user/' + user_id);
-            const user = await userData.json();
-            setUser(user);
-        }
-
         fetchUser();
     }, []);
 
@@ -33,7 +48,7 @@ const Profile = () => {
         <section>
             <NavBar />
             <content>
-                <h1 className="Title">My Account</h1>
+                <h1 className="Title mb-5 font-bold text-3xl text-[#525252]">My Account</h1>
                 <div className="flex flex-row space-x-12 h-full pb-6">
                     <AccountNavMenu />
                     <div className="profile-goals-container flex flex-row space-x-8">
@@ -57,7 +72,7 @@ const Profile = () => {
                                         <p>{bmi}</p>
                                     </div>
                                 </div>
-                                <button className="mt-20 p-2 text-lg text-white bg-lyfeon-green rounded-[6px]">Edit Profile</button>
+                                <button className="mt-20 p-2 text-lg text-white bg-lyfeon-green rounded-[6px]" onClick={toggleProfileModal}>Edit Profile</button>
                             </div>
                         </div>
                         <div className="goals-container card bg-base-100">
@@ -91,6 +106,9 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
+                {isUserProfileModalOpen &&
+                    <EditProfileModal isOpen={isUserProfileModalOpen} handleCancelClick={toggleProfileModal} handleSaveClick={saveToggleProfileModal} />
+                }
             </content>
         </section>
     )
