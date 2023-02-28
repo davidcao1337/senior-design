@@ -7,8 +7,7 @@ function ExerciseBar() {
         var dataNight = [2.1, 2.2, 2.1, 2, 1.9, 2.1, 2.3, 2.2, 2.1, 2.1, 2, 1.8]
 
         const myChart = echarts.init(domRef.current)
-
-        myChart.setOption({
+        var option = {
           tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -107,8 +106,28 @@ function ExerciseBar() {
               bottom:'0%',
               containLabel: true
             }
-          });
-    }
+          };
+
+        myChart.setOption(option);
+        myChart.setOption(option);
+        myChart.resize();
+
+        window.addEventListener('resize', () => {
+          myChart.resize();
+        });
+        document.addEventListener('fullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('webkitfullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('mozfullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('msfullscreenchange', () => {
+          myChart.resize();
+        });
+    };
     useEffect( () => {
         chartInit()
     }, [])

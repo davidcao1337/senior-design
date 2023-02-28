@@ -48,6 +48,9 @@ const Exercise = () => {
                         <activityTitleText>Today's Activity</activityTitleText>
                     </cardHeaderTypeTwo>
                     <activityBreakdownTypeTwo>
+                        <addActivityButton>
+                            Click to add activity
+                        </addActivityButton>
                         <activityList>
                             <div className='tag'> Indoor Run </div>
                             <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
