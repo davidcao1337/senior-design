@@ -2,7 +2,6 @@ import React from "react"
 import './account.css'
 import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Preferences = () => {
     return (

@@ -3,31 +3,24 @@ import './account.css'
 import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu"
 import EditProfileModal from "../../components/Modals/EditProfileModal"
+import { useUserContext } from "../../hooks/useUserContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
-const user_id = String(JSON.parse(localStorage.getItem('user')).user_id);
+const user_id = JSON.parse(localStorage.getItem('user')).user_id;
 
 const Profile = () => {
-    const [user, setUser] = useState([]);
+    const {user, dispatch} = useUserContext()
     const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
 
     const fetchUser = async() => {
         const userData = await fetch('/user/' + user_id);
         const user = await userData.json();
-        setUser(user);
+        dispatch({type: 'SET_USER', payload: user})
     }
 
-    // Toggle modal without saving
+    // Toggle modal visibility
     const toggleProfileModal = () => {
-        setIsUserProfileModalOpen(!isUserProfileModalOpen)
-    }
-
-    // Save changes made in modal and toggle
-    const saveToggleProfileModal = () => {
-        // TODO: Save changes and update user's info in DB
-        console.log("Saved!")
-        
         setIsUserProfileModalOpen(!isUserProfileModalOpen)
     }
 
@@ -107,7 +100,11 @@ const Profile = () => {
                     </div>
                 </div>
                 {isUserProfileModalOpen &&
-                    <EditProfileModal isOpen={isUserProfileModalOpen} handleCancelClick={toggleProfileModal} handleSaveClick={saveToggleProfileModal} />
+                    <EditProfileModal 
+                        isOpen={isUserProfileModalOpen}
+                        toggleModalVisibility={toggleProfileModal}
+                        userID={user_id}
+                    />
                 }
             </content>
         </section>

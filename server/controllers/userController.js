@@ -52,17 +52,16 @@ const getUser = async(req, res) => {
 
 const updateUser = async(req, res) => {
     const { id } = req.params
+    const updates = req.body
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such user'})
+        return res.status(404).json({error: 'Invalid Doc ID'})
     }
 
-    const user = await User.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
+    const user = await User.findOneAndUpdate({_id: id}, {$set: updates})
 
     if (!user) {
-        return res.status(404).json({error: 'User not found'})
+        return res.status(404).json({error: 'User not found; could not update'})
     }
 
     res.status(200).json(user)

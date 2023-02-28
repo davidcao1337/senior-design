@@ -5,7 +5,10 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import './calendarComp.css'
 
-const CalendarComp = () => {
+const CalendarComp = (props) => {
+
+    const { setBirthday } = props
+
     const [calendar, setCalendar] = useState('')
 
     const [open, setOpen] = useState(false)
@@ -32,6 +35,7 @@ const CalendarComp = () => {
     
     const handleSelect = (date) => {
         setCalendar(format(date, 'MM/dd/yyyy'))
+        setBirthday(date)
         setOpen(false)
     }
 
