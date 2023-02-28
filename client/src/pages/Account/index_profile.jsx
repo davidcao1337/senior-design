@@ -3,30 +3,29 @@ import './account.css'
 import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu"
 import EditProfileModal from "../../components/Modals/EditProfileModal"
-import { useUserContext } from "../../hooks/useUserContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const user_id = JSON.parse(localStorage.getItem('user')).user_id;
 
 const Profile = () => {
-    const {user, dispatch} = useUserContext()
+    const [user, setUser] = useState([])
     const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
 
-    const fetchUser = async() => {
-        const userData = await fetch('/user/' + user_id);
-        const user = await userData.json();
-        dispatch({type: 'SET_USER', payload: user})
-    }
+    useEffect( ()=> {
+        const fetchUser = async() => {
+            const userData = await fetch('/user/' + user_id);
+            const user = await userData.json();
+            setUser(user)
+        }
+
+        fetchUser();
+    }, []);
 
     // Toggle modal visibility
     const toggleProfileModal = () => {
         setIsUserProfileModalOpen(!isUserProfileModalOpen)
     }
-
-    useEffect( ()=> {
-        fetchUser();
-    }, []);
 
     // Fetched Values
     const userName = user.name || "N/A"

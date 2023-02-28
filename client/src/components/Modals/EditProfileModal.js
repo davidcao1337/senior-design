@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useUserContext } from '../../hooks/useUserContext.js'
 import CalendarComp from '../CalendarComp/index.jsx'
 import './EditProfileModal.css'
 
@@ -8,7 +7,6 @@ const EditProfileModal = (props) => {
     const { isOpen, toggleModalVisibility, userID } = props
 
     // Profile Info
-    const { dispatch } = useUserContext()
     const [name, setName] = useState(null)
     const [birthday, setBirthday] = useState(null)
     const [height, setHeight] = useState(null)
@@ -33,11 +31,12 @@ const EditProfileModal = (props) => {
             }
         }
         // Convert Height string into a Number (if field populated)
+        var errorMsg = ''
         if (profileUpdates.hasOwnProperty('height')) {
             const tempHeight = Number(profileUpdates.height)
             if (isNaN(tempHeight)) {
-                error = 'Height must be a number; '
-                setError(error)
+                errorMsg += 'Height must be a number; '
+                setError(errorMsg)
             }
             profileUpdates.height = tempHeight
         }
@@ -45,8 +44,8 @@ const EditProfileModal = (props) => {
         if (profileUpdates.hasOwnProperty('weight')) {
             const tempWeight = Number(profileUpdates.weight)
             if (isNaN(tempWeight)) {
-                error += 'Weight must be a number'
-                setError(error)
+                errorMsg += 'Weight must be a number'
+                setError(errorMsg)
             }
             profileUpdates.weight = tempWeight
         }
@@ -61,8 +60,8 @@ const EditProfileModal = (props) => {
         const user = await userData.json()
 
         if (!user.ok) {
-            error = user.error
-            setError(error)
+            errorMsg = user.error
+            setError(errorMsg)
         }
         if (user.ok) {
             setName('')
@@ -71,7 +70,6 @@ const EditProfileModal = (props) => {
             setWeight(null)
             setError(null)
             console.log('User updated!', user)
-            dispatch({type: 'SET_USER', payload: user})
         }
     }
 
@@ -81,7 +79,7 @@ const EditProfileModal = (props) => {
             <div className="modal-content flex flex-col space-y-10">
                 <h2 className="mt-3 font-bold text-2xl">Edit Profile</h2>
                     <div className="form-container">
-                        <form className="flex flex-col" onSubmit={handleSubmit}>
+                        <form className="flex flex-col">
                             <label className="font-semibold">Full Name</label>
                             <input className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" value={name} onChange={(e) => setName(e.target.value)} id="name" name="name" autoComplete="off"/>
                             <label className="font-semibold">Date of Birth</label>
@@ -102,7 +100,7 @@ const EditProfileModal = (props) => {
                         </form>
                     </div>
                     <div className="buttons-container flex flex-row justify-center">
-                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" type="submit" onClick={!error && toggleModalVisibility}>Save</button>
+                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && (toggleModalVisibility && handleSubmit)}>Save</button>
                         <button className="ml-10 btn" onClick={toggleModalVisibility}>Cancel</button>
                     </div>
                     {error && <div className="error">{error}</div>}
