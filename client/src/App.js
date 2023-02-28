@@ -16,13 +16,20 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/login" />} /> {/* TODO: If user is authenticated, navigate to /dashboard */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/exercise" element={<Exercise />} />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/sleep" element={<Sleep />} />
+          {/*    <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/dashboard" />} />
           <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" />} />
           <Route path="/exercise" element={user ? <Exercise /> : <Navigate to="/login" />} />
           <Route path="/nutrition" element={user ? <Nutrition /> : <Navigate to="/login" />} />
-          <Route path="/sleep" element={user ? <Sleep /> : <Navigate to="/login" />} />
+          <Route path="/sleep" element={user ? <Sleep /> : <Navigate to="/login" />} /> */}
         </Routes>
       </BrowserRouter>
     </div>
