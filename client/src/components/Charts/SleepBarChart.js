@@ -4,20 +4,21 @@ import Popup from 'reactjs-popup';
 import AddSleepData from '../../pages/Sleep/sleepData';
 
 //var dataWeek = [8.8, 11.0, 9.5, 8.9, 7.6, 7.9, 10.3];
+var hours = [8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0, 8.9, 7.6, 7.9, 10.0, 8.8, 11.0, 9.5];
+var hourToPass;
+var weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+var dates = ['2/27/2023', '2/28/2023', '3/1/2023', '3/2/2023', '3/3/2023', '3/4/2023', '3/5/2023', '3/6/2023', '3/7/2023', '3/8/2023', '3/9/2023', '3/10/2023', '3/11/2023', '3/12/2023', '3/13/2023', '3/14/2023', '3/15/2023', '3/16/2023', '3/17/2023'];
+var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Oct', 'Nov', 'Dec'];
 var dataMonth = [8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0];
+
 function SleepBar() {
     const domRef = useRef()
-    const [dataWeek, setDataWeek] = useState([8.8, 11.0, 9.5, 8.9, 7.6, 7.9, 10.3]);
-    const getData = (data) => {
-      setDataWeek(dataWeek.push(Number(data)));
-      setDataWeek(dataWeek.slice(1));
-      console.log(dataWeek);
-
-    };
+    var myChart;
+    var option ;
     
     function chartInit(){
-        const myChart = echarts.init(domRef.current)
-        myChart.setOption({
+        myChart = echarts.init(domRef.current)
+        option = {
           tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -25,7 +26,7 @@ function SleepBar() {
             }
           },
             xAxis: {
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: weeks.slice(Math.max(weeks.length - 7, 0)),
               },
               yAxis: {
                 show: true,
@@ -36,7 +37,7 @@ function SleepBar() {
               series: [
                 {
                   type: 'bar',
-                  data: dataWeek,
+                  data: hours.slice(Math.max(hours.length - 7, 0)),
                     itemStyle: {
                         barBorderRadius: 5,
                         borderWidth: 1,
@@ -58,7 +59,7 @@ function SleepBar() {
                         onclick: function (){
                             myChart.setOption({
                                 xAxis: {
-                                    data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Oct', 'Nov', 'Dec']
+                                    data: month
                                   },
                                   yAxis: {
                                     show: true
@@ -88,7 +89,7 @@ function SleepBar() {
                         onclick: function (){
                             myChart.setOption({
                                 xAxis: {
-                                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                                    data: weeks.slice(Math.max(weeks.length - 7, 0)),
                                   },
                                   yAxis: {
                                     show: true,
@@ -99,7 +100,7 @@ function SleepBar() {
                                   series: [
                                     {
                                       type: 'bar',
-                                      data: dataWeek,
+                                      data: hours.slice(Math.max(hours.length - 7, 0)),
                                         itemStyle: {
                                             barBorderRadius: 5,
                                             borderWidth: 1,
@@ -122,28 +123,52 @@ function SleepBar() {
               bottom:'0%',
               containLabel: true
             }
-          });
-    }
+          };
+        myChart.setOption(option);
+        myChart.resize();
+
+        window.addEventListener('resize', () => {
+          myChart.resize();
+        });
+        document.addEventListener('fullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('webkitfullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('mozfullscreenchange', () => {
+          myChart.resize();
+        });
+        document.addEventListener('msfullscreenchange', () => {
+          myChart.resize();
+        });
+    };
+
+    function addNewHours(newHours) {
+      hours.push(Number(newHours));
+      weeks.push(weeks[0]);
+      weeks.shift();
+      option.series[0].data = hours.slice(Math.max(hours.length - 7, 0));
+      option.xAxis.data = weeks.slice(Math.max(weeks.length - 7, 0));
+      console.log(weeks);
+      myChart.setOption(option);
+  }
+
     useEffect( () => {
         chartInit()
     }, [])
-
-    const clickHandler = (event) => {
-      getData(event);
-      chartInit();
-    }
     
+
     return (
         <div>
           <addSleep>
             <Popup trigger={<button> Click to add sleep time </button>} position="right center">
-              <AddSleepData onSubmit={clickHandler} />
+              <AddSleepData onSubmit={addNewHours} />
             </Popup>
           </addSleep>
           <div className="Bar" ref={domRef} style={{width:'100%',height:'250px'}}></div>
         </div>
     )
 }
-
 
 export default SleepBar

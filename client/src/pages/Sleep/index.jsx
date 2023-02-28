@@ -6,7 +6,7 @@ import SleepLineChart from '../../components/Charts/SleepLineChart';
 
 import './sleep.css';
 const Sleep = () => {
-    
+
     return(
         <section>
             <NavBar />
@@ -23,7 +23,7 @@ const Sleep = () => {
                                 </sleepLogSection>
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Time </div></sleepLabel>
-                                    <sleepTime><div> 7 hrs 48 mins </div></sleepTime>
+                                    <sleepTime>{<div> 7 hrs 48 mins </div>}</sleepTime>
                                 </sleepLogSection>
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Goal </div></sleepLabel>
