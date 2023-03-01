@@ -32,10 +32,6 @@ const NavBar = () => {
                       <button onClick={handleClick}><FontAwesomeIcon icon={faArrowRightFromBracket} size="2x"/></button> {/* TEMP; Change location later */}
                     </div>
                   </div>
-                  
-                  <div className="content">
-                     
-                  </div>
           </div>
         </>
     );

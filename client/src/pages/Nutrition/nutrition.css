@@ -137,14 +137,14 @@ labels {
 }
 
 popupContainer {
-    height: fit-content;
+    height: 300px;
     width: 250px;
     background-color: white;
     display: flex;
     flex-direction: column;
     border-color: black;
     border-width: 2px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 popupContainer .popupTitle{
@@ -236,4 +236,17 @@ inactiveSel {
 
 selectionGoal{
     display: flex;
+}
+
+.entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.popupFields {
+    display: flex;
+    flex-direction: column;
 }

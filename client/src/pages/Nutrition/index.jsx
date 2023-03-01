@@ -2,8 +2,16 @@ import React, {useEffect, useState} from 'react';
 import NavBar from '../../components/NavBar';
 import './nutrition.css';
 import Popup from 'reactjs-popup';
-import DiaryEntry from './diary';
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import AddFoodPopup from './diary';
+import RenderFoodLog from './FoodDiary';
+
+const getNutritionProperties = () => {
+    const props = {
+        mealLabels: ['Breakfast', 'Lunch', 'Dinner', 'Snack'],
+        food: []
+    };
+    return props;
+}
 
 const Nutrition = () => {
     useEffect( ()=> {
@@ -24,6 +32,9 @@ const Nutrition = () => {
       console.log('test');
     }
 
+    let props = getNutritionProperties();
+
+
     return (
         <section>
             <NavBar />
@@ -36,96 +47,10 @@ const Nutrition = () => {
                     <cardTitle>Food Diary</cardTitle>
                 </cardHeader>
                 <diaryContainer>
-                <foodLogSection>
-                    <mealLabel><div> Breakfast </div></mealLabel>
-                    <labels>
-                        <div>Item</div>
-                        <div>Servings</div>
-                        <div>Calories</div>
-                    </labels>
-                    <foodLog>
-                        <div class="grid-item">Egg</div>
-                        <div class="grid-item">2</div>
-                        <div class="grid-item">182</div>
-                        <div class="grid-item">Bacon</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">203</div>
-                        <div class="grid-item">Coffee</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">25</div>
-                    </foodLog>
-                    <addFood>
-                        <Popup trigger={<button> Click to add food </button>} position="left center">
-                            <DiaryEntry />
-                        </Popup>
-                    </addFood>
-                </foodLogSection>
-                <foodLogSection>
-                    <mealLabel><div> Lunch </div></mealLabel>
-                    <labels>
-                        <div>Item</div>
-                        <div>Servings</div>
-                        <div>Calories</div>
-                    </labels>
-                    <foodLog>
-                        <div class="grid-item">Chicken</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">172</div>
-                        <div class="grid-item">Lettuce</div>
-                        <div class="grid-item">2</div>
-                        <div class="grid-item">30</div>
-                        <div class="grid-item">Dressing</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">45</div>
-                    </foodLog>
-                    <addFood>
-                        <Popup trigger={<button> Click to add food </button>} position="left center">
-                            <DiaryEntry />
-                        </Popup>
-                    </addFood>
-                </foodLogSection>
-                <foodLogSection>
-                    <mealLabel><div> Dinner </div></mealLabel>
-                    <labels>
-                        <div>Item</div>
-                        <div>Servings</div>
-                        <div>Calories</div>
-                    </labels>
-                    <foodLog>
-                        <div class="grid-item">Salmon</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">292</div>
-                        <div class="grid-item">Asparagus</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">45</div>
-                        <div class="grid-item">Butter</div>
-                        <div class="grid-item">1</div>
-                        <div class="grid-item">64</div>
-                    </foodLog>
-                    <addFood>
-                        <Popup trigger={<button> Click to add food </button>} position="left center">
-                            <DiaryEntry />
-                        </Popup>
-                    </addFood>
-                </foodLogSection>
-                <foodLogSection>
-                    <mealLabel><div> Snack </div></mealLabel>
-                    <labels>
-                        <div>Item</div>
-                        <div>Servings</div>
-                        <div>Calories</div>
-                    </labels>
-                    <foodLog>
-                        <div class="grid-item">Rice Cake</div>
-                        <div class="grid-item">4</div>
-                        <div class="grid-item">162</div>
-                    </foodLog>
-                    <addFood>
-                        <Popup trigger={<button> Click to add food </button>} position="left center">
-                            <DiaryEntry />
-                        </Popup>
-                    </addFood>
-                </foodLogSection>
+                <RenderFoodLog props = {{ props , id: 'Breakfast'}}/>
+                <RenderFoodLog props = {{ props , id: 'Lunch'}}/>
+                <RenderFoodLog props = {{ props , id: 'Dinner'}}/>
+                <RenderFoodLog props = {{ props , id: 'Snack'}}/>
                 </diaryContainer>
             </card-container>
             <bottomContent>
