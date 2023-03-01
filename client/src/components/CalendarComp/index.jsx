@@ -16,7 +16,6 @@ const CalendarComp = (props) => {
     const refOne = useRef(null)
 
     useEffect(() => {
-        setCalendar(format(new Date(), 'MM/dd/yyyy'))
         document.addEventListener("keydown", hideOnEscape, true)
         document.addEventListener("click", hideOnClickOutside, true)
     }, [])

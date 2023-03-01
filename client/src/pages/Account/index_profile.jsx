@@ -31,10 +31,25 @@ const Profile = () => {
     const userName = user.name || "N/A"
     const userHeight = user.height || "N/A"
     const userWeight = user.weight || "N/A"
+    const userBirthday = user.birthday || null
 
     // Calculated Values
-    var age = "N/A"
-    var bmi = "N/A"
+    // Age
+    var ageCalc = null
+    if (userBirthday != null) {
+        const currentDate = new Date()
+        const userBirthdate = new Date(userBirthday)
+        const dateDifference = (currentDate - userBirthdate) / (1000 * 60 * 60 * 24 * 365.25)
+        ageCalc = Math.floor(dateDifference)
+    }
+    var age = ageCalc || "N/A"
+
+    // BMI
+    var bmiCalc = null
+    if (!isNaN(userHeight) && !isNaN(userWeight)) {
+        bmiCalc = (userWeight / Math.pow((userHeight/100), 2)).toPrecision(3)
+    }
+    var bmi = bmiCalc || "N/A"
 
     return (
         <section>
@@ -53,8 +68,8 @@ const Profile = () => {
                                 <div className="profile-info mt-5 flex flex-row space-x-10 justify-center">
                                     <div className="profile-labels flex flex-col space-y-3">
                                         <p>Age</p>
-                                        <p>Height</p>
-                                        <p>Weight</p>
+                                        <p>Height (cm)</p>
+                                        <p>Weight (kg)</p>
                                         <p>BMI</p>
                                     </div>
                                     <div className="profile-values text-[#748AA1] flex flex-col space-y-3">

@@ -20,7 +20,7 @@ const EditProfileModal = (props) => {
         return null
     }
 
-    const handleSubmit = async (e) => {
+    const handleSave = async (e) => {
         e.preventDefault()
 
         // Validate Profile Updates
@@ -71,6 +71,8 @@ const EditProfileModal = (props) => {
             setError(null)
             console.log('User updated!', user)
         }
+
+        props.toggleModalVisibility()
     }
 
     return (
@@ -100,7 +102,7 @@ const EditProfileModal = (props) => {
                         </form>
                     </div>
                     <div className="buttons-container flex flex-row justify-center">
-                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && (toggleModalVisibility && handleSubmit)}>Save</button>
+                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && handleSave}>Save</button>
                         <button className="ml-10 btn" onClick={toggleModalVisibility}>Cancel</button>
                     </div>
                     {error && <div className="error">{error}</div>}
