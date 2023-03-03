@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 var user_id = ""
-if (JSON.parse(localStorage.getItem('user')).user_id != null) {
+if (localStorage.getItem('user') != null) {
     user_id = JSON.parse(localStorage.getItem('user')).user_id
 }
 
