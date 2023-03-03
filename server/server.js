@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import routesHandler from "./routes/handler.js"
 import userHandler from "./routes/userHandler.js"
+import goalsHandler from "./routes/goalsHandler.js"
 import dotenv from "dotenv"
 
 // Configurations
@@ -26,6 +27,7 @@ connect();
 // Handlers
 app.use('/', routesHandler);
 app.use('/user', userHandler);
+app.use("/goals", goalsHandler)
 
 // Server Start
 const PORT = process.env.PORT || 5000 // Ensure that port number of proxy matches in client/package.json
