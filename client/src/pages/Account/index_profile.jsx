@@ -6,7 +6,10 @@ import EditProfileModal from "../../components/Modals/EditProfileModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser, faEllipsisVertical, faPlus, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
-const user_id = JSON.parse(localStorage.getItem('user')).user_id;
+var user_id = ""
+if (localStorage.getItem('user') != null) {
+    user_id = JSON.parse(localStorage.getItem('user')).user_id
+}
 
 const Profile = () => {
     const [user, setUser] = useState([])
