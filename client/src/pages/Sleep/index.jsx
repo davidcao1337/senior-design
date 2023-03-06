@@ -87,7 +87,6 @@ const Sleep = () => {
                             </sleepBarChart>
                         </statusContainer>
                     </sleepLogContainer>
-
                     <sleepAveContainer>
                     <sleepLineChart>
                         <cardTitle>
@@ -99,7 +98,6 @@ const Sleep = () => {
             </content>
             <rightBar></rightBar>
         </section>
-        
     )
 }
 

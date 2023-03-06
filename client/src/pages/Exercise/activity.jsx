@@ -34,7 +34,7 @@ const Activity = (props) => {
     ];
 
     return(
-        <popupContainer>
+        <popupExeContainer>
             <div className='popupTitle'>Add Activity</div>
             <popupDivider>
                 <typeSelect>
@@ -44,22 +44,22 @@ const Activity = (props) => {
             </popupDivider>
             <popupDivider>
                 <label>Time/Reps:
-                    <input value={time_reps} size="10" onChange={e => setTime(Number(e.target.value))}/>
+                    <input value={time_reps} size="10" onChange={e => setTime(Number(e.target.value))} placeholder='mins/Reps' />
                 </label>
                 <label>Distance/Set:
-                    <input value={distance_set} size="10" onChange={e => setDistance(Number(e.target.value))}/>
+                    <input value={distance_set} size="10" onChange={e => setDistance(Number(e.target.value))}placeholder='mi/set'/>
                 </label>
                 <label>Incline/Weight:
-                    <input value={incline_weight} size="10" onChange={e => setIncline(Number(e.target.value))}/>
+                    <input value={incline_weight} size="10" onChange={e => setIncline(Number(e.target.value))}placeholder='%/lb'/>
                 </label>
                 <label>Calories:
-                    <input value={calories} size="10" onChange={e => setCalories(Number(e.target.value))}/>
+                    <input value={calories} size="10" onChange={e => setCalories(Number(e.target.value))}placeholder='kCals'/>
                 </label>
             </popupDivider>
             <submitButton>
                 <button onClick={passActivity}>Submit</button>
             </submitButton>
-        </popupContainer>
+        </popupExeContainer>
     )
 }
 

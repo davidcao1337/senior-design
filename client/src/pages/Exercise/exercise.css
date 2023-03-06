@@ -205,9 +205,9 @@ chartContent {
     align-items: center;
     justify-content: center;
 }
-popupContainer {
+popupExeContainer {
     height: fit-content;
-    width: 350px;
+    width: 280px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -216,7 +216,7 @@ popupContainer {
     border-radius: 5px;
 }
 
-popupContainer .popupTitle{
+popupExeContainer .popupTitle{
     text-align: center;
     height: 48px;
     font-size: 20px;

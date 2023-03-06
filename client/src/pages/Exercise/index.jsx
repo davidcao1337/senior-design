@@ -8,7 +8,9 @@ import AddTime from './exercise_time';
 
 const Exercise = () => {
 
-    const [exerciseTime, setExerciseTime] = useState('');
+    const [exerciseTime, setExerciseTime] = useState();
+    const [totalCalories, setCalories] = useState();
+    const [distance, setDistance] = useState();
     //const [minutes, setMins] = useState();
 
     const editTime = (newTime) => {
@@ -18,6 +20,13 @@ const Exercise = () => {
         //console.log(exerciseTime)
     }
 
+    const caloriesBurn = (activities) => {
+        setCalories(activities[0].calories + activities[1].calories + activities[2].calories + ' kCals')
+    }
+
+    const distanceRan = (activities) => {
+        setDistance(activities[0].distance_set + ' mi')
+    }
     
     const [activities, setActivity] = useState([
         {task: 1, time_reps: 0, distance_set: 0, incline_weight: 0, calories: 0},
@@ -41,6 +50,11 @@ const Exercise = () => {
         //console.log(activities)
     };
 
+    useEffect( () => {
+        caloriesBurn(activities);
+        distanceRan(activities);
+    },[activities])
+
     return (
         <section>
             <NavBar />
@@ -62,11 +76,11 @@ const Exercise = () => {
                 </exerciseLogSection>
                 <exerciseLogSection>
                     <exerciseLabel><div> Calories Burned </div></exerciseLabel>
-                    <exerciseDisplay><div> 492 kCals </div></exerciseDisplay>
+                    <exerciseDisplay><div> {totalCalories} </div></exerciseDisplay>
                 </exerciseLogSection>
                 <exerciseLogSection>
                     <exerciseLabel><div> Distance Ran </div></exerciseLabel>
-                    <exerciseDisplay><div> 1.25 mi </div></exerciseDisplay>
+                    <exerciseDisplay><div> {distance} </div></exerciseDisplay>
                 </exerciseLogSection>
                 </innerContainer>
             </exerciseLogContainer>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './exercise.css';
-import Select from 'react-select';
 
 const UpdateTime = (props) => {
     const [time, setTime] = useState();
@@ -13,7 +12,6 @@ const UpdateTime = (props) => {
         props.onEditTime(time)
         //console.log(time);
     }
-
 
     return(
         <popupContainer>
