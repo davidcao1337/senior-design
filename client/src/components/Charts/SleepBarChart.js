@@ -16,227 +16,228 @@ function SleepBar(props) {
     // const [sleepTime, setTime] = useState();
     // console.log(sleepTime)
     //console.log(typeof hours)
-    if(typeof props.sleepTime === "undefined"){
-      option = {
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-          xAxis: {
-              data: weeks.slice(Math.max(weeks.length - 7, 0)),
-            },
-            yAxis: {
-              show: true,
-              axisLabel: {
-                formatter: '{value} h'
-              }
-            },
-            series: [
-              {
-                type: 'bar',
-                data: hours.slice(Math.max(hours.length - 7, 0)),
-                  itemStyle: {
-                      barBorderRadius: 5,
-                      borderWidth: 1,
-                      borderType: 'solid',
-                      color: '#18B283',
-                      shadowColor: '#18B283',
-                      shadowBlur: 3,
-                      opacity: 0.5
-                },
-              }
-            ],
-          toolbox: {
-            left: '90%',
-              feature: {
-                  myTool1:{
-                      show: true,
-                      title: "Month",
-                      icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
-                      onclick: function (){
-                          myChart.setOption({
-                              xAxis: {
-                                  data: month
-                                },
-                                yAxis: {
-                                  show: true
-                                },
-                                series: [
-                                  {
-                                    type: 'bar',
-                                    data: dataMonth,
-                                      itemStyle: {
-                                          barBorderRadius: 5,
-                                          borderWidth: 1,
-                                          borderType: 'solid',
-                                          color: '#18B283',
-                                          shadowColor: '#18B283',
-                                          shadowBlur: 3,
-                                          opacity: 0.5
-                                    },
-                                  },
-                                ]
-                            });
-                      }
-                  },
-                  myTool2:{
-                      show: true,
-                      title: "Week",
-                      icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
-                      onclick: function (){
-                          myChart.setOption({
-                              xAxis: {
-                                  data: weeks.slice(Math.max(weeks.length - 7, 0)),
-                                },
-                                yAxis: {
-                                  show: true,
-                                  axisLabel: {
-                                    formatter: '{value} h'
-                                  }
-                                },
-                                series: [
-                                  {
-                                    type: 'bar',
-                                    data: hours.slice(Math.max(hours.length - 7, 0)),
-                                      itemStyle: {
-                                          barBorderRadius: 5,
-                                          borderWidth: 1,
-                                          borderType: 'solid',
-                                          color: '#18B283',
-                                          shadowColor: '#18B283',
-                                          shadowBlur: 3,
-                                          opacity: 0.5
-                                    },
-                                  }
-                                ]
-                            });
-                      }
-                  }
-              }
-          },
-          grid:{
-            left:'0%',
-            right:'0%',
-            bottom:'0%',
-            containLabel: true
-          }
-        };
-      console.log("The 'sleepTime is undefined'");
-    } else {
-      //console.log(sleepTime)
-      option = {
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-          xAxis: {
-              data: weeks.slice(Math.max(weeks.length - 7, 0)),
-            },
-            yAxis: {
-              show: true,
-              axisLabel: {
-                formatter: '{value} h'
-              }
-            },
-            series: [
-              {
-                type: 'bar',
-                data: props.sleepTime.slice(-7),
-                  itemStyle: {
-                      barBorderRadius: 5,
-                      borderWidth: 1,
-                      borderType: 'solid',
-                      color: '#18B283',
-                      shadowColor: '#18B283',
-                      shadowBlur: 3,
-                      opacity: 0.5
-                },
-              }
-            ],
-          toolbox: {
-            left: '90%',
-              feature: {
-                  myTool1:{
-                      show: true,
-                      title: "Month",
-                      icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
-                      onclick: function (){
-                          myChart.setOption({
-                              xAxis: {
-                                  data: month
-                                },
-                                yAxis: {
-                                  show: true
-                                },
-                                series: [
-                                  {
-                                    type: 'bar',
-                                    data: dataMonth,
-                                      itemStyle: {
-                                          barBorderRadius: 5,
-                                          borderWidth: 1,
-                                          borderType: 'solid',
-                                          color: '#18B283',
-                                          shadowColor: '#18B283',
-                                          shadowBlur: 3,
-                                          opacity: 0.5
-                                    },
-                                  },
-                                ]
-                            });
-                      }
-                  },
-                  myTool2:{
-                      show: true,
-                      title: "Week",
-                      icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
-                      onclick: function (){
-                          myChart.setOption({
-                              xAxis: {
-                                  data: weeks.slice(Math.max(weeks.length - 7, 0)),
-                                },
-                                yAxis: {
-                                  show: true,
-                                  axisLabel: {
-                                    formatter: '{value} h'
-                                  }
-                                },
-                                series: [
-                                  {
-                                    type: 'bar',
-                                    data: props.sleepTime.slice(-7),
-                                      itemStyle: {
-                                          barBorderRadius: 5,
-                                          borderWidth: 1,
-                                          borderType: 'solid',
-                                          color: '#18B283',
-                                          shadowColor: '#18B283',
-                                          shadowBlur: 3,
-                                          opacity: 0.5
-                                    },
-                                  }
-                                ]
-                            });
-                      }
-                  }
-              }
-          },
-          grid:{
-            left:'0%',
-            right:'0%',
-            bottom:'0%',
-            containLabel: true
-          }
-        };
-      console.log(props.sleepTime.slice(-7));
-    }
 
     function chartInit(){
         myChart = echarts.init(domRef.current)
+
+        if(typeof props.sleepTime === "undefined"){
+          option = {
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+              xAxis: {
+                  data: weeks,
+                },
+                yAxis: {
+                  show: true,
+                  axisLabel: {
+                    formatter: '{value} h'
+                  }
+                },
+                series: [
+                  {
+                    type: 'bar',
+                    data: [],
+                      itemStyle: {
+                          barBorderRadius: 5,
+                          borderWidth: 1,
+                          borderType: 'solid',
+                          color: '#18B283',
+                          shadowColor: '#18B283',
+                          shadowBlur: 3,
+                          opacity: 0.5
+                    },
+                  }
+                ],
+              toolbox: {
+                left: '90%',
+                  feature: {
+                      myTool1:{
+                          show: true,
+                          title: "Month",
+                          icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
+                          onclick: function (){
+                              myChart.setOption({
+                                  xAxis: {
+                                      data: month
+                                    },
+                                    yAxis: {
+                                      show: true
+                                    },
+                                    series: [
+                                      {
+                                        type: 'bar',
+                                        data: dataMonth,
+                                          itemStyle: {
+                                              barBorderRadius: 5,
+                                              borderWidth: 1,
+                                              borderType: 'solid',
+                                              color: '#18B283',
+                                              shadowColor: '#18B283',
+                                              shadowBlur: 3,
+                                              opacity: 0.5
+                                        },
+                                      },
+                                    ]
+                                });
+                          }
+                      },
+                      myTool2:{
+                          show: true,
+                          title: "Week",
+                          icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
+                          onclick: function (){
+                              myChart.setOption({
+                                  xAxis: {
+                                      data: weeks,
+                                    },
+                                    yAxis: {
+                                      show: true,
+                                      axisLabel: {
+                                        formatter: '{value} h'
+                                      }
+                                    },
+                                    series: [
+                                      {
+                                        type: 'bar',
+                                        data: [],
+                                          itemStyle: {
+                                              barBorderRadius: 5,
+                                              borderWidth: 1,
+                                              borderType: 'solid',
+                                              color: '#18B283',
+                                              shadowColor: '#18B283',
+                                              shadowBlur: 3,
+                                              opacity: 0.5
+                                        },
+                                      }
+                                    ]
+                                });
+                          }
+                      }
+                  }
+              },
+              grid:{
+                left:'0%',
+                right:'0%',
+                bottom:'0%',
+                containLabel: true
+              }
+            };
+          console.log("The 'sleepTime is undefined'");
+        } else {
+          //console.log(sleepTime)
+          option = {
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+              xAxis: {
+                  data: props.sleepWeek,
+                },
+                yAxis: {
+                  show: true,
+                  axisLabel: {
+                    formatter: '{value} h'
+                  }
+                },
+                series: [
+                  {
+                    type: 'bar',
+                    data: props.sleepTime.slice(-7),
+                      itemStyle: {
+                          barBorderRadius: 5,
+                          borderWidth: 1,
+                          borderType: 'solid',
+                          color: '#18B283',
+                          shadowColor: '#18B283',
+                          shadowBlur: 3,
+                          opacity: 0.5
+                    },
+                  }
+                ],
+              toolbox: {
+                left: '90%',
+                  feature: {
+                      myTool1:{
+                          show: true,
+                          title: "Month",
+                          icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
+                          onclick: function (){
+                              myChart.setOption({
+                                  xAxis: {
+                                      data: month
+                                    },
+                                    yAxis: {
+                                      show: true
+                                    },
+                                    series: [
+                                      {
+                                        type: 'bar',
+                                        data: dataMonth,
+                                          itemStyle: {
+                                              barBorderRadius: 5,
+                                              borderWidth: 1,
+                                              borderType: 'solid',
+                                              color: '#18B283',
+                                              shadowColor: '#18B283',
+                                              shadowBlur: 3,
+                                              opacity: 0.5
+                                        },
+                                      },
+                                    ]
+                                });
+                          }
+                      },
+                      myTool2:{
+                          show: true,
+                          title: "Week",
+                          icon: 'path://"M11.709,7.438H8.292c-0.234,0-0.427,0.192-0.427,0.427v8.542c0,0.234,0.192,0.427,0.427,0.427h3.417c0.233,0,0.426-0.192,0.426-0.427V7.865C12.135,7.63,11.942,7.438,11.709,7.438 M11.282,15.979H8.719V8.292h2.563V15.979zM6.156,11.709H2.74c-0.235,0-0.427,0.191-0.427,0.426v4.271c0,0.234,0.192,0.427,0.427,0.427h3.417c0.235,0,0.427-0.192,0.427-0.427v-4.271C6.583,11.9,6.391,11.709,6.156,11.709 M5.729,15.979H3.167v-3.416h2.562V15.979zM17.261,3.167h-3.417c-0.235,0-0.427,0.192-0.427,0.427v12.812c0,0.234,0.191,0.427,0.427,0.427h3.417c0.234,0,0.427-0.192,0.427-0.427V3.594C17.688,3.359,17.495,3.167,17.261,3.167 M16.833,15.979h-2.562V4.021h2.562V15.979z"',
+                          onclick: function (){
+                              myChart.setOption({
+                                  xAxis: {
+                                      data: props.sleepWeek,
+                                    },
+                                    yAxis: {
+                                      show: true,
+                                      axisLabel: {
+                                        formatter: '{value} h'
+                                      }
+                                    },
+                                    series: [
+                                      {
+                                        type: 'bar',
+                                        data: props.sleepTime.slice(-7),
+                                          itemStyle: {
+                                              barBorderRadius: 5,
+                                              borderWidth: 1,
+                                              borderType: 'solid',
+                                              color: '#18B283',
+                                              shadowColor: '#18B283',
+                                              shadowBlur: 3,
+                                              opacity: 0.5
+                                        },
+                                      }
+                                    ]
+                                });
+                          }
+                      }
+                  }
+              },
+              grid:{
+                left:'0%',
+                right:'0%',
+                bottom:'0%',
+                containLabel: true
+              }
+            };
+            console.log(props.sleepWeek)
+        }
         
         myChart.setOption(option);
         myChart.resize();

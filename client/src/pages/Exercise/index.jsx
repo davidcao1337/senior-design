@@ -15,7 +15,7 @@ const Exercise = () => {
         const hours = Math.floor(newTime/60);
         const mins = newTime % 60;
         setExerciseTime(hours + ' hrs '+ mins + ' mins')
-        console.log(exerciseTime)
+        //console.log(exerciseTime)
     }
 
     
