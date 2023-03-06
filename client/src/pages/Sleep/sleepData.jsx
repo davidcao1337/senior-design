@@ -21,7 +21,6 @@ const AddSleepData = (props) => {
                 <label>Sleep Time:  </label>
                     <input type="text" onChange={getData} value={sleepTime} size="10" placeholder="e.g. 5.0" id= "ls" />
                 <br></br>
-                <h4> {sleepTime} </h4>
                 <submitButton>
                     <form onSubmit={handleSubmit}>
                         <button type='submit' onChange={getData}>Submit</button>

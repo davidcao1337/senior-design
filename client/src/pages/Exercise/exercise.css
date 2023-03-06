@@ -168,15 +168,17 @@ activityList{
     display: grid;
     align-items: center;
     grid-template: 
-            "a a" auto
-            "b c" auto
-            "d e" auto;
+            "a a a a" auto
+            "b c d e" auto
+            "f g h i" auto;
 }
 .tag{
+    width: 135px;
     font-weight: bold;
 }
 /* ### activityBreakdownContent ### */
 activityBreakdownContent{
+    width: 100px;
     height: 100%;
 }
 
@@ -203,7 +205,39 @@ chartContent {
     align-items: center;
     justify-content: center;
 }
+popupContainer {
+    height: fit-content;
+    width: 350px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 5px;
+}
 
+popupContainer .popupTitle{
+    text-align: center;
+    height: 48px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+popupDivider {
+    min-height: 48px;
+    border-color: black;
+    border-top-width: 2px;
+}
+
+typeSelect {
+    display: flex;
+    flex-direction: row;
+}
+submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
