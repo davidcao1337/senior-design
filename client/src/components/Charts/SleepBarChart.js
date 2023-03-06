@@ -13,9 +13,6 @@ function SleepBar(props) {
     const domRef = useRef()
     var myChart;
     var option ;
-    // const [sleepTime, setTime] = useState();
-    // console.log(sleepTime)
-    //console.log(typeof hours)
 
     function chartInit(){
         myChart = echarts.init(domRef.current)

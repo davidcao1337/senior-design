@@ -13,7 +13,6 @@ const UpdateSleepGoal = (props) => {
         //console.log(time);
     }
 
-
     return(
         <popupContainer>
             <div className='popupTitle'>Edit Sleep Goal</div>
@@ -25,7 +24,6 @@ const UpdateSleepGoal = (props) => {
                     <button onClick={passTime}>Submit</button>
                 </submitButton>
             </popupDivider>
-            
         </popupContainer>
     )
 }

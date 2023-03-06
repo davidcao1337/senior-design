@@ -14,6 +14,7 @@ const Sleep = () => {
     const [sleepWeek, setWeek] = useState(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
     const [displayTime, setDisplay] = useState();
     const [sleepGoal, setGoal] = useState();
+    const [aveSleep, setAve] = useState();
 
     const updateSleepTime  = (sleepTime) => {
         const totalTime = Number(sleepTime[sleepTime.length - 1]);
@@ -29,6 +30,13 @@ const Sleep = () => {
         setGoal(hours + ' hrs '+ mins + ' mins');
     }
 
+    const updateAveSleep = (sleepTime) => {
+        const weekly = parseFloat((sleepTime.slice(-7).reduce((sum, time) => sum + time, 0) / 7).toFixed(2));
+        const hours = Math.floor(weekly);
+        const mins = Math.floor(weekly % Math.floor(weekly) * 60);
+        setAve(hours + ' hrs '+ mins + ' mins');
+    }
+
     const addSleepTime = (newTime) => {
         setTime([
             ...sleepTime,
@@ -40,6 +48,7 @@ const Sleep = () => {
 
     useEffect( () => {
         updateSleepTime(sleepTime);
+        updateAveSleep(sleepTime);
     },[sleepTime])
     
     return(
@@ -82,7 +91,7 @@ const Sleep = () => {
                     <sleepAveContainer>
                     <sleepLineChart>
                         <cardTitle>
-                            7 days average sleep time: 7 hours 22 minutes
+                            7 days average sleep time: {aveSleep}
                         </cardTitle>
                         <SleepLineChart />
                     </sleepLineChart>
