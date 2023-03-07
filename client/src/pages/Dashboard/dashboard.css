@@ -2,13 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-section {
+.dashboard {
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
-content {
-    height: 100%;
+.content {
+    flex: 1;
     overflow: hidden;
-    float: right;
-    width: 95%;
+    padding: 1rem;
+}
+
+.charts {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    height: 350px;
+    width:  900px;
+}
+
+.chart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    height: 650px;
+    width: 1350px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #22c393;
+    color: #fff;
+    font-size: 24px;
+}
+
+.chart-label {
+    color: #22c393;
+    text-align: left;
+    margin: 0;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.nutrition-breakdown {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    height: 350px;
+    width: 1350px;
 }

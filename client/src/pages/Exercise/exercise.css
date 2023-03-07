@@ -140,11 +140,22 @@ activityBreakdownTypeTwo {
     height: 100%;
     width: 100%;
     display: grid;
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     grid-template: 
-            "a" auto
-            "a" auto
-            "a" auto;
+            "a" 25px
+            "b" auto
+            "b" auto
+            "b" auto;
+}
+/* ## Add activity button ## */
+addActivityButton{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding-top: 5px;
+    justify-content: right;
 }
 /* ### Cross Card List ### */
 activityList{
@@ -152,7 +163,6 @@ activityList{
     width: 100%;
     display: grid;
     align-items: center;
-    
     grid-template: 
             "a a" auto
             "b c" auto
