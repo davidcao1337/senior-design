@@ -46,15 +46,19 @@ const Activity = (props) => {
                 <label>Time/Reps:
                     <input value={time_reps} size="10" onChange={e => setTime(Number(e.target.value))} placeholder='mins/Reps' />
                 </label>
+                <br></br>
                 <label>Distance/Set:
                     <input value={distance_set} size="10" onChange={e => setDistance(Number(e.target.value))}placeholder='mi/set'/>
                 </label>
+                <br></br>
                 <label>Incline/Weight:
                     <input value={incline_weight} size="10" onChange={e => setIncline(Number(e.target.value))}placeholder='%/lb'/>
                 </label>
+                <br></br>
                 <label>Calories:
                     <input value={calories} size="10" onChange={e => setCalories(Number(e.target.value))}placeholder='kCals'/>
                 </label>
+                <br></br>
             </popupDivider>
             <submitButton>
                 <button onClick={passActivity}>Submit</button>
