@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu"
 import EditProfileModal from "../../components/Modals/EditProfileModal"
 import GoalJournal from "../../components/GoalJournal"
+import GoalModal from "../../components/Modals/GoalModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +13,7 @@ const user_id = JSON.parse(localStorage.getItem('user')).user_id;
 const Profile = () => {
     const [user, setUser] = useState([])
     const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
+    const [isGoalModalOpen, setIsGoalModalOpen] = useState(false)
 
     useEffect( ()=> {
         const fetchUser = async() => {
@@ -23,9 +25,14 @@ const Profile = () => {
         fetchUser();
     }, []);
 
-    // Toggle modal visibility
+    // Toggle profile modal visibility
     const toggleProfileModal = () => {
         setIsUserProfileModalOpen(!isUserProfileModalOpen)
+    }
+
+    // Toggle goal modal visibility
+    const toggleGoalModal = () => {
+        setIsGoalModalOpen(!isGoalModalOpen)
     }
 
     // Fetched Values
@@ -83,7 +90,9 @@ const Profile = () => {
                                 <button className="mt-20 p-2 text-lg text-white bg-lyfeon-green rounded-[6px]" onClick={toggleProfileModal}>Edit Profile</button>
                             </div>
                         </div>
-                        <GoalJournal />
+                        <GoalJournal
+                            toggleModalVisibility={toggleGoalModal}
+                        />
                     </div>
                 </div>
                 {isUserProfileModalOpen &&
@@ -91,6 +100,12 @@ const Profile = () => {
                         isOpen={isUserProfileModalOpen}
                         toggleModalVisibility={toggleProfileModal}
                         userID={user_id}
+                    />
+                }
+                {isGoalModalOpen &&
+                    <GoalModal
+                        isOpen={isGoalModalOpen}
+                        toggleModalVisibility={toggleGoalModal}
                     />
                 }
             </content>

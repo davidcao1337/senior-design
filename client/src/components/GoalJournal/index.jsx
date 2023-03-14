@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faEllipsisVertical, faMoon, faPlus, faTrophy, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
-const GoalJournal = () => {
+const GoalJournal = (props) => {
 
+    const { toggleModalVisibility } = props
     const [goals, setGoals] = useState(null)
-    const [goalIcon, setGoalIcon] = useState(faTrophy)
 
     useEffect(() => {
         const fetchGoals = async () => {
@@ -33,9 +33,9 @@ const GoalJournal = () => {
                                 <div className="flex flex-row">
                                     <FontAwesomeIcon className="mr-5" size="2x" 
                                     icon={
-                                        goal.goalType == 'exercise' ? faDumbbell
-                                        : goal.goalType == 'nutrition' ? faUtensils
-                                        : goal.goalType == 'sleep' ? faMoon
+                                        goal.goalType === 'exercise' ? faDumbbell
+                                        : goal.goalType === 'nutrition' ? faUtensils
+                                        : goal.goalType === 'sleep' ? faMoon
                                         : faTrophy
                                     }
                                     />
@@ -48,10 +48,10 @@ const GoalJournal = () => {
                     ))}
                     <div className="card border border-gray-300 border-dashed">
                         <div className="card-body">
-                            <button>
-                                <span className="flex flex-row">
+                            <button onClick={toggleModalVisibility}>
+                                <span className="flex flex-row ml-20 mr-20 space-x-3">
                                     <FontAwesomeIcon icon={faPlus} size="2x" />
-                                    <p className="text-[#748AA1]">Add Goal</p>
+                                    <p className="text-[#748AA1] mt-1">Add Goal</p>
                                 </span>
                             </button>
                         </div>
