@@ -250,3 +250,13 @@ selectionGoal{
     display: flex;
     flex-direction: column;
 }
+
+.nutritionSummaryButton {
+    height: 34px;
+    width: 64px;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-width: 1px;
+    border-color: black;
+}

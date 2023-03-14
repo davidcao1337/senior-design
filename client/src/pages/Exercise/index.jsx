@@ -86,7 +86,6 @@ const Exercise = () => {
                 </chartContainer>
             </activityContent>
             </content>
-            <rightBar></rightBar>
 
         </section>
     );

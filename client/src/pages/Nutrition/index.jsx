@@ -4,11 +4,18 @@ import './nutrition.css';
 import Popup from 'reactjs-popup';
 import AddFoodPopup from './diary';
 import RenderFoodLog from './FoodDiary';
+import RenderNutitionSummaryCard from './NutritionSummaryRender';
+import RightPanel from '../../components/RightPanel'
+
 
 const getNutritionProperties = () => {
+    
     const props = {
         mealLabels: ['Breakfast', 'Lunch', 'Dinner', 'Snack'],
-        food: []
+        food: [],
+        weight: { unit: 'lbs', amount: 116 },
+        height: { unit: 'inches', amount: 64 },
+        age: 21
     };
     return props;
 }
@@ -64,49 +71,10 @@ const Nutrition = () => {
                         <fat> Fat </fat>
                     </nutritionBreakdown>
                 </nutritionBreakdownContainer>
-                <summaryContainer>
-                    <cardHeaderBottom>
-                        <cardTitle> Summary </cardTitle>
-                    </cardHeaderBottom>
-                    <summaryContent>
-                        <summarySection> 
-                            <div>You have eaten </div> 
-                            <userCalc> 1220 </userCalc>
-                            <div> calories today </div>
-                        </summarySection>
-                        <summarySection>
-                            <div> Your BMR is </div>
-                            <userCalc> 1263 </userCalc>
-                        </summarySection>
-                        <summarySection>
-                            <selectionGoal>
-                                <activeSel>Lose</activeSel>
-                                <inactiveSel> Maintain </inactiveSel>
-                                <inactiveSel> Gain </inactiveSel>
-                            </selectionGoal>
-                        </summarySection>
-                        <summarySection>
-                            <userCalc> 2 </userCalc>
-                            <div>pounds per week </div>
-                        </summarySection>
-                        <summarySection>
-                            <div> You have </div>
-                            <userCalc> 108 </userCalc>
-                            <div> calories remaining </div>
-                        </summarySection>
-                        <summarySection>
-                            <div> Estimated weight in </div>
-                            <userCalc> 5 </userCalc>
-                            <div> weeks: </div>
-                            <userCalc> 116 </userCalc>
-                            <div> lbs </div>
-                        </summarySection>
-                    </summaryContent>
-                </summaryContainer>
+                < RenderNutitionSummaryCard props = {{ props  }} />
             </bottomContent>
             </content>
-            <rightBar></rightBar>
-
+            < RightPanel />
         </section>
     );
 }
