@@ -106,6 +106,7 @@ const Profile = () => {
                     <GoalModal
                         isOpen={isGoalModalOpen}
                         toggleModalVisibility={toggleGoalModal}
+                        user_id={user_id}
                     />
                 }
             </content>

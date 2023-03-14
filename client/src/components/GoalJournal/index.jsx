@@ -39,9 +39,9 @@ const GoalJournal = (props) => {
                                         : faTrophy
                                     }
                                     />
-                                    <p>{goal.description}</p>
-                                    <div className="ml-20 mr-20" />
-                                    <button className="ml-20"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
+                                    <p className="mt-1">{goal.description}</p>
+                                    <div className="ml-10 mr-10" />
+                                    <button className="ml-10"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
                                 </div>
                             </div>
                         </div>

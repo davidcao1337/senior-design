@@ -10,13 +10,11 @@ const goalSchema = new Schema({
     description: {
         type: String,
         require: true
-    }
-    /*
+    },
     user_id: {
         type: String,
         require: true
     }
-    */
 }, { timestamps: true })
 
 const Goal = mongoose.model('Goal', goalSchema);

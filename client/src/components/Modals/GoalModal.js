@@ -4,7 +4,7 @@ import './GoalModal.css'
 
 const GoalModal = (props) => {
 
-    const { isOpen, toggleModalVisibility } = props
+    const { isOpen, toggleModalVisibility, user_id } = props
     const [goalType, setGoalType] = useState("")
     const goalOptions = [
         { value: "exercise", label: "Exercise" },
@@ -37,19 +37,25 @@ const GoalModal = (props) => {
         { value: "Burn calories (daily)", label: "Burn calories (daily)" }
     ]
 
+    const [cardioExercise, setCardioExercise] = useState("")
     const cardioExerciseOptions = [
         { value: "Walk", label: "Walk" },
         { value: "Run", label: "Run" }
     ]
+
+    const [metric, setMetric] = useState("")
     const metricOptions = [
         { value: "Distance (km)", label: "Distance (km)" },
         { value: "Time (min)", label: "Time (min)" }
     ]
+
+    const [cardioFrequency, setCardioFrequency] = useState("")
     const frequencyOptions = [
         { value: "Daily", label: "Daily" },
         { value: "Weekly", label: "Weekly" }
     ]
 
+    const [strengthExercise, setStrengthExercise] = useState("")
     const strengthExerciseOptions = [
         { value: "Chest/bench press", label: "Chest/bench press" },
         { value: "Shoulder press", label: "Shoulder press" },
@@ -61,6 +67,20 @@ const GoalModal = (props) => {
         { value: "Calf raise/press", label: "Calf raise/press" },
         { value: "Abs workout", label: "Abs workout" }
     ]
+
+    // Nutrition Goal Stuff
+
+    // Nutrition Goal Amount (calories or kg)
+    const [nutrientAmount, setNutrientAmount] = useState("")
+
+    const [nutrientConsumption, setNutrientConsumption] = useState("")
+    const nutrientOptions = [
+        { value: "Daily protein consumption (g)", label: "Daily protein consumption (g)" },
+        { value: "Daily calorie consumption (cal)", label: "Daily calorie consumption (cal)" }
+    ]
+
+    // Sleep Goal Stuff
+    const [sleepAmount, setSleepAmount] = useState("")
 
 
     const [error, setError] = useState(null)
@@ -81,13 +101,99 @@ const GoalModal = (props) => {
         setGeneralActivity(selectedOption.value)
     }
 
+    const handleCardioExerciseSelect = (selectedOption) => {
+        setCardioExercise(selectedOption.value)
+    }
+
+    const handleMetricSelect = (selectedOption) => {
+        setMetric(selectedOption.value)
+    }
+
+    const handleCardioFrequencySelect = (selectedOption) => {
+        setCardioFrequency(selectedOption.value)
+    }
+
+    const handleStrengthExerciseSelect = (selectedOption) => {
+        setStrengthExercise(selectedOption.value)
+    }
+
+    const handleNutrientConsumptionSelect = (selectedOption) => {
+        setNutrientConsumption(selectedOption.value)
+    }
+
     const handleSave = async (e) => {
         e.preventDefault()
+        var errorMsg = ""
 
-        // TODO: Save to DB
-        console.log("Saved!")
+        // Construct Goal Description
+        var description = ""
+        if (goalType === "exercise") {
+            if (exerciseType === "general") {
+                description = generalActivity + ": "
+                if (generalActivity === "Reach target weight"){
+                    description += (targetWeight + " kg")
+                }
+                else {
+                    description += (calorieAmount + " cal")
+                }
+            }
+            if (exerciseType === "cardio") {
+                description = cardioExercise + " " + metricAmount
+                if (metric === "Distance (km)") {
+                    description += " km"
+                }
+                else {
+                    description += " mins"
+                }
+                description += (" " + cardioFrequency)
+            }
+            if (exerciseType === "strength") {
+                description = strengthExercise + " " + load + " kg"
+            }
+        }
+        if (goalType === "nutrition") {
+            description = nutrientConsumption + ": " + nutrientAmount
+            if (nutrientConsumption === "Daily protein consumption (g)") {
+                description += " g"
+            }
+            else {
+                description += " cal"
+            }
+        }
+        if (goalType === "sleep") {
+            description = "Get " + sleepAmount + " hours of sleep every night"
+        }
 
-        props.toggleModalVisibility()
+        // Validate goal description
+        if (description !== "") {
+
+            // Add to DB
+            const goal = {goalType, description, user_id}
+            console.log(goal)
+
+            const response = await fetch('/goals', {
+                method: 'POST',
+                body: JSON.stringify(goal),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const json = await response.json()
+
+            if (!response.ok) {
+                setError(json.error)
+                console.log("New goal added", json)
+            }
+            if (response.ok) {
+                setError(null)
+                console.log("New goal added", json)
+                props.toggleModalVisibility()
+            }
+        }
+        else {
+            errorMsg += "Goal description cannot be empty; Cancel and try again"
+            setError(errorMsg)
+        }
     }
 
     return (
@@ -175,6 +281,7 @@ const GoalModal = (props) => {
                                                         }
                                                     })}
                                                     options={cardioExerciseOptions}
+                                                    onChange={handleCardioExerciseSelect}
                                                 />
                                             </div>
                                             <div className="metric-amount-container flex flex-row space-x-5">
@@ -190,6 +297,7 @@ const GoalModal = (props) => {
                                                             }
                                                         })}
                                                         options={metricOptions}
+                                                        onChange={handleMetricSelect}
                                                     />
                                                 </div>
                                                 <div className="amount-container flex flex-col">
@@ -209,6 +317,7 @@ const GoalModal = (props) => {
                                                             }
                                                         })}
                                                         options={frequencyOptions}
+                                                        onChange={handleCardioFrequencySelect}
                                                     />
                                             </div>
                                         </div>
@@ -225,6 +334,7 @@ const GoalModal = (props) => {
                                                         }
                                                     })}
                                                     options={strengthExerciseOptions}
+                                                    onChange={handleStrengthExerciseSelect}
                                                 />
                                             </div>
                                             <div className="load-container flex flex-col">
@@ -235,7 +345,32 @@ const GoalModal = (props) => {
                                         : <></>
                                     }
                                 </div>
-                                : goalType === "nutrition" || goalType === "sleep" ? <label className="font-semibold">Goal Description</label>
+                                : goalType === "nutrition" ? 
+                                    <div>
+                                        <label className="font-semibold">Nutrient Consumption</label>
+                                        <Select
+                                        className="mb-6"
+                                        theme={(theme) => ({
+                                            ...theme,
+                                            colors: {
+                                                ...theme.colors,
+                                                primary: '#18B283'
+                                            }
+                                        })}
+                                        id="exerciseType"
+                                        options={nutrientOptions}
+                                        onChange={handleNutrientConsumptionSelect}
+                                        />
+                                        <div className="amount-container flex flex-col">
+	                                        <label className="font-semibold">Amount</label>
+	                                        <input className="border-2 w-full rounded-[5px] px-2 py-2" value={nutrientAmount} onChange={(e) => setNutrientAmount(e.target.value)} id="nutrientAmount" name="nutrientAmount" />
+                                        </div>
+                                    </div>
+                                : goalType === "sleep" ? 
+                                        <div>
+                                            <label className="font-semibold">Hours</label>
+                                            <input className="border-2 w-full rounded-[5px] px-2 py-2" value={sleepAmount} onChange={(e) => setSleepAmount(e.target.value)} id="sleepAmount" name="sleepAmount" />
+                                        </div>
                                 : <></>
                             }
 
@@ -245,7 +380,7 @@ const GoalModal = (props) => {
                         <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && handleSave}>Save</button>
                         <button className="ml-10 btn" onClick={toggleModalVisibility}>Cancel</button>
                     </div>
-                    {error && <div className="error">{error}</div>}
+                    {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{error}</div>}
             </div>
         </div>
     )
