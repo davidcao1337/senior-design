@@ -8,9 +8,12 @@ import GoalModal from "../../components/Modals/GoalModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
-const user_id = JSON.parse(localStorage.getItem('user')).user_id;
-
 const Profile = () => {
+    var user_id = ""
+    if (localStorage.getItem('user') != null) {
+        user_id = JSON.parse(localStorage.getItem('user')).user_id
+    }
+
     const [user, setUser] = useState([])
     const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
     const [isGoalModalOpen, setIsGoalModalOpen] = useState(false)
@@ -23,7 +26,7 @@ const Profile = () => {
         }
 
         fetchUser();
-    }, []);
+    }, [user_id]);
 
     // Toggle profile modal visibility
     const toggleProfileModal = () => {

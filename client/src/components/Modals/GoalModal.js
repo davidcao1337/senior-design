@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
 import './GoalModal.css'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const GoalModal = (props) => {
+    const { user } = useAuthContext()
 
     const { isOpen, toggleModalVisibility, user_id } = props
     const [goalType, setGoalType] = useState("")
@@ -125,6 +127,12 @@ const GoalModal = (props) => {
         e.preventDefault()
         var errorMsg = ""
 
+        if (!user) {
+            errorMsg = "You must be logged in"
+            setError(errorMsg)
+            return
+        }
+
         // Construct Goal Description
         var description = ""
         if (goalType === "exercise") {
@@ -175,7 +183,8 @@ const GoalModal = (props) => {
                 method: 'POST',
                 body: JSON.stringify(goal),
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
                 }
             })
             const json = await response.json()

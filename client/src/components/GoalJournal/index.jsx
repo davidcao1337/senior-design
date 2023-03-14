@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faEllipsisVertical, faMoon, faPlus, faTrophy, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const GoalJournal = (props) => {
+    const { user } = useAuthContext()
 
     const { toggleModalVisibility } = props
     const [goals, setGoals] = useState(null)
 
     useEffect(() => {
         const fetchGoals = async () => {
-            const response = await fetch('/goals')
+            const response = await fetch('/goals', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -17,8 +23,10 @@ const GoalJournal = (props) => {
             }
         }
 
-        fetchGoals()
-    }, [])
+        if (user) {
+            fetchGoals()
+        }
+    }, [user])
 
     return (
         <div className="goals-container card bg-base-100">

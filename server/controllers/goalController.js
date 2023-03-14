@@ -2,7 +2,9 @@ import mongoose from "mongoose"
 import Goal from "../models/goalModel.js"
 
 const getGoals = async(req, res) => {
-    const goals = await Goal.find({}).sort({createdAt: 1})
+    const user_id = req.user._id
+
+    const goals = await Goal.find({ user_id }).sort({createdAt: 1})
 
     res.status(200).json(goals)
 }
