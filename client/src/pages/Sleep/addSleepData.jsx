@@ -1,8 +1,10 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
+import { useSleepContext } from '../../hooks/useSleepChart';
 
 const AddSleepData = (props) => {
     const { onClosePop, date } = props
+    const { dispatch } = useSleepContext()
     const [ newDate, setNewDate] = useState(null)
     const [error, setError] = useState(null)
     const [hours, setHours] = useState(null)
@@ -52,6 +54,7 @@ const AddSleepData = (props) => {
             setMinutes(null)
             setError(null)
             console.log("new sleep added", json)
+            dispatch({type: 'CREATE_SLEEP', payload: json})
             callClose()
         }
     }

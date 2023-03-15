@@ -1,10 +1,10 @@
-import { SLeepContext } from '../context/SLeepContext';
+import { SleepContext } from '../context/SleepContext';
 import { useContext } from 'react';
 
-export const useSLeepContext = () => {
-    const context = useContext(SLeepContext);
+export const useSleepContext = () => {
+    const context = useContext(SleepContext);
     if (!context) {
-        throw Error('useSLeepContext must be used inside an SLeepContextProvider');
+        throw Error('useSleepContext must be used inside an SleepContextProvider');
     }
 
     return context;

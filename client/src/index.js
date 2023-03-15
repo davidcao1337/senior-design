@@ -5,6 +5,7 @@ import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import { GoalsContextProvider } from './context/GoalContext';
 import { ExerciseContextProvider } from './context/ExerciseContext';
+import { SleepContextProvider } from './context/SleepContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,9 @@ root.render(
     <AuthContextProvider>
       <GoalsContextProvider>
       <ExerciseContextProvider>
-        <App />
+      <SleepContextProvider>
+      <App />
+      </SleepContextProvider>
       </ExerciseContextProvider>
       </GoalsContextProvider>
     </AuthContextProvider>

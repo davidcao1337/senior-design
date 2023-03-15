@@ -6,24 +6,16 @@ import SleepLineChart from '../../components/Charts/SleepLineChart';
 import Popup from 'reactjs-popup';
 import SleepGoal from './sleepGoal';
 import RightBar from '../../components/RightPanel/sleepRightPanel';
-import { SleepContextProvider } from '../../context/SleepContext';
+import { useSleepContext } from '../../hooks/useSleepChart';
 import './sleep.css';
 const Sleep = () => {
-
+    const { sleeps, dispatch } = useSleepContext()
     const [sleepTime, setTime] = useState([8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0, 8.9, 7.6, 7.9, 10.0, 8.8, 11.0, 9.5]);
     const [sleepWeek, setWeek] = useState(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
     const [displayTime, setDisplay] = useState();
     const [sleepGoal, setGoal] = useState();
     const [aveSleep, setAve] = useState();
-    const [sleeps, setSleeps] = useState(null);
-
-    const updateSleepTime  = (sleepTime) => {
-        const totalTime = Number(sleepTime);
-        const hours = Math.floor(totalTime);
-        const mins = Math.floor(totalTime % Math.floor(totalTime) * 60);
-        setDisplay(hours + ' hrs '+ mins + ' mins');
-        //return <p> {displayTime} </p>
-    }
+    //const [sleeps, setSleeps] = useState(null);
 
     const updateSleepGoal = (newGoal) => {
         const time = Number(newGoal);
@@ -32,26 +24,6 @@ const Sleep = () => {
         setGoal(hours + ' hrs '+ mins + ' mins');
     }
 
-    const updateAveSleep = (sleepTime) => {
-        const weekly = parseFloat((sleepTime.slice(-7).reduce((sum, time) => sum + time, 0) / 7).toFixed(2));
-        const hours = Math.floor(weekly);
-        const mins = Math.floor(weekly % Math.floor(weekly) * 60);
-        setAve(hours + ' hrs '+ mins + ' mins');
-    }
-
-    const addSleepTime = (newTime) => {
-        setTime([
-            ...sleepTime,
-            newTime
-        ])
-        setWeek(prevState => [...prevState.slice(1),prevState[0]]);
-        //console.log(sleepTime)
-    }
-
-    // useEffect( () => {
-    //     updateSleepTime(sleepTime);
-    //     updateAveSleep(sleepTime);
-    // },[sleepTime])
 
     useEffect( () => {
         const fetchSleeps = async () => {
@@ -59,21 +31,15 @@ const Sleep = () => {
             const json = await response.json()
 
             if(response.ok){
-                setSleeps(json)
-                // console.log(json[0].hours)
-                // console.log((json[0].hours).typeof)
-                // updateSleepTime(Number(json[0].hours))
+                dispatch({type: 'SET_SLEEPS', payload: json})
             }
         }
-
-        //<RightBar onAddSleepTime={addSleepTime}/>
 
         fetchSleeps()
     },[])
     
     return(
         <section>
-            <SleepContextProvider>
             <NavBar />
             <content>
                     <titleContainer>
@@ -123,7 +89,6 @@ const Sleep = () => {
                     </sleepAveContainer>    
             </content>
             <RightBar />
-            </SleepContextProvider>
         </section>
     )
 }

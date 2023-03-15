@@ -38,7 +38,7 @@ const Exercise = () => {
                     <exerciseLabel><div> Exercise Time </div></exerciseLabel>
                     <exerciseDisplay>
                         <div className="exercise-info"> 
-                            {exercises && exercises.length > 0 && exercises[0].time !== undefined && 
+                            {exercises && exercises.length > 0 && exercises[0].time !== undefined && exercises[6].time !== undefined &&
                                 exercises[0].time + exercises[1].time + exercises[2].time + exercises[4].time + exercises[5].time + exercises[6].time} 
                             <p>mins</p>
                         </div>    
@@ -48,7 +48,7 @@ const Exercise = () => {
                     <exerciseLabel><div> Calories Burned </div></exerciseLabel>
                     <exerciseDisplay>
                         <div className="exercise-info"> 
-                            {exercises && exercises.length > 0 && exercises[0].calorie !== undefined && 
+                            {exercises && exercises.length > 0 && exercises[0].calorie !== undefined && exercises[6].calorie !== undefined &&
                                 exercises[0].calorie + exercises[1].calorie + exercises[2].calorie + exercises[4].calorie + exercises[5].calorie + exercises[6].calorie} 
                             <p>kCals</p>
                         </div>
