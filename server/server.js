@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import routesHandler from "./routes/handler.js"
 import userHandler from "./routes/userHandler.js"
+import goalsHandler from "./routes/goalsHandler.js"
 import sleepHandler from "./routes/sleepHandler.js"
 import exerciseHandler from "./routes/exerciseHandler.js"
 import dotenv from "dotenv"
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 // Handlers
 app.use('/', routesHandler);
 app.use('/user', userHandler);
+app.use("/goals", goalsHandler)
 app.use('/sleep', sleepHandler);
 app.use('/exercise', exerciseHandler);
 
