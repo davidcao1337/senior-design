@@ -4,9 +4,9 @@ import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
 import SleepLineChart from '../../components/Charts/SleepLineChart';
 import Popup from 'reactjs-popup';
-import AddSleepData from './sleepData';
 import SleepGoal from './sleepGoal';
 import RightBar from '../../components/RightPanel/sleepRightPanel';
+import { SleepContextProvider } from '../../context/SleepContext';
 import './sleep.css';
 const Sleep = () => {
 
@@ -73,6 +73,7 @@ const Sleep = () => {
     
     return(
         <section>
+            <SleepContextProvider>
             <NavBar />
             <content>
                     <titleContainer>
@@ -122,6 +123,7 @@ const Sleep = () => {
                     </sleepAveContainer>    
             </content>
             <RightBar />
+            </SleepContextProvider>
         </section>
     )
 }

@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import { format } from 'date-fns';
+import { useExerciseContext } from '../../hooks/useExerciseChart';
 
 const AddActivity = (props) => {
     const { onClosePop, date } = props
+
+    const { dispatch } = useExerciseContext()
     //const [sleepTime, setTime] = useState(null)
     
     const [selectedOption, setSelectedOption] = useState("");
@@ -73,6 +77,7 @@ const AddActivity = (props) => {
             setCalorie(null)
             setError(null)
             console.log("new exercise added", json)
+            dispatch({type: 'CREATE_EXERCISE', payload: json})
             callClose()
         }
     }
@@ -235,7 +240,7 @@ const AddActivity = (props) => {
             <div className="overlay"></div>
             <div className="modal-content flex flex-col space-y-10">
                 <h2 className="mt-3 font-bold text-2xl">Add Activity</h2>
-                <p class="font-bold">{date.toDateString()}</p>
+                <p class="font-bold">{format(date, 'yyyy/MM/dd')}</p>
                     <div className="form-container">
                         <div className="flex flex-col">
                             <div className= "mx-auto">
