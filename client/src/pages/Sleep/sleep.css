@@ -20,17 +20,10 @@ nav {
 
 content {
     height: 100%;
-    width: -webkit-calc(100% - 130px);
+    width: -webkit-calc(100% - 325px);
     overflow: hidden;
     float: right;
     order: 2;
-}
-
-rightBar {
-    height: 100vh;
-    width: 260px;
-    order: 3;
-    background-color: pink;
 }
 
 
@@ -48,11 +41,10 @@ cardTitle {
 
 /* Top Container */
 sleepLogContainer {
-    height: 420px;
+    height: 450px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
     border-radius: 15px;
-    padding-top: 22px;
     padding-left: 22px;
     padding-right: 22px;
     display: flex;
@@ -93,7 +85,7 @@ sleepLabel {
 sleepScore{
     font-weight: bold;
     font-size: 3.5rem;
-    height: 50px;
+    height: 80px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -102,8 +94,8 @@ sleepScore{
 /* #### sleep Time #### */
 sleepTime{
     font-weight: bold;
-    font-size: 2.3rem;
-    height: 50px;
+    font-size: 2.8rem;
+    height: 70px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -118,6 +110,7 @@ addSleep{
 sleepBarChart{
     height: 100%;
     width: 100%;
+    padding-top: 10px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
@@ -180,11 +173,42 @@ typeSelect {
 
 input {
     float: right;
+    padding-right: 20px;
     text-align: left;
 }
 
 submitButton{
-    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+sleepRightPanel {
+    right: 0;
+    height: 100%;
+    width: 260px;
+    order: 3;
+    background-color: #f5f5f5;
+    border-left: 1px solid #ddd;
+}
+
+addSleepTime{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+}
+sleepCalendar{
+    display: flex;
+    margin-bottom: 10px;
+    height: 30%;
+    width: 100%;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.sleep-info p,
+.sleep-info p:before {
+  display: inline;
+  margin: 10px;
+  font-weight: 200;
 }

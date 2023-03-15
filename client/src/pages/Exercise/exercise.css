@@ -82,7 +82,7 @@ exerciseLogSection {
 /* ### Exercise Display ### */
 exerciseDisplay{
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.8rem;
     height: 50px;
     width: 100%;
     display: flex;
@@ -143,15 +143,9 @@ activityBreakdown {
 activityBreakdownTypeTwo {
     height: 100%;
     width: 100%;
-    display: grid;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    grid-template: 
-            "a" 25px
-            "b" auto
-            "b" auto
-            "b" auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 /* ## Add activity button ## */
 addActivityButton{
@@ -165,18 +159,14 @@ addActivityButton{
 activityList{
     height: 100%;
     width: 100%;
-    display: grid;
-    align-items: center;
-    grid-template: 
-            "a a" auto
-            "b c" auto
-            "d e" auto;
 }
 .tag{
     font-weight: bold;
+    margin-top: 10px;
 }
 /* ### activityBreakdownContent ### */
 activityBreakdownContent{
+    width: 100px;
     height: 100%;
 }
 
@@ -203,16 +193,78 @@ chartContent {
     align-items: center;
     justify-content: center;
 }
+popupExeContainer {
+    height: fit-content;
+    width: 280px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 5px;
+}
 
+popupExeContainer .popupTitle{
+    text-align: center;
+    height: 48px;
+    font-size: 20px;
+    padding: 10px;
+}
 
+popupDivider {
+    min-height: 48px;
+    border-color: black;
+    border-top-width: 2px;
+}
 
+typeSelect {
+    display: flex;
+    flex-direction: row;
+}
+submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+exerciseRightPanel {
+    right: 0;
+    height: 100%;
+    width: 260px;
+    order: 3;
+    background-color: #f5f5f5;
+    border-left: 1px solid #ddd;
+}
 
+exerciseCalendar{
+    display: flex;
+    height: 30%;
+    width: 100%;
+    padding-bottom: 20px;
+    align-items: center;
+}
+taskSelection.label {
+    display: block;
+}
+taskSelection.input {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.exercise-info p,
+.exercise-info p:before {
+  display: inline;
+  margin: 10px;
+  font-weight: 200;
+}
 
-
-
-
-
+.fixed-width {
+    width: 100px; 
+  }
+  
+.fixed-height {
+    height: 50px; 
+}  
 
 
 
