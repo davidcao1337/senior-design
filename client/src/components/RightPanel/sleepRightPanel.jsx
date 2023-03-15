@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './sleep.css';
-import lyfeonLogo from '../../assets/lyfeon-green.png';
+import '../../pages/Sleep/sleep.css';
 import Popup from 'reactjs-popup';
-import AddSleepData from './addSleepData';
+import AddSleepData from '../../pages/Sleep/addSleepData';
 
 const SleepRightPanel = (props) => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -33,23 +32,29 @@ const SleepRightPanel = (props) => {
     }
 
     return (
-        <sleepRightPanel>
-            <center><img className="mt-10 mb-10" src={lyfeonLogo} alt="" width="100" height="69" /></center>
-            <sleepCalendar>
-                <Calendar
-                    onChange={setSelectedDate}
-                    value={selectedDate}
-                    calendarType="US"
-                    onClickDay={() => setOpenPopup(true)}
-                />
-                <Popup open={openPopup} onClose={() => setOpenPopup(false)} position="left center">
-                    <AddSleepData 
-                        onClosePop={closePop}
-                        date={selectedDate}
+        <div className="right-panel">
+            <div className='userCardContainer'>
+                <div className='userCard'></div>
+            </div>
+            <div className='calendar'>
+                <div className="calendar-container">
+                    <Calendar 
+                        onChange={setSelectedDate}
+                        value={selectedDate}
+                        calendarType="US"
+                        onClickDay={() => setOpenPopup(true)}
                     />
-                </Popup>
-            </sleepCalendar>
-        </sleepRightPanel>
+                    <Popup open={openPopup} onClose={() => setOpenPopup(false)} position="left center">
+                        <AddSleepData 
+                            onClosePop={closePop}
+                            date={selectedDate}
+                     />
+                 </Popup>
+                </div>
+            </div>
+            <div className='recomendationSystem'></div>
+        </div>
+        
     );
 };
 

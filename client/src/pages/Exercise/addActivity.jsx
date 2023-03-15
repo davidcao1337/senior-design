@@ -104,7 +104,8 @@ const AddActivity = (props) => {
                                     value={exerciseType} 
                                     onChange={(e) => setExerciseType(e.target.value)} 
                                     id="strengthType" 
-                                    name="strengthType"                                         autoComplete="off" 
+                                    name="strengthType"                                         
+                                    autoComplete="off" 
                                 />
                                 </div>
                         </div>
@@ -236,7 +237,7 @@ const AddActivity = (props) => {
                 <h2 className="mt-3 font-bold text-2xl">Add Activity</h2>
                 <p class="font-bold">{date.toDateString()}</p>
                     <div className="form-container">
-                        <form className="flex flex-col">
+                        <div className="flex flex-col">
                             <div className= "mx-auto">
                                 <select class="mb-5" value={selectedOption} onChange={handleOptionChange}>
                                     <option value="">Select Exercise Type</option>
@@ -249,7 +250,7 @@ const AddActivity = (props) => {
                                     <button className="mb-3 mr-12 mt-10 pr-6 pl-6 btn btn-primary rounded-md" onClick={handleSubmit}>Submit</button>
                                     <button className="ml-10 mt-10 btn" onClick={onClosePop}>Cancel</button>
                                 </div>
-                        </form>
+                        </div>
                     </div>
                     
                     {error && <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">

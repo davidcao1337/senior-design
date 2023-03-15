@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import Select from 'react-select';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './exercise.css';
-import lyfeonLogo from '../../assets/lyfeon-green.png'
+import '../../pages/Exercise/exercise.css';
 import Popup from 'reactjs-popup';
-import AddActivity from './addActivity'
+import AddActivity from '../../pages/Exercise/addActivity'
 
 const ExerciseRightPanel = (props) => {
     const [task, setTask] = useState();
@@ -128,14 +127,17 @@ const ExerciseRightPanel = (props) => {
     }
 
     return (
-        <exerciseRightPanel>
-            <center><img className="mt-10 mb-10" src={lyfeonLogo} alt="" width="100" height="69" /></center>
-            <exerciseCalendar>
-                <Calendar
-                    onChange={setSelectedDate}
-                    value={selectedDate}
-                    calendarType="US"
-                    onClickDay={() => setOpenPopup(true)}
+      <div className="right-panel">
+        <div className='userCardContainer'>
+            <div className='userCard'></div>
+        </div>
+        <div className='calendar'>
+            <div className="calendar-container">
+                <Calendar 
+                  onChange={setSelectedDate}
+                  value={selectedDate}
+                  calendarType="US"
+                  onClickDay={() => setOpenPopup(true)}
                 />
                 <Popup open={openPopup} onClose={() => setOpenPopup(false)} position="left center">
                     <AddActivity 
@@ -143,8 +145,10 @@ const ExerciseRightPanel = (props) => {
                         date={selectedDate}
                     />
                 </Popup>
-            </exerciseCalendar>
-        </exerciseRightPanel>
+            </div>
+        </div>
+        <div className='recomendationSystem'></div>
+    </div>
     );
 };
 

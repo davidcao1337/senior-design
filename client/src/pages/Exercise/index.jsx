@@ -5,8 +5,7 @@ import Popup from 'reactjs-popup';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
 import Activity from './activity';
 import AddTime from './exercise_time';
-import RightBar from './exerciseRightPanel'
-import RightPanel from '../../components/RightPanel';
+import RightPanel from '../../components/RightPanel/exerciseRightPanel'
 
 
 const Exercise = () => {
@@ -235,7 +234,6 @@ const Exercise = () => {
             </activityContent>
             </content>
             <RightPanel />
-
         </section>
     );
 }
