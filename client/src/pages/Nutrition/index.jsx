@@ -3,6 +3,7 @@ import NavBar from '../../components/NavBar';
 import './nutrition.css';
 import Popup from 'reactjs-popup';
 import DiaryEntry from './diary';
+import RightPanel from '../../components/RightPanel';
 
 const Nutrition = () => {
     useEffect( ()=> {
@@ -81,7 +82,7 @@ const Nutrition = () => {
                 </summaryContainer>
             </bottomContent>
             </content>
-            <rightBar></rightBar>
+            <RightPanel />
 
         </section>
     );
