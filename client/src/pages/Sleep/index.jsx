@@ -6,11 +6,9 @@ import SleepLineChart from '../../components/Charts/SleepLineChart';
 import Popup from 'reactjs-popup';
 import AddSleepData from './sleepData';
 import SleepGoal from './sleepGoal';
-//<<<<<<< HEAD
 import RightBar from './sleepRightPanel';
-//=======
 import RightPanel from '../../components/RightPanel';
-//>>>>>>> a0bfd8408316c890855401ecfd5919c904fa971a
+
 
 import './sleep.css';
 const Sleep = () => {
@@ -126,7 +124,6 @@ const Sleep = () => {
                     </sleepLineChart>
                     </sleepAveContainer>    
             </content>
-            
             <RightPanel />
         </section>
     )
