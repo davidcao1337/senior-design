@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
-import './GoalModal.css'
+import './GeneralModal.css'
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useGoalsContext } from '../../hooks/useGoalsContext'
 
 const GoalModal = (props) => {
     const { user } = useAuthContext()
+    const { dispatch } = useGoalsContext()
 
     const { isOpen, toggleModalVisibility, user_id } = props
     const [goalType, setGoalType] = useState("")
@@ -191,11 +193,10 @@ const GoalModal = (props) => {
 
             if (!response.ok) {
                 setError(json.error)
-                console.log("New goal added", json)
             }
             if (response.ok) {
                 setError(null)
-                console.log("New goal added", json)
+                dispatch({type: 'CREATE_GOAL', payload: json})
                 props.toggleModalVisibility()
             }
         }

@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell, faEllipsisVertical, faMoon, faPlus, faTrophy, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useAuthContext } from '../../hooks/useAuthContext'
+import { useGoalsContext } from '../../hooks/useGoalsContext'
+import GoalDetails from './goalDetails'
 
 const GoalJournal = (props) => {
     const { user } = useAuthContext()
+    const { goals, dispatch } = useGoalsContext()
 
     const { toggleModalVisibility } = props
-    const [goals, setGoals] = useState(null)
 
     useEffect(() => {
         const fetchGoals = async () => {
@@ -19,14 +21,14 @@ const GoalJournal = (props) => {
             const json = await response.json()
 
             if (response.ok) {
-                setGoals(json)
+                dispatch({type: 'SET_GOALS', payload: json})
             }
         }
 
         if (user) {
             fetchGoals()
         }
-    }, [user])
+    }, [user, dispatch])
 
     return (
         <div className="goals-container card bg-base-100">
@@ -36,23 +38,7 @@ const GoalJournal = (props) => {
                 </div>
                 <div className="goal-cards flex flex-col space-y-8">
                     {goals && goals.map((goal) => (
-                        <div className="card border border-gray-300">
-                            <div key={goal._id} className="card-body">
-                                <div className="flex flex-row">
-                                    <FontAwesomeIcon className="mr-5" size="2x" 
-                                    icon={
-                                        goal.goalType === 'exercise' ? faDumbbell
-                                        : goal.goalType === 'nutrition' ? faUtensils
-                                        : goal.goalType === 'sleep' ? faMoon
-                                        : faTrophy
-                                    }
-                                    />
-                                    <p className="mt-1">{goal.description}</p>
-                                    <div className="ml-10 mr-10" />
-                                    <button className="ml-10"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
-                                </div>
-                            </div>
-                        </div>
+                        <GoalDetails key={goal._id} goal={goal} />
                     ))}
                     <div className="card border border-gray-300 border-dashed">
                         <div className="card-body">

@@ -52,22 +52,4 @@ const deleteGoal = async(req, res) => {
     res.status(200).json(goal)
 }
 
-const updateGoal = async(req, res) => {
-    const { id } = req.params
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Goal not found'})
-    }
-
-    const goal = await Goal.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
-
-    if (!goal) {
-        return res.status(404).json({error: 'Goal not found'})
-    }
-
-    res.status(200).json(goal)
-}
-
-export { getGoals, getGoal, createGoal, deleteGoal, updateGoal }
+export { getGoals, getGoal, createGoal, deleteGoal }

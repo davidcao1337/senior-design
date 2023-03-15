@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import CalendarComp from '../CalendarComp/index.jsx'
-import './EditProfileModal.css'
+import './GeneralModal.css'
 
 const EditProfileModal = (props) => {
 
