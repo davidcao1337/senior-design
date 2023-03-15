@@ -5,28 +5,30 @@ import Popup from 'reactjs-popup';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
 import Activity from './activity';
 import AddTime from './exercise_time';
+//<<<<<<< HEAD
+import RightBar from './exerciseRightPanel'
+
+//=======
+import RightPanel from '../../components/RightPanel';
+//>>>>>>> a0bfd8408316c890855401ecfd5919c904fa971a
 
 const Exercise = () => {
 
-    const [exerciseTime, setExerciseTime] = useState();
+    const [exercises, setExercises] = useState(null);
     const [totalCalories, setCalories] = useState();
-    const [distance, setDistance] = useState();
     //const [minutes, setMins] = useState();
 
     const editTime = (newTime) => {
         const hours = Math.floor(newTime/60);
         const mins = newTime % 60;
-        setExerciseTime(hours + ' hrs '+ mins + ' mins')
-        //console.log(exerciseTime)
+        setExercises(hours + ' hrs '+ mins + ' mins')
+        //console.log(exercises)
     }
 
     const caloriesBurn = (activities) => {
         setCalories(activities[0].calories + activities[1].calories + activities[2].calories + ' kCals')
     }
 
-    const distanceRan = (activities) => {
-        setDistance(activities[0].distance_set + ' mi')
-    }
     
     const [activities, setActivity] = useState([
         {task: 1, time_reps: 0, distance_set: 0, incline_weight: 0, calories: 0},
@@ -50,10 +52,24 @@ const Exercise = () => {
         //console.log(activities)
     };
 
+    // useEffect( () => {
+    //     caloriesBurn(activities);
+    //     distanceRan(activities);
+    // },[activities])
     useEffect( () => {
-        caloriesBurn(activities);
-        distanceRan(activities);
-    },[activities])
+        const fetchExerciseTime = async () => {
+            const response = await fetch('/exercise')
+            const json = await response.json()
+
+            if(response.ok){
+                setExercises(json)
+            }
+        }
+
+        fetchExerciseTime()
+    },[])
+
+    //<RightBar onAddActivity={addActivity}/>
 
     return (
         <section>
@@ -64,23 +80,33 @@ const Exercise = () => {
             </titleContainer>
             <exerciseLogContainer>
                 <cardHeader>
-                    <cardTitle>Daily Summary</cardTitle>
+                    <cardTitle>Weekly Summary</cardTitle>
                 </cardHeader>
                 <innerContainer>
                 <exerciseLogSection>
                     <exerciseLabel><div> Exercise Time </div></exerciseLabel>
-                    <exerciseDisplay><div> {exerciseTime} </div></exerciseDisplay>
-                        <Popup trigger={<button> Edit </button>} position="right center">
-                                <AddTime onEditTime={editTime} />
-                        </Popup>
+                    <exerciseDisplay>
+                        <div className="exercise-info"> 
+                            {exercises && exercises.length > 0 && exercises[0].time !== undefined && 
+                                exercises[0].time + exercises[1].time + exercises[2].time + exercises[4].time + exercises[5].time + exercises[6].time} 
+                            <p>Mins</p>
+                        </div>    
+                    </exerciseDisplay>
                 </exerciseLogSection>
                 <exerciseLogSection>
                     <exerciseLabel><div> Calories Burned </div></exerciseLabel>
-                    <exerciseDisplay><div> {totalCalories} </div></exerciseDisplay>
+                    <exerciseDisplay>
+                        <div className="exercise-info"> 
+                            {exercises && exercises.length > 0 && exercises[0].calorie !== undefined && 
+                                exercises[0].calorie + exercises[1].calorie + exercises[2].calorie + exercises[4].calorie + exercises[5].calorie + exercises[6].calorie} 
+                            <p>kCals</p>
+                        </div>
+                    </exerciseDisplay>
                 </exerciseLogSection>
                 <exerciseLogSection>
-                    <exerciseLabel><div> Distance Ran </div></exerciseLabel>
-                    <exerciseDisplay><div> {distance} </div></exerciseDisplay>
+                    <exerciseLabel><div> Exercise Goal </div></exerciseLabel>
+                    <div className="text-center pr-20">Weight Goal: </div>
+                    <div className="text-center pr-20">Calories Goal:</div>
                 </exerciseLogSection>
                 </innerContainer>
             </exerciseLogContainer>
@@ -90,52 +116,115 @@ const Exercise = () => {
                         <activityTitleText>Today's Activity</activityTitleText>
                     </cardHeaderTypeTwo>
                     <activityBreakdownTypeTwo>
-                        <addActivityButton>
-                            <Popup trigger={<button> Click to add an activity </button>} position="right center">
-                                <Activity onAddActivity={addActivity}/>
-                            </Popup>
-                        </addActivityButton>
-                        <activityList>
-                            <div className='tag'> Indoor Run </div>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Time </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[0].time_reps} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Distance </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[0].distance_set} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Incline </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[0].incline_weight} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Calories </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[0].calories} </div> </activityBreakdownContent>
-                        </activityList>
-                        <activityList>
-                            <div className='tag'> Lateral Pulldown </div>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Reps </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[1].time_reps} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Set </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[1].distance_set} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Weight </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[1].incline_weight} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Calories </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[1].calories} </div> </activityBreakdownContent>
-                        </activityList>
-                        <activityList><div className='tag'> Dumbbell Squat </div>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div>  </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Reps </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[2].time_reps} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Set </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[2].distance_set} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Weight </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[2].incline_weight} </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> Calories </div> </activityBreakdownContent>
-                            <activityBreakdownContent> <div> {activities[2].calories} </div> </activityBreakdownContent>
-                        </activityList>
+                        <table class="table-auto">
+                            <thead>
+                                <tr>
+                                <th class="px-1 py-3 text-left font-black">Cardio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Time</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Cardio" 
+                                    && (
+                                        <>
+                                          {exercises[0].time}
+                                          <p class="inline ml-1">mins</p>
+                                        </>
+                                      )}
+                                </td>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Distance</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Cardio" 
+                                    && (
+                                        <>
+                                          {exercises[0].distance}
+                                          <p class="inline ml-1">km</p>
+                                        </>
+                                      )}
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Calorie</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Cardio" 
+                                    && (
+                                        <>
+                                          {exercises[0].calorie}
+                                          <p class="inline ml-1">kCals</p>
+                                        </>
+                                      )}
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <thead>
+                                <tr>
+                                <th class="px-1 pt-8 pb-3 text-left font-black">Strength</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Time</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Strength" 
+                                    && (
+                                        <>
+                                          {exercises[0].time}
+                                          <p class="inline ml-1">mins</p>
+                                        </>
+                                      )}
+                                </td>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Loads</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Strength" 
+                                    && (
+                                        <>
+                                          {exercises[0].loadWeight}
+                                          <p class="inline ml-1">kg</p>
+                                        </>
+                                      )}
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Sets</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Strength" 
+                                    && exercises[0].sets}
+                                </td>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Reps</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Strength" 
+                                    && (
+                                        <>
+                                          {exercises[0].reps}
+                                          <p class="inline ml-1">per set</p>
+                                        </>
+                                      )}
+                                </td>
+                                </tr>
+                                <tr>
+                                <td class="px-4 py-2 font-bold fixed-width fixed-height">Calorie</td>
+                                <td class="px-4 py-2 fixed-width fixed-height">
+                                    {exercises 
+                                    && exercises[0].type === "Strength" 
+                                    && (
+                                        <>
+                                          {exercises[0].calorie}
+                                          <p class="inline ml-1">kCals</p>
+                                        </>
+                                      )}
+                                </td>
+                                </tr>
+                            </tbody>            
                     </activityBreakdownTypeTwo>
                 </activityContainer>
                 <chartContainer>
@@ -148,7 +237,11 @@ const Exercise = () => {
                 </chartContainer>
             </activityContent>
             </content>
-            <rightBar></rightBar>
+
+            
+
+            <RightPanel />
+
 
         </section>
     );
