@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './exercise.css';
 import Select from 'react-select';
+import Calendar from 'react-calendar';
 
 const Activity = (props) => {
 
@@ -9,6 +10,12 @@ const Activity = (props) => {
     const [distance_set, setDistance] = useState();
     const [incline_weight, setIncline] = useState();
     const [calories, setCalories] = useState();
+    const [date, setDate] = useState(new Date());
+
+    const handleDateChange = (date) => {
+        setDate(date);
+        //console.log(date);
+    };
 
     const passActivity = () => {
         //console.log(task, time, distance, incline, calories);
@@ -37,6 +44,7 @@ const Activity = (props) => {
         <popupExeContainer>
             <div className='popupTitle'>Add Activity</div>
             <popupDivider>
+            <Calendar onChange={handleDateChange} value={date} />
                 <typeSelect>
                     <div>Select Task&emsp;&emsp;&emsp;&emsp;</div>
                     <Select options={Tasks} onChange={handleTask}/>

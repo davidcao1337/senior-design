@@ -6,8 +6,7 @@ import SleepLineChart from '../../components/Charts/SleepLineChart';
 import Popup from 'reactjs-popup';
 import AddSleepData from './sleepData';
 import SleepGoal from './sleepGoal';
-import RightPanel from '../../components/RightPanel';
-
+import RightBar from '../../components/RightPanel/sleepRightPanel';
 import './sleep.css';
 const Sleep = () => {
 
@@ -16,12 +15,14 @@ const Sleep = () => {
     const [displayTime, setDisplay] = useState();
     const [sleepGoal, setGoal] = useState();
     const [aveSleep, setAve] = useState();
+    const [sleeps, setSleeps] = useState(null);
 
     const updateSleepTime  = (sleepTime) => {
-        const totalTime = Number(sleepTime[sleepTime.length - 1]);
+        const totalTime = Number(sleepTime);
         const hours = Math.floor(totalTime);
         const mins = Math.floor(totalTime % Math.floor(totalTime) * 60);
         setDisplay(hours + ' hrs '+ mins + ' mins');
+        //return <p> {displayTime} </p>
     }
 
     const updateSleepGoal = (newGoal) => {
@@ -47,10 +48,28 @@ const Sleep = () => {
         //console.log(sleepTime)
     }
 
+    // useEffect( () => {
+    //     updateSleepTime(sleepTime);
+    //     updateAveSleep(sleepTime);
+    // },[sleepTime])
+
     useEffect( () => {
-        updateSleepTime(sleepTime);
-        updateAveSleep(sleepTime);
-    },[sleepTime])
+        const fetchSleeps = async () => {
+            const response = await fetch('/sleep')
+            const json = await response.json()
+
+            if(response.ok){
+                setSleeps(json)
+                // console.log(json[0].hours)
+                // console.log((json[0].hours).typeof)
+                // updateSleepTime(Number(json[0].hours))
+            }
+        }
+
+        //<RightBar onAddSleepTime={addSleepTime}/>
+
+        fetchSleeps()
+    },[])
     
     return(
         <section>
@@ -60,6 +79,9 @@ const Sleep = () => {
                         <div>Sleep</div>
                     </titleContainer>
                     <sleepLogContainer>
+                        <cardHeader>
+                            <cardTitle>Last Night Summary</cardTitle>
+                        </cardHeader>
                         <statusContainer>
                             <statusContent>
                                 <sleepLogSection>
@@ -68,7 +90,14 @@ const Sleep = () => {
                                 </sleepLogSection>
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Time </div></sleepLabel>
-                                    <sleepTime><div> {displayTime} </div></sleepTime>
+                                    <sleepTime>
+                                        <div className="sleep-info"> 
+                                            {sleeps && sleeps.length > 0 && sleeps[0].hours !== undefined && sleeps[0].hours} 
+                                            <p>Hrs</p>
+                                            {sleeps && sleeps.length > 0 && sleeps[0].minutes !== undefined && sleeps[0].minutes} 
+                                            <p>Mins</p>
+                                        </div>
+                                    </sleepTime>
                                 </sleepLogSection>
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Goal </div></sleepLabel>
@@ -78,11 +107,6 @@ const Sleep = () => {
                                         </Popup>
                                 </sleepLogSection>
                             </statusContent>
-                            <addSleep>
-                                <Popup trigger={<button> Click to add sleep time N </button>} position="right center">
-                                    <AddSleepData onAddSleepTime={addSleepTime}/>
-                                </Popup>
-                            </addSleep>
                             <sleepBarChart>
                                 <SleepBarChart sleepTime={sleepTime} sleepWeek={sleepWeek}/>
                             </sleepBarChart>
@@ -97,7 +121,7 @@ const Sleep = () => {
                     </sleepLineChart>
                     </sleepAveContainer>    
             </content>
-            <RightPanel />
+            <RightBar />
         </section>
     )
 }
