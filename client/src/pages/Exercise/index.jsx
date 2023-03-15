@@ -1,71 +1,26 @@
 import React, {useEffect, useState, setState} from 'react';
 import './exercise.css';
 import NavBar from '../../components/NavBar';
-import Popup from 'reactjs-popup';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
-import Activity from './activity';
-import AddTime from './exercise_time';
 import RightPanel from '../../components/RightPanel/exerciseRightPanel'
+import { useExerciseContext } from '../../hooks/useExerciseChart';
 
 
 const Exercise = () => {
-
-    const [exercises, setExercises] = useState(null);
-    const [totalCalories, setCalories] = useState();
-    //const [minutes, setMins] = useState();
-
-    const editTime = (newTime) => {
-        const hours = Math.floor(newTime/60);
-        const mins = newTime % 60;
-        setExercises(hours + ' hrs '+ mins + ' mins')
-        //console.log(exercises)
-    }
-
-    const caloriesBurn = (activities) => {
-        setCalories(activities[0].calories + activities[1].calories + activities[2].calories + ' kCals')
-    }
-
-    
-    const [activities, setActivity] = useState([
-        {task: 1, time_reps: 0, distance_set: 0, incline_weight: 0, calories: 0},
-        {task: 2, time_reps: 0, distance_set: 0, incline_weight: 0, calories: 0},
-        {task: 3, time_reps: 0, distance_set: 0, incline_weight: 0, calories: 0}
-    ])
-
-    const addActivity = (task, time_reps, distance_set, incline_weight, calories) => {
-        const taskIndex = activities.findIndex(activity => activity.task == task);
-        if (taskIndex !== -1) {
-            const newActivities = [...activities];
-            newActivities[taskIndex] = {
-              ...newActivities[taskIndex],
-              time_reps: time_reps,
-              distance_set: distance_set,
-              incline_weight: incline_weight,
-              calories: calories
-            };
-            setActivity(newActivities);
-        }
-        //console.log(activities)
-    };
-
-    // useEffect( () => {
-    //     caloriesBurn(activities);
-    //     distanceRan(activities);
-    // },[activities])
+    const { exercises, dispatch } = useExerciseContext()
     useEffect( () => {
         const fetchExerciseTime = async () => {
             const response = await fetch('/exercise')
             const json = await response.json()
 
             if(response.ok){
-                setExercises(json)
+                //setExercises(json)
+                dispatch({type: 'SET_EXERCISES', payload: json})
             }
         }
 
         fetchExerciseTime()
     },[])
-
-    //<RightBar onAddActivity={addActivity}/>
 
     return (
         <section>
@@ -83,9 +38,9 @@ const Exercise = () => {
                     <exerciseLabel><div> Exercise Time </div></exerciseLabel>
                     <exerciseDisplay>
                         <div className="exercise-info"> 
-                            {exercises && exercises.length > 0 && exercises[0].time !== undefined && 
+                            {exercises && exercises.length > 0 && exercises[0].time !== undefined && exercises[6].time !== undefined &&
                                 exercises[0].time + exercises[1].time + exercises[2].time + exercises[4].time + exercises[5].time + exercises[6].time} 
-                            <p>Mins</p>
+                            <p>mins</p>
                         </div>    
                     </exerciseDisplay>
                 </exerciseLogSection>
@@ -93,7 +48,7 @@ const Exercise = () => {
                     <exerciseLabel><div> Calories Burned </div></exerciseLabel>
                     <exerciseDisplay>
                         <div className="exercise-info"> 
-                            {exercises && exercises.length > 0 && exercises[0].calorie !== undefined && 
+                            {exercises && exercises.length > 0 && exercises[0].calorie !== undefined && exercises[6].calorie !== undefined &&
                                 exercises[0].calorie + exercises[1].calorie + exercises[2].calorie + exercises[4].calorie + exercises[5].calorie + exercises[6].calorie} 
                             <p>kCals</p>
                         </div>
@@ -228,7 +183,7 @@ const Exercise = () => {
                         <cardTitle> Weekily Progress </cardTitle>
                     </cardHeader>
                     <chartContent>
-                        <ExerciseBarChart />
+                        <ExerciseBarChart/>
                     </chartContent>
                 </chartContainer>
             </activityContent>

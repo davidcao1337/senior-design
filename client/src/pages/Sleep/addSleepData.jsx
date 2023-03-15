@@ -1,26 +1,34 @@
-import { setDate } from 'date-fns'
-import React, { useState } from 'react'
+import { format } from 'date-fns';
+import React, { useState } from 'react';
+import { useSleepContext } from '../../hooks/useSleepChart';
 
 const AddSleepData = (props) => {
     const { onClosePop, date } = props
-    //const [sleepTime, setTime] = useState(null)
-    const [newDate, setNewDate] = useState(date)
+    const { dispatch } = useSleepContext()
+    const [ newDate, setNewDate] = useState(null)
     const [error, setError] = useState(null)
     const [hours, setHours] = useState(null)
     const [minutes, setMinutes] = useState(null)
-
-    // const addTime = () => {
-    //     props.onAddSleepTime(Number(sleepTime));
-    // };
 
     const callClose = () => {
         props.onClosePop()
     }
 
-    
-    const handleSave = async (e) => {
-        e.preventDefault()
-        props.onClosePop()
+    const checkHour = (e) => {
+        const value = e.target.value;
+        if (Number(value) <= 23 && Number(value) >= 0) {
+            setHours(value);
+        } else {
+            setError("The hour value should be in the range from 0 to 23")
+        }
+    }
+    const checkMinute = (e) => {
+        const value = e.target.value;
+        if (Number(value) <= 59 && Number(value) >= 0) {
+            setMinutes(value);
+        } else {
+            setError("The minute value should be in the range from 0 to 59")
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -46,6 +54,7 @@ const AddSleepData = (props) => {
             setMinutes(null)
             setError(null)
             console.log("new sleep added", json)
+            dispatch({type: 'CREATE_SLEEP', payload: json})
             callClose()
         }
     }
@@ -55,7 +64,7 @@ const AddSleepData = (props) => {
             <div className="overlay"></div>
             <div className="modal-content flex flex-col space-y-10">
                 <h2 className="mt-3 font-bold text-2xl">Add Sleep Time</h2>
-                <p class="font-bold" >{date.toDateString()}</p>
+                <p class="font-bold" >{format(date, 'yyyy/MM/dd')}</p>
                     <div className="form-container">
                         <form className="flex flex-col" onSubmit={handleSubmit}>
                             <div className='flex flex-row'>
@@ -64,7 +73,7 @@ const AddSleepData = (props) => {
                                     <input 
                                         className="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
                                         value={hours} 
-                                        onChange={(e) => setHours(e.target.value)} 
+                                        onChange={checkHour} 
                                         type="number"
                                         id="hours" 
                                         name="hours" 
@@ -78,7 +87,7 @@ const AddSleepData = (props) => {
                                     <input 
                                         className="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
                                         value={minutes} 
-                                        onChange={(e) => setMinutes(e.target.value)} 
+                                        onChange={checkMinute} 
                                         type="number"
                                         id="minutes" 
                                         name="minutes" 
