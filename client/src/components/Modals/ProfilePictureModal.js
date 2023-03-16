@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import Avatar from 'react-avatar-edit'
 import './GeneralModal.css'
-import { useAuthContext } from '../../hooks/useAuthContext'
 
 const ProfilePictureModal = (props) => {
-    const { user } = useAuthContext()
 
     const { isOpen, toggleModalVisibility, user_id } = props
 
@@ -30,24 +28,17 @@ const ProfilePictureModal = (props) => {
         e.preventDefault()
         var errorMsg = ""
 
-        if (!user) {
-            errorMsg = "You must be logged in"
-            setError(errorMsg)
-            return
-        }
-
         const userData = await fetch('/user/' + user_id, {
             method: 'PATCH',
             body: JSON.stringify(profileAvatarUpdate),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
             }
         })
         const userDataJson = await userData.json()
 
         if (!userDataJson.ok) {
-            errorMsg = user.error
+            errorMsg = userDataJson.error
             setError(errorMsg)
         }
         if (userDataJson.ok) {
