@@ -6,8 +6,7 @@ import EditProfileModal from "../../components/Modals/EditProfileModal"
 import ProfilePictureModal from "../../components/Modals/ProfilePictureModal"
 import GoalJournal from "../../components/GoalJournal"
 import GoalModal from "../../components/Modals/GoalModal"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import DefaultAvatar from "../../assets/circle-user-solid.svg"
 
 const Profile = () => {
     var user_id = ""
@@ -50,6 +49,7 @@ const Profile = () => {
     const userHeight = user.height || "N/A"
     const userWeight = user.weight || "N/A"
     const userBirthday = user.birthday || null
+    const userAvatar = user.avatar || DefaultAvatar
 
     // Calculated Values
     // Age
@@ -80,7 +80,7 @@ const Profile = () => {
                         <div className="profile-container card bg-base-100">
                             <div className="card-body flex flex-col">
                                 <button onClick={toggleProfilePictureModal}>
-                                    <FontAwesomeIcon className="m-6" icon={faCircleUser} size="10x" />
+                                    <img src={userAvatar} width="160" height= "160" className="hover:brightness-75" />
                                 </button>
                                 <div className="full-name mb-5 flex flex-row justify-center">
                                     <h1>{userName}</h1>

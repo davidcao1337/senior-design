@@ -1,29 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Avatar from 'react-avatar-edit'
 import './GeneralModal.css'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 const ProfilePictureModal = (props) => {
+    const { user } = useAuthContext()
 
     const { isOpen, toggleModalVisibility, user_id } = props
 
     const [src, setSrc] = useState(null)
-    const [preview, setPreview] = useState(null)
+    // Avatar is set as a Base64 encoded string by onCrop function
+    const [avatar, setAvatar] = useState(null)
+    const profileAvatarUpdate = { avatar }
 
     const [error, setError] = useState(null)
 
     const onClose = () => {
-        setPreview(null)
+        setAvatar(null)
     }
     const onCrop = (view) => {
-        setPreview(view)
+        setAvatar(view)
     }
 
-    useEffect(() => {
-        console.log(preview)
-    }, [])
+    if ( !isOpen ) {
+        return null
+    }
 
-    const handleSave = () => {
-        console.log("Saved")
+    const handleSave = async (e) => {
+        e.preventDefault()
+        var errorMsg = ""
+
+        if (!user) {
+            errorMsg = "You must be logged in"
+            setError(errorMsg)
+            return
+        }
+
+        const userData = await fetch('/user/' + user_id, {
+            method: 'PATCH',
+            body: JSON.stringify(profileAvatarUpdate),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const userDataJson = await userData.json()
+
+        if (!userDataJson.ok) {
+            errorMsg = user.error
+            setError(errorMsg)
+        }
+        if (userDataJson.ok) {
+            setSrc(null)
+            setAvatar(null)
+            setError(null)
+        }
+
+        props.toggleModalVisibility()
     }
     
 
