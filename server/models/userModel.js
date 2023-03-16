@@ -29,6 +29,10 @@ const userSchema = new Schema({
     weight: {
         type: Number,
         required: false
+    },
+    avatar: {
+        type: String,
+        required: false
     }
 }, { timestamps: true })
 

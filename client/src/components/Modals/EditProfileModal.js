@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import CalendarComp from '../CalendarComp/index.jsx'
 import './GeneralModal.css'
+import { useAuthContext } from '../../hooks/useAuthContext.js'
 
 const EditProfileModal = (props) => {
+    const { user } = useAuthContext()
 
     const { isOpen, toggleModalVisibility, userID } = props
 
@@ -22,6 +24,13 @@ const EditProfileModal = (props) => {
 
     const handleSave = async (e) => {
         e.preventDefault()
+        var errorMsg = ""
+
+        if (!user) {
+            errorMsg = "You must be logged in"
+            setError(errorMsg)
+            return
+        }
 
         // Validate Profile Updates
         // Remove Empty (null) Fields
@@ -31,7 +40,6 @@ const EditProfileModal = (props) => {
             }
         }
         // Convert Height string into a Number (if field populated)
-        var errorMsg = ''
         if (profileUpdates.hasOwnProperty('height')) {
             const tempHeight = Number(profileUpdates.height)
             if (isNaN(tempHeight)) {
@@ -54,22 +62,22 @@ const EditProfileModal = (props) => {
             method: 'PATCH',
             body: JSON.stringify(profileUpdates),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
-        const user = await userData.json()
+        const userDataJson = await userData.json()
 
-        if (!user.ok) {
+        if (!userDataJson.ok) {
             errorMsg = user.error
             setError(errorMsg)
         }
-        if (user.ok) {
+        if (userDataJson.ok) {
             setName('')
             setBirthday(null)
             setHeight(null)
             setWeight(null)
             setError(null)
-            console.log('User updated!', user)
         }
 
         props.toggleModalVisibility()
