@@ -11,8 +11,9 @@ import dotenv from "dotenv"
 // Configurations
 const app = express();
 dotenv.config();
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(express.json());
 
 // MongoDB Connection
 const uri = process.env.MONGO_DB_URI;

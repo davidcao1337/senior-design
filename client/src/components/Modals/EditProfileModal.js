@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import CalendarComp from '../CalendarComp/index.jsx'
 import './GeneralModal.css'
-import { useAuthContext } from '../../hooks/useAuthContext.js'
 
 const EditProfileModal = (props) => {
-    const { user } = useAuthContext()
 
     const { isOpen, toggleModalVisibility, userID } = props
 
@@ -25,12 +23,6 @@ const EditProfileModal = (props) => {
     const handleSave = async (e) => {
         e.preventDefault()
         var errorMsg = ""
-
-        if (!user) {
-            errorMsg = "You must be logged in"
-            setError(errorMsg)
-            return
-        }
 
         // Validate Profile Updates
         // Remove Empty (null) Fields
@@ -63,13 +55,12 @@ const EditProfileModal = (props) => {
             body: JSON.stringify(profileUpdates),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
             }
         })
         const userDataJson = await userData.json()
 
         if (!userDataJson.ok) {
-            errorMsg = user.error
+            errorMsg = userDataJson.error
             setError(errorMsg)
         }
         if (userDataJson.ok) {
