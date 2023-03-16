@@ -3,6 +3,7 @@ import './account.css'
 import NavBar from '../../components/NavBar'
 import AccountNavMenu from "../../components/AccountNavMenu"
 import EditProfileModal from "../../components/Modals/EditProfileModal"
+import ProfilePictureModal from "../../components/Modals/ProfilePictureModal"
 import GoalJournal from "../../components/GoalJournal"
 import GoalModal from "../../components/Modals/GoalModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +17,7 @@ const Profile = () => {
 
     const [user, setUser] = useState([])
     const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false)
+    const [isProfilePictureModalOpen, setIsProfilePictureModalOpen] = useState(false)
     const [isGoalModalOpen, setIsGoalModalOpen] = useState(false)
 
     useEffect( ()=> {
@@ -31,6 +33,11 @@ const Profile = () => {
     // Toggle profile modal visibility
     const toggleProfileModal = () => {
         setIsUserProfileModalOpen(!isUserProfileModalOpen)
+    }
+
+    // Toggle profile picture modal visibility
+    const toggleProfilePictureModal = () => {
+        setIsProfilePictureModalOpen(!isProfilePictureModalOpen)
     }
 
     // Toggle goal modal visibility
@@ -72,7 +79,9 @@ const Profile = () => {
                     <div className="profile-goals-container flex flex-row space-x-8">
                         <div className="profile-container card bg-base-100">
                             <div className="card-body flex flex-col">
-                                <FontAwesomeIcon className="m-6" icon={faCircleUser} size="10x"></FontAwesomeIcon>
+                                <button onClick={toggleProfilePictureModal}>
+                                    <FontAwesomeIcon className="m-6" icon={faCircleUser} size="10x" />
+                                </button>
                                 <div className="full-name mb-5 flex flex-row justify-center">
                                     <h1>{userName}</h1>
                                 </div>
@@ -103,6 +112,13 @@ const Profile = () => {
                         isOpen={isUserProfileModalOpen}
                         toggleModalVisibility={toggleProfileModal}
                         userID={user_id}
+                    />
+                }
+                {isProfilePictureModalOpen &&
+                    <ProfilePictureModal 
+                        isOpen={isProfilePictureModalOpen}
+                        toggleModalVisibility={toggleProfilePictureModal}
+                        user_id={user_id}
                     />
                 }
                 {isGoalModalOpen &&
