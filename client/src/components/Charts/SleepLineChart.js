@@ -35,11 +35,14 @@ function SleepLine() {
           xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: newData.map((item) => item.date),
+            data: newData.map((item) => {
+              const dateObj = new Date(item.date);
+              return dateObj.toISOString().split('T')[0];
+            }),
           },
           yAxis: {
             axisLabel: {
-              formatter: '{value} h'
+              formatter: '{value} hrs'
             }
           },
           series: [
@@ -85,7 +88,7 @@ function SleepLine() {
 
     return (
         <div>
-            <div ref={chartRef} style={{width:'100%',height:'280%'}}></div>
+            <div ref={chartRef} style={{width:'100%',height:'300%'}}></div>
         </div>
     )
 }

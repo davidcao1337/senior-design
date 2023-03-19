@@ -8,6 +8,8 @@ export const sleepReducer = (state, action) => {
             return { sleeps: action.payload }
         case 'CREATE_SLEEP':
             return { sleeps: [action.payload, ...state.sleeps] }
+        case 'DELETE_SLEEP':
+            return { sleeps: state.sleeps.filter((s) => s._id !== action.payload._id) }
         default:
             return state;
     }

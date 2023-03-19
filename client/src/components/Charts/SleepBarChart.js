@@ -28,7 +28,10 @@ function SleepBar() {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => item.date),
+            data: newData.map((item) => {
+              const dateObj = new Date(item.date);
+              return dateObj.toISOString().split('T')[0];
+            }),
           },
           yAxis: {
             type: 'value',
@@ -77,7 +80,7 @@ function SleepBar() {
    
     return (
         <div>
-          <div className="Bar" ref={chartRef} style={{width:'110%',height:'280%'}}></div>
+          <div className="Bar" ref={chartRef} style={{width:'110%',height:'300%'}}></div>
         </div>
     )
 }
