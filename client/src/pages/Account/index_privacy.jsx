@@ -14,6 +14,7 @@ const Privacy = () => {
                     <div className="privacy-container card bg-base-100">
                         <div className="card-body">
                             <h1>Privacy</h1>
+                            <p className="text-[#748AA1]">Your data is not shared with any third-parties.</p>
                         </div>
                     </div>
                 </div>

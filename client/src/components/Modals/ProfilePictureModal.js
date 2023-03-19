@@ -26,7 +26,6 @@ const ProfilePictureModal = (props) => {
 
     const handleSave = async (e) => {
         e.preventDefault()
-        var errorMsg = ""
 
         const userData = await fetch('/user/' + user_id, {
             method: 'PATCH',
@@ -37,17 +36,16 @@ const ProfilePictureModal = (props) => {
         })
         const userDataJson = await userData.json()
 
-        if (!userDataJson.ok) {
-            errorMsg = userDataJson.error
-            setError(errorMsg)
+        if (!userData.ok) {
+            setError(userDataJson.error)
         }
-        if (userDataJson.ok) {
+        if (userData.ok) {
             setSrc(null)
             setAvatar(null)
             setError(null)
+            
+            props.toggleModalVisibility()
         }
-
-        props.toggleModalVisibility()
     }
     
 
@@ -66,7 +64,7 @@ const ProfilePictureModal = (props) => {
                         />
                     </div>
                     <div className="buttons-container flex flex-row justify-center">
-                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && handleSave}>Save</button>
+                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={handleSave}>Save</button>
                         <button className="ml-10 btn" onClick={toggleModalVisibility}>Cancel</button>
                     </div>
                     {error && <div className="error">{error}</div>}
