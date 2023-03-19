@@ -28,10 +28,16 @@ function ExerciseBar() {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => item.date),
+            data: newData.map((item) => {
+              const dateObj = new Date(item.date);
+              return dateObj.toISOString().split('T')[0];
+            }),
           },
           yAxis: {
             type: 'value',
+            axisLabel: {
+              formatter: '{value} mins'
+            }
           },
           series: [
             {
@@ -74,7 +80,7 @@ function ExerciseBar() {
     
     return (
         <div>
-            <div className="Bar" ref={chartRef} style={{width:'100%',height:'400%'}}></div>
+            <div className="Bar h-full w-full" ref={chartRef} style={{width:'100%',height:'400%'}}></div>
         </div>
     )
 }

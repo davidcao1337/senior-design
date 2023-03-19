@@ -7,7 +7,10 @@ import Popup from 'reactjs-popup';
 import SleepGoal from './sleepGoal';
 import RightBar from '../../components/RightPanel/sleepRightPanel';
 import { useSleepContext } from '../../hooks/useSleepChart';
+import SleepCards from './sleepCards';
 import './sleep.css';
+
+
 const Sleep = () => {
     const { sleeps, dispatch } = useSleepContext()
     const [sleepTime, setTime] = useState([8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0, 8.9, 7.6, 7.9, 10.0, 8.8, 11.0, 9.5]);
@@ -79,14 +82,24 @@ const Sleep = () => {
                             </sleepBarChart>
                         </statusContainer>
                     </sleepLogContainer>
-                    <sleepAveContainer>
+                    <sleepBottomContent>
+                        <sleepData>
+                            <sleepDataTitle>Sleep Data</sleepDataTitle>
+                            <div className="scrollable-sleeps">
+                                <div className="sleeps">
+                                    {sleeps && sleeps.map((sleep) => (
+                                        <SleepCards key={sleep._id} sleep={sleep} />
+                                    ))}
+                                </div>
+                            </div>
+                        </sleepData>
                     <sleepLineChart>
                         <cardTitle>
                             7 days average sleep time: {aveSleep}
                         </cardTitle>
                         <SleepLineChart />
                     </sleepLineChart>
-                    </sleepAveContainer>    
+                    </sleepBottomContent>    
             </content>
             <RightBar />
         </section>
