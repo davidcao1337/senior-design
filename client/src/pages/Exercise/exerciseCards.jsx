@@ -1,4 +1,4 @@
-import { useExerciseContext } from '../../hooks/useExerciseChart';
+import { useExerciseContext } from '../../hooks/useExerciseContext';
 import './exercise.css';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
