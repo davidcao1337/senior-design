@@ -8,7 +8,8 @@ const exerciseSchema = new Schema({
         required: true
     },
     type:{
-        type: String
+        type: String,
+        required: true
     },
     time:{
         type: Number,
@@ -32,6 +33,10 @@ const exerciseSchema = new Schema({
     },
     calorie:{
         type: Number,
+        required: true
+    },
+    user_id: {
+        type: String,
         required: true
     }
 }, { timestamps: true })

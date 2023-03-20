@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 // Handlers
 app.use('/', routesHandler);
 app.use('/user', userHandler);
-app.use("/goals", goalsHandler)
+app.use("/goals", goalsHandler);
 app.use('/sleep', sleepHandler);
 app.use('/exercise', exerciseHandler);
 

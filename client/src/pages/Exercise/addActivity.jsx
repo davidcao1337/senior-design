@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns';
 import { useExerciseContext } from '../../hooks/useExerciseChart';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const AddActivity = (props) => {
-    const { onClosePop, date } = props
+    const { onClosePop, date } = props;
+    const { user } = useAuthContext();
 
-    const { dispatch } = useExerciseContext()
-    //const [sleepTime, setTime] = useState(null)
-    
+    const { dispatch } = useExerciseContext();
     const [selectedOption, setSelectedOption] = useState("");
-
-
-    //const [targetWeight, setTargetWeight] = useState(null);
     const [newDate, setNewDate] = useState(date);
     const [type, setType] = useState(null);
     const [exerciseType, setExerciseType] = useState(null);
@@ -21,36 +18,25 @@ const AddActivity = (props) => {
     const [sets, setSets] = useState(null);
     const [reps, setReps] = useState(null);
     const [calorie, setCalorie] = useState(null);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
     
-    //const [gainWeight, setGainWeight] = useState();
-
     function handleOptionChange(event) {
         setType(event.target.value)
         setSelectedOption(event.target.value);
     }
 
-    // const addTime = () => {
-    //     props.onAddSleepTime(Number(sleepTime));
-    // };
-
     const callClose = () => {
         props.onClosePop()
     }
 
-
-    const handleSave = async (e) => {
-        e.preventDefault()
-        props.onClosePop()
-    }
-
-    // const closePop = () => {
-    //     setOpenPopup(false)
-    // } 
-    // className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" value={} onChange={(e) => set(e.target.value)} id="" name="" autoComplete="off"
-    
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if(!user){
+            setError("You must be logged in!")
+            return
+        }
         
         const exercise = { date, type, time, distance, exerciseType, loadWeight, sets, reps, calorie }
 
@@ -58,13 +44,15 @@ const AddActivity = (props) => {
             method: 'POST',
             body: JSON.stringify(exercise),
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
-        })
+        });
         const json = await response.json()
 
         if(!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok) {
             setType(null)
@@ -76,6 +64,7 @@ const AddActivity = (props) => {
             setReps(null)
             setCalorie(null)
             setError(null)
+            setEmptyFields([])
             console.log("new exercise added", json)
             dispatch({type: 'CREATE_EXERCISE', payload: json})
             callClose()
@@ -87,16 +76,16 @@ const AddActivity = (props) => {
         switch(selectedOption){
             case "Cardio":
                 return (
-                    <div className="flex flex-col">
+                    <div className="exercise-input flex flex-col">
                         <div className='flex flex-row'>
                             <div className='flex flex-col'>
                                 <label>Time:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    className={emptyFields.includes('time') ? 'error' : ''}
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={time} 
                                     onChange={(e) => setTime(e.target.value)} 
-                                    id="time" 
-                                    name="time" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="mins" 
                                 />
@@ -105,11 +94,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Cardio type:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    className={emptyFields.includes('ExerciseType') ? 'error' : ''}
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={exerciseType} 
-                                    onChange={(e) => setExerciseType(e.target.value)} 
-                                    id="strengthType" 
-                                    name="strengthType"                                         
+                                    onChange={(e) => setExerciseType(e.target.value)}                                                                          
                                     autoComplete="off" 
                                 />
                                 </div>
@@ -118,11 +106,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Distance:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={distance} 
                                     onChange={(e) => setDistance(e.target.value)} 
-                                    id="distance" 
-                                    name="distance" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="km" 
                                 />
@@ -132,11 +119,11 @@ const AddActivity = (props) => {
                                 <div className='flex flex-col'>
                                     <label>Calories:</label>
                                     <input 
-                                        className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                        className={emptyFields.includes('Calories') ? 'error' : ''}
+                                        class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                         value={calorie} 
                                         onChange={(e) => setCalorie(e.target.value)} 
-                                        id="calorie" 
-                                        name="calorie" 
+                                        type="number"
                                         autoComplete="off" 
                                         placeholder="kCals" 
                                     />
@@ -147,16 +134,16 @@ const AddActivity = (props) => {
                 );
             case "Strength":
                 return (
-                    <div className="flex flex-col">
+                    <div className="exercise-input flex flex-col">
                         <div className='flex flex-row'>
                             <div className='flex flex-col'>
                                 <label>Workout time:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    className={emptyFields.includes('Time') ? 'error' : ''}
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={time} 
                                     onChange={(e) => setTime(e.target.value)} 
-                                    id="time" 
-                                    name="time" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="mins" 
                                 />
@@ -165,11 +152,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Workout type:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    className={emptyFields.includes('ExerciseType') ? 'error' : ''}
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={exerciseType} 
                                     onChange={(e) => setExerciseType(e.target.value)} 
-                                    id="strengthType" 
-                                    name="strengthType" 
                                     autoComplete="off" 
                                 />
                             </div>
@@ -177,11 +163,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Load weight:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={loadWeight} 
                                     onChange={(e) => setLoadWeight(e.target.value)} 
-                                    id="pressWeight" 
-                                    name="pressWeight" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="kg" 
                                 />
@@ -191,11 +176,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Sets:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={sets} 
-                                    onChange={(e) => setSets(e.target.value)} 
-                                    id="sets" 
-                                    name="sets" 
+                                    onChange={(e) => setSets(e.target.value)}  
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="count values" 
                                 />
@@ -204,11 +188,10 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Reps:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={reps} 
                                     onChange={(e) => setReps(e.target.value)} 
-                                    id="reps" 
-                                    name="reps" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="count values"
                                 />
@@ -217,11 +200,11 @@ const AddActivity = (props) => {
                             <div className='flex flex-col'>
                                 <label>Calorie:</label>
                                 <input 
-                                    className="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
+                                    className={emptyFields.includes('Calories') ? 'error' : ''}
+                                    class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 
                                     value={calorie} 
                                     onChange={(e) => setCalorie(e.target.value)} 
-                                    id="calorie" 
-                                    name="calorie" 
+                                    type="number"
                                     autoComplete="off" 
                                     placeholder="kCals" 
                                 />
@@ -244,7 +227,7 @@ const AddActivity = (props) => {
                     <div className="form-container">
                         <div className="flex flex-col">
                             <div className= "mx-auto">
-                                <select class="mb-5" value={selectedOption} onChange={handleOptionChange}>
+                                <select class="mb-5 inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" id="menu-button" aria-expanded="true" aria-haspopup="true" value={selectedOption} onChange={handleOptionChange}>
                                     <option value="">Select Exercise Type</option>
                                     <option value="Cardio">Cardio</option>
                                     <option value="Strength">Strength</option>

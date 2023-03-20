@@ -1,7 +1,9 @@
 import express from "express";
-const router = express.Router()
-
+import requireAuth from "../middleware/requireAuth.js";
 import { createExercise, getAllExercise, getExercise, deleteExercise, updateExercise } from "../controllers/exerciseController.js";
+
+const router = express.Router();
+router.use(requireAuth);
 
 router.get('/', getAllExercise);
 

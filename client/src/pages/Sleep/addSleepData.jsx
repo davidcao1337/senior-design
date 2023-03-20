@@ -1,17 +1,21 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { useSleepContext } from '../../hooks/useSleepChart';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const AddSleepData = (props) => {
-    const { onClosePop, date } = props
-    const { dispatch } = useSleepContext()
-    const [ newDate, setNewDate] = useState(null)
-    const [error, setError] = useState(null)
-    const [hours, setHours] = useState(null)
-    const [minutes, setMinutes] = useState(null)
+    const { onClosePop, date } = props;
+    const { user } = useAuthContext();
+
+    const { dispatch } = useSleepContext();
+    const [ newDate, setNewDate] = useState(null);
+    const [error, setError] = useState(null);
+    const [hours, setHours] = useState(null);
+    const [minutes, setMinutes] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
 
     const callClose = () => {
-        props.onClosePop()
+        props.onClosePop();
     }
 
     const checkHour = (e) => {
@@ -33,6 +37,11 @@ const AddSleepData = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if(!user){
+            setError("You must be logged in!")
+            return
+        }
         
         const sleep = { date, hours, minutes }
 
@@ -40,19 +49,22 @@ const AddSleepData = (props) => {
             method: 'POST',
             body: JSON.stringify(sleep),
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
 
         if(!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok) {
             setNewDate(null)
             setHours(null)
             setMinutes(null)
             setError(null)
+            setEmptyFields([])
             console.log("new sleep added", json)
             dispatch({type: 'CREATE_SLEEP', payload: json})
             callClose()
@@ -67,16 +79,15 @@ const AddSleepData = (props) => {
                 <p class="font-bold" >{format(date, 'yyyy/MM/dd')}</p>
                     <div className="form-container">
                         <form className="flex flex-col" onSubmit={handleSubmit}>
-                            <div className='flex flex-row'>
+                            <div className='sleep-input flex flex-row'>
                                 <div className='flex flex-col'>
                                     <label>Hours:</label>
                                     <input 
-                                        className="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
+                                        className={emptyFields.includes('Hours') ? 'error' : ''}
+                                        class="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
                                         value={hours} 
                                         onChange={checkHour} 
                                         type="number"
-                                        id="hours" 
-                                        name="hours" 
                                         autoComplete="off" 
                                         placeholder="hrs" 
                                     />
@@ -85,12 +96,11 @@ const AddSleepData = (props) => {
                                 <div className='flex flex-col'>
                                     <label>Minutes:</label>
                                     <input 
-                                        className="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
+                                        className={emptyFields.includes('Minutes') ? 'error' : ''}
+                                        class="mb-6 border-2 w-auto rounded-[5px] px-2 py-2" 
                                         value={minutes} 
                                         onChange={checkMinute} 
                                         type="number"
-                                        id="minutes" 
-                                        name="minutes" 
                                         autoComplete="off" 
                                         placeholder="mins" 
                                     />

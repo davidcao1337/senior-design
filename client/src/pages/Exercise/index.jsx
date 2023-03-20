@@ -1,27 +1,49 @@
-import React, {useEffect, useState, setState} from 'react';
+import React, {useEffect, useState } from 'react';
 import './exercise.css';
 import NavBar from '../../components/NavBar';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
 import RightPanel from '../../components/RightPanel/exerciseRightPanel'
 import { useExerciseContext } from '../../hooks/useExerciseChart';
 import ExerciseCards from './exerciseCards';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useGoalsContext } from '../../hooks/useGoalsContext';
 
 
 const Exercise = () => {
-    const { exercises, dispatch } = useExerciseContext()
+    const { exercises, dispatch } = useExerciseContext();
+    const { user } = useAuthContext();
+    const { goals, dispatch: goalDispatch } = useGoalsContext();
+
     useEffect( () => {
         const fetchExerciseTime = async () => {
-            const response = await fetch('/exercise')
+            const response = await fetch('/exercise', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if(response.ok){
-                //setExercises(json)
                 dispatch({type: 'SET_EXERCISES', payload: json})
             }
         }
+        const fetchExerciseGoal = async() => {
+            const response = await fetch('/goals', {
+               headers: {
+                   'Authorization': `Bearer ${user.token}`
+               }
+           });
+           const json = await response.json()
+           if(response.ok){
+                goalDispatch({type: 'SET_GOALS', payload: json})
+           }
+       }
+        if(user){
+            fetchExerciseTime();
+            fetchExerciseGoal();
+        }
 
-        fetchExerciseTime()
-    },[])
+    },[dispatch, user])
 
     return (
         <section>
@@ -58,9 +80,15 @@ const Exercise = () => {
                     </exerciseDisplay>
                 </exerciseLogSection>
                 <exerciseLogSection>
-                    <exerciseLabel><div> Exercise Goal </div></exerciseLabel>
-                    <div className="text-center pr-20">Weight Goal: </div>
-                    <div className="text-center pr-20">Calories Goal:</div>
+                    <exerciseLabel><div> Exercise goal </div></exerciseLabel>
+                    <div className="text-center font-semibold text-3xl">
+                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
+                            goals[0].goalType === 'exercise' ? goals[0].description
+                            : goals[1].goalType === 'exercise' ? goals[1].description
+                            : "Exercise goal not found"
+                            )
+                        }
+                    </div>
                 </exerciseLogSection>
                 </innerContainer>
             </exerciseLogContainer>
@@ -81,9 +109,7 @@ const Exercise = () => {
                     <cardHeader>
                         <cardTitle> Weekily Progress </cardTitle>
                     </cardHeader>
-                    
                     <ExerciseBarChart/>
-                    
                 </chartContainer>
             </activityContent>
             </content>

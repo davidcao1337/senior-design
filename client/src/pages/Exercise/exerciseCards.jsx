@@ -1,12 +1,21 @@
 import { useExerciseContext } from '../../hooks/useExerciseChart';
 import './exercise.css';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const ExerciseCards =({ exercise }) => {
-    const { dispatch } = useExerciseContext()
+    const { dispatch } = useExerciseContext();
+    const { user } = useAuthContext();
+    
     const handleClick = async() => {
+        if(!user){
+            return
+        }
         const response = await fetch('/exercise/' + exercise._id, {
-            method: 'DELETE'
-        })
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
         const json = await response.json()
 
         if(response.ok) {
