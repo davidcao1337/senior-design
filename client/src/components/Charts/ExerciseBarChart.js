@@ -1,12 +1,18 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function ExerciseBar() {
+  const { user } = useAuthContext()
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
   
   const fetchData = async () => {
-    const response = await fetch('/exercise');
+    const response = await fetch('/exercise', {
+      headers: {
+          'Authorization': `Bearer ${user.token}`
+      }
+  });
     const json = await response.json()
     if(response.ok){
       return json
@@ -14,6 +20,9 @@ function ExerciseBar() {
   };
 
     useEffect( () => {
+      if(!user){
+        return
+      }
       const fetchDataAndRenderChart = async () => {
         const newData = (await fetchData()).slice(0, 7);
         setData(newData);
@@ -41,7 +50,7 @@ function ExerciseBar() {
           },
           series: [
             {
-              name: 'mins',
+              name: 'Exercise time (mins):',
               type: 'bar',
               data: newData.map((item) => item.time),
               itemStyle: {
@@ -53,6 +62,12 @@ function ExerciseBar() {
                 shadowBlur: 3,
                 opacity: 0.5
                 },
+                markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' }
+                ]
+              }
             },
           ],
         });

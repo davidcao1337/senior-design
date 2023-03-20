@@ -1,7 +1,9 @@
 import express from "express";
-
+import requireAuth from "../middleware/requireAuth.js";
 import { getAllSleep, getSleep, createSleep, deleteSleep, updateSleep } from "../controllers/sleepController.js";
-const router = express.Router()
+
+const router = express.Router();
+router.use(requireAuth);
 
 router.get('/', getAllSleep);
 

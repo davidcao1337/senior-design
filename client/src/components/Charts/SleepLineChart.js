@@ -1,12 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function SleepLine() {
   const chartRef = useRef(null);
+  const { user } = useAuthContext();
+
   const [data, setData] = useState([]);
   
   const fetchData = async () => {
-    const response = await fetch('/sleep');
+    const response = await fetch('/sleep', {
+      headers: {
+          'Authorization': `Bearer ${user.token}`
+      }
+    });
     const json = await response.json()
     if(response.ok){
       return json
@@ -14,6 +21,9 @@ function SleepLine() {
   };
 
     useEffect( () => {
+      if(!user){
+        return
+      }
       const fetchDataAndRenderChart = async () => {
         const newData = (await fetchData()).slice(0, 7);
         setData(newData);
@@ -34,7 +44,7 @@ function SleepLine() {
           },
           xAxis: {
             type: 'category',
-            boundaryGap: false,
+            boundaryGap: true,
             data: newData.map((item) => {
               const dateObj = new Date(item.date);
               return dateObj.toISOString().split('T')[0];
@@ -47,7 +57,7 @@ function SleepLine() {
           },
           series: [
             {
-              name: 'mins',
+              name: 'Sleep hours:',
               type: 'line',
               data: newData.map((item) => item.hours + parseFloat((item.minutes/60).toFixed(1))),
               itemStyle: {
@@ -58,9 +68,17 @@ function SleepLine() {
                 shadowColor: '#18B283',
                 shadowBlur: 3,
                 },
-              type: 'line',
               smooth: true,
-              areaStyle: { color: '#18B283'}
+              areaStyle: { color: '#97dcc7'},
+              markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' }
+                ]
+              },
+              markLine: {
+                data: [{ type: 'average', name: 'Avg' }]
+              }
             },
           ],
         });

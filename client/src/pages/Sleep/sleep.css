@@ -7,17 +7,6 @@ section {
     background-color: #F5F6FA;
 }
 
-test {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-}
-
-nav {
-    height: 100%;
-    width: 144px;
-}
-
 content {
     height: 100%;
     width: -webkit-calc(100% - 325px);
@@ -286,4 +275,25 @@ sleepCalendar{
     padding: 6px;
     border-radius: 10%;
     border: 2px solid #97dcc7;
+}
+.sleep-input input {
+    margin-bottom: 1.5rem/* 24px */;
+    border-width: 2px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    padding-top: 0.5rem/* 8px */;
+    padding-bottom: 0.5rem/* 8px */;
+}
+input.error {
+    border: 1px solid #e7195a;
+    margin-bottom: 1.5rem/* 24px */;
+    border-width: 2px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    padding-top: 0.5rem/* 8px */;
+    padding-bottom: 0.5rem/* 8px */;
 }

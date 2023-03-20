@@ -1,12 +1,21 @@
 import { useSleepContext } from '../../hooks/useSleepChart';
 import './sleep.css';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const SleepCards =({ sleep }) => {
-    const { dispatch } = useSleepContext()
+    const { dispatch } = useSleepContext();
+    const { user } = useAuthContext();
+
     const handleClick = async() => {
+        if(!user){
+            return
+        }
         const response = await fetch('/sleep/' + sleep._id, {
-            method: 'DELETE'
-        })
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
         const json = await response.json()
 
         if(response.ok) {

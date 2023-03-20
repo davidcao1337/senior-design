@@ -3,7 +3,9 @@ import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 
 const getAllSleep = async(req, res) => {
-    const sleeps = await Sleep.find({}).sort({createdAt: -1})
+    const user_id = req.user._id
+
+    const sleeps = await Sleep.find({user_id}).sort({createdAt: -1})
 
     res.status(200).json(sleeps)
 }
@@ -26,8 +28,21 @@ const getSleep = async(req, res) => {
 const createSleep = async(req, res) => {
     const {date, hours, minutes} = req.body
 
+    let emptyFields = []
+    
+    if(!hours){
+        emptyFields.push('Hours')
+    }
+    if(!minutes){
+        emptyFields.push('Minutes')
+    }
+    if(emptyFields.length > 0){
+        return res.status(400).json({error: 'Please fill in all the required fields.', emptyFields })
+    }
+
     try {
-        const sleep = await Sleep.create({date, hours, minutes})
+        const user_id = req.user._id
+        const sleep = await Sleep.create({date, hours, minutes, user_id})
         res.status(200).json(sleep)
     } catch(error) {
         res.status(400).json({error: error.message})
