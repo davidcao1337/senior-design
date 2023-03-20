@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns';
-import { useExerciseContext } from '../../hooks/useExerciseChart';
+import { useExerciseContext } from '../../hooks/useExerciseContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const AddActivity = (props) => {

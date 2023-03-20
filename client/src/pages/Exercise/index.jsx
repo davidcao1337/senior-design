@@ -3,7 +3,7 @@ import './exercise.css';
 import NavBar from '../../components/NavBar';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
 import RightPanel from '../../components/RightPanel/exerciseRightPanel'
-import { useExerciseContext } from '../../hooks/useExerciseChart';
+import { useExerciseContext } from '../../hooks/useExerciseContext';
 import ExerciseCards from './exerciseCards';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useGoalsContext } from '../../hooks/useGoalsContext';

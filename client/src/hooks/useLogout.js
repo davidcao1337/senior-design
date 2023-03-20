@@ -1,7 +1,7 @@
 import { useAuthContext } from './useAuthContext';
 import { useGoalsContext } from './useGoalsContext';
-import { useExerciseContext } from './useExerciseChart';
-import { useSleepContext } from './useSleepChart';
+import { useExerciseContext } from './useExerciseContext';
+import { useSleepContext } from './useSleepContext';
 
 export const useLogout = () => {
     const { dispatch } = useAuthContext();

@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import React, { useState } from 'react';
-import { useSleepContext } from '../../hooks/useSleepChart';
+import { useSleepContext } from '../../hooks/useSleepContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const AddSleepData = (props) => {

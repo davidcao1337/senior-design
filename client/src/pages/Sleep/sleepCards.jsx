@@ -1,4 +1,4 @@
-import { useSleepContext } from '../../hooks/useSleepChart';
+import { useSleepContext } from '../../hooks/useSleepContext';
 import './sleep.css';
 import { useAuthContext } from '../../hooks/useAuthContext';
 

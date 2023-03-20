@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
 import SleepLineChart from '../../components/Charts/SleepLineChart';
 import RightBar from '../../components/RightPanel/sleepRightPanel';
-import { useSleepContext } from '../../hooks/useSleepChart';
+import { useSleepContext } from '../../hooks/useSleepContext';
 import SleepCards from './sleepCards';
 import './sleep.css';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -13,7 +13,6 @@ import { useGoalsContext } from '../../hooks/useGoalsContext';
 const Sleep = () => {
     const { sleeps, dispatch } = useSleepContext();
     const { user } = useAuthContext();
-    const [sleepGoal, setSleepGoal] = useState(null);
     const { goals, dispatch: goalDispatch } = useGoalsContext();
 
     useEffect( () => {
