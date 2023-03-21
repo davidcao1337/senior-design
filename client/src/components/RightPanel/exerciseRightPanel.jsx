@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Select from 'react-select';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import '../../pages/Exercise/exercise.css';
+import './rightPanel.css';
 import Popup from 'reactjs-popup';
-import AddActivity from '../../pages/Exercise/addActivity'
+import AddActivity from '../../pages/Exercise/addActivity';
+import lyfeonLogo from '../../assets/lyfeon-green.png';
 
 const ExerciseRightPanel = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -17,6 +17,7 @@ const ExerciseRightPanel = () => {
     return (
       <div className="right-panel">
         <div className='userCardContainer'>
+            <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
             <div className='userCard'></div>
         </div>
         <div className='calendar'>
@@ -35,7 +36,7 @@ const ExerciseRightPanel = () => {
                 </Popup>
             </div>
         </div>
-        <div className='recomendationSystem'></div>
+        <div className='recomendationSystem'>Recommendations:</div>
     </div>
     );
 };

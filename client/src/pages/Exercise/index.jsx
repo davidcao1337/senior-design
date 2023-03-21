@@ -109,7 +109,7 @@ const Exercise = () => {
                     <cardHeader>
                         <cardTitle> Weekily Progress </cardTitle>
                     </cardHeader>
-                    <ExerciseBarChart/>
+                    <ExerciseBarChart width='100%' height='330px'/>
                 </chartContainer>
             </activityContent>
             </content>

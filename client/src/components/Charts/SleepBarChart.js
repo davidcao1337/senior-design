@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-function SleepBar() {
+function SleepBar(props) {
   const chartRef = useRef(null);
   const { user } = useAuthContext();
 
@@ -96,7 +96,7 @@ function SleepBar() {
    
     return (
         <div>
-          <div className="Bar" ref={chartRef} style={{width:'110%',height:'300%'}}></div>
+          <div className="Bar" ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }

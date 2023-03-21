@@ -100,7 +100,7 @@ exerciseLabel {
 
 /* Bottom Container */
 activityContent {
-    height: 500px;
+    height: 450px;
     width: -webkit-calc(100% - 49px);
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -267,7 +267,7 @@ taskSelection.input {
     height: 50px; 
 }  
 .scrollable-exercises {
-    max-height: 380px;
+    max-height: 350px;
     overflow-y: auto;
 }
 .scrollable-exercises::-webkit-scrollbar {
