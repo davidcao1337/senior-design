@@ -25,7 +25,6 @@ const ExerciseRightPanel = () => {
                 <Calendar 
                   onChange={setSelectedDate}
                   value={selectedDate}
-                  calendarType="US"
                   onClickDay={() => setOpenPopup(true)}
                 />
                 <Popup open={openPopup} onClose={() => setOpenPopup(false)} position="left center">
