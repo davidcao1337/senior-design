@@ -14,6 +14,7 @@ const Preferences = () => {
                     <div className="preferences-container card bg-base-100">
                         <div className="card-body">
                             <h1>Preferences</h1>
+                            <p className="text-[#748AA1]">More preference options will be added at a later time.</p>
                         </div>
                     </div>
                 </div>

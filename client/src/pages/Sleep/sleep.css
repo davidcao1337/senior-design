@@ -7,17 +7,6 @@ section {
     background-color: #F5F6FA;
 }
 
-test {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-}
-
-nav {
-    height: 100%;
-    width: 144px;
-}
-
 content {
     height: 100%;
     width: -webkit-calc(100% - 325px);
@@ -110,7 +99,6 @@ addSleep{
 sleepBarChart{
     height: 100%;
     width: 100%;
-    padding-top: 10px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
@@ -119,19 +107,53 @@ sleepBarChart{
 }
 
 /* Bottom Container */
-sleepAveContainer {
+sleepBottomContent {
+    height: 380px;
+    width: -webkit-calc(100% - 49px);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
     margin-top: 20px;
+}
+sleepAveContainer {
     height: 360px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
     border-radius: 15px;
     padding: 22px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    flex-direction: column;
+}
+sleepDataTitle {
+    font-weight: bold;
+    font-size: 25px;
+    padding-left: 20px;
+    height: 80px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+sleepData {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
 }
 /* # Line Chart # */
 sleepLineChart{
+    width: 100%;
     height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 /* ## Bottom Title ## */
 chartHeader {
@@ -211,4 +233,67 @@ sleepCalendar{
   display: inline;
   margin: 10px;
   font-weight: 200;
+}
+.scrollable-sleeps {
+    max-height: 280px;
+    overflow-y: auto;
+}
+.scrollable-sleeps::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+.sleep-cards {
+    background: #fff;
+    border-radius: 4px;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+.sleep-cards h4 {
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #18B283;
+}
+.sleep-cards p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+.sleep-cards span {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    font-size: small;
+    cursor: pointer;
+    background-color: white;
+    color: #18B283;
+    padding: 6px;
+    border-radius: 10%;
+    border: 2px solid #97dcc7;
+}
+.sleep-input input {
+    margin-bottom: 1.5rem/* 24px */;
+    border-width: 2px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    padding-top: 0.5rem/* 8px */;
+    padding-bottom: 0.5rem/* 8px */;
+}
+input.error {
+    border: 1px solid #e7195a;
+    margin-bottom: 1.5rem/* 24px */;
+    border-width: 2px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 0.5rem/* 8px */;
+    padding-right: 0.5rem/* 8px */;
+    padding-top: 0.5rem/* 8px */;
+    padding-bottom: 0.5rem/* 8px */;
 }

@@ -1,12 +1,19 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 function SleepBar() {
   const chartRef = useRef(null);
+  const { user } = useAuthContext();
+
   const [data, setData] = useState([]);
   
   const fetchData = async () => {
-    const response = await fetch('/sleep');
+    const response = await fetch('/sleep', {
+      headers: {
+          'Authorization': `Bearer ${user.token}`
+      }
+    });
     const json = await response.json()
     if(response.ok){
       return json
@@ -14,6 +21,9 @@ function SleepBar() {
   };
 
     useEffect( () => {
+      if(!user){
+        return
+      }
       const fetchDataAndRenderChart = async () => {
         const newData = await fetchData();
         setData(newData);
@@ -28,7 +38,10 @@ function SleepBar() {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => item.date),
+            data: newData.map((item) => {
+              const dateObj = new Date(item.date);
+              return dateObj.toISOString().split('T')[0];
+            }),
           },
           yAxis: {
             type: 'value',
@@ -38,7 +51,7 @@ function SleepBar() {
           },
           series: [
             {
-              name: 'mins',
+              name: 'Sleep hours:',
               type: 'bar',
               data: newData.map((item) => item.hours + parseFloat((item.minutes/60).toFixed(1))),
               itemStyle: {
@@ -50,6 +63,12 @@ function SleepBar() {
                 shadowBlur: 3,
                 opacity: 0.5
                 },
+                markPoint: {
+                data: [
+                  { type: 'max', name: 'Max' },
+                  { type: 'min', name: 'Min' }
+                ]
+              }
             },
           ],
         });
@@ -77,7 +96,7 @@ function SleepBar() {
    
     return (
         <div>
-          <div className="Bar" ref={chartRef} style={{width:'110%',height:'280%'}}></div>
+          <div className="Bar" ref={chartRef} style={{width:'110%',height:'300%'}}></div>
         </div>
     )
 }

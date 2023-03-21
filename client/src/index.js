@@ -6,6 +6,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import { GoalsContextProvider } from './context/GoalContext';
 import { ExerciseContextProvider } from './context/ExerciseContext';
 import { SleepContextProvider } from './context/SleepContext';
+import { FoodItemContextProvider } from './context/FoodItemContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +15,9 @@ root.render(
       <GoalsContextProvider>
       <ExerciseContextProvider>
       <SleepContextProvider>
+      <FoodItemContextProvider>
       <App />
+      </FoodItemContextProvider>
       </SleepContextProvider>
       </ExerciseContextProvider>
       </GoalsContextProvider>

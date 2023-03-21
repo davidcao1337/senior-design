@@ -14,6 +14,7 @@ const Notifications = () => {
                     <div className="notifications-container card bg-base-100">
                         <div className="card-body">
                             <h1>Notifications</h1>
+                            <p className="text-[#748AA1]">Notifications are not supported at this time.</p>
                         </div>
                     </div>
                 </div>

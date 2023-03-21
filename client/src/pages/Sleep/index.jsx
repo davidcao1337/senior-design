@@ -3,40 +3,47 @@ import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
 import SleepLineChart from '../../components/Charts/SleepLineChart';
-import Popup from 'reactjs-popup';
-import SleepGoal from './sleepGoal';
 import RightBar from '../../components/RightPanel/sleepRightPanel';
-import { useSleepContext } from '../../hooks/useSleepChart';
+import { useSleepContext } from '../../hooks/useSleepContext';
+import SleepCards from './sleepCards';
 import './sleep.css';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useGoalsContext } from '../../hooks/useGoalsContext';
+
 const Sleep = () => {
-    const { sleeps, dispatch } = useSleepContext()
-    const [sleepTime, setTime] = useState([8.5, 8.2, 8.2, 7.9, 7.8, 8.5, 8.6, 7.9, 8.0, 8.4, 8.1, 8.0, 8.9, 7.6, 7.9, 10.0, 8.8, 11.0, 9.5]);
-    const [sleepWeek, setWeek] = useState(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
-    const [displayTime, setDisplay] = useState();
-    const [sleepGoal, setGoal] = useState();
-    const [aveSleep, setAve] = useState();
-    //const [sleeps, setSleeps] = useState(null);
-
-    const updateSleepGoal = (newGoal) => {
-        const time = Number(newGoal);
-        const hours = Math.floor(time);
-        const mins = Math.floor(time % Math.floor(time) * 60);
-        setGoal(hours + ' hrs '+ mins + ' mins');
-    }
-
+    const { sleeps, dispatch } = useSleepContext();
+    const { user } = useAuthContext();
+    const { goals, dispatch: goalDispatch } = useGoalsContext();
 
     useEffect( () => {
         const fetchSleeps = async () => {
-            const response = await fetch('/sleep')
+            const response = await fetch('/sleep', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
             const json = await response.json()
 
             if(response.ok){
                 dispatch({type: 'SET_SLEEPS', payload: json})
             }
         }
-
-        fetchSleeps()
-    },[])
+        const fetchSleepGoal = async() => {
+             const response = await fetch('/goals', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const json = await response.json()
+            if(response.ok){
+                goalDispatch({type: 'SET_GOALS', payload: json})
+            }
+        }
+        if(user){
+            fetchSleeps();
+            fetchSleepGoal();
+        }
+    },[dispatch, user])
     
     return(
         <section>
@@ -68,25 +75,37 @@ const Sleep = () => {
                                 </sleepLogSection>
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Goal </div></sleepLabel>
-                                    <sleepTime><div> {sleepGoal} </div></sleepTime>
-                                        <Popup trigger={<button> Edit </button>} position="right center">
-                                            <SleepGoal onEditGoal={updateSleepGoal} />
-                                        </Popup>
+                                    <div class="text-center font-semibold text-3xl">
+                                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
+                                            goals[0].goalType === 'sleep' ? goals[0].description
+                                            : goals[1].goalType === 'sleep' ? goals[1].description
+                                            : "Sleep goal not found"
+                                            )
+                                        }
+                                    </div>
                                 </sleepLogSection>
                             </statusContent>
                             <sleepBarChart>
-                                <SleepBarChart sleepTime={sleepTime} sleepWeek={sleepWeek}/>
+                                <SleepBarChart />
                             </sleepBarChart>
                         </statusContainer>
                     </sleepLogContainer>
-                    <sleepAveContainer>
+                    <sleepBottomContent>
+                        <sleepData>
+                            <sleepDataTitle>Sleep Data</sleepDataTitle>
+                            <div className="scrollable-sleeps">
+                                <div className="sleeps">
+                                    {sleeps && sleeps.map((sleep) => (
+                                        <SleepCards key={sleep._id} sleep={sleep} />
+                                    ))}
+                                </div>
+                            </div>
+                        </sleepData>
                     <sleepLineChart>
-                        <cardTitle>
-                            7 days average sleep time: {aveSleep}
-                        </cardTitle>
+                        <cardTitle>Weekly Sleep Time</cardTitle>
                         <SleepLineChart />
                     </sleepLineChart>
-                    </sleepAveContainer>    
+                    </sleepBottomContent>    
             </content>
             <RightBar />
         </section>

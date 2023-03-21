@@ -18,13 +18,13 @@ router.get('/dashboard', (req, res) => {
 //     res.end(JSON.stringify(str))
 // });
 
-router.get('/nutrition', (req, res) => {
-    const str = [{
-        "name": "Nutrition",
-        "msg": "Eating healthy!"
-    }];
-    res.end(JSON.stringify(str))
-});
+// router.get('/nutrition', (req, res) => {
+//     const str = [{
+//         "name": "Nutrition",
+//         "msg": "Eating healthy!"
+//     }];
+//     res.end(JSON.stringify(str))
+// });
 
 // router.get('/sleep', (req, res) => {
 //     const str = [{

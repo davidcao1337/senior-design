@@ -69,6 +69,9 @@ const Dashboard = () => {
             </content>
 
 
+            </content>
+            
+
             <RightPanel />
         </section>
     );

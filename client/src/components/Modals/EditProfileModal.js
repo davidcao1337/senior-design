@@ -22,6 +22,7 @@ const EditProfileModal = (props) => {
 
     const handleSave = async (e) => {
         e.preventDefault()
+        var errorMsg = ""
 
         // Validate Profile Updates
         // Remove Empty (null) Fields
@@ -31,7 +32,6 @@ const EditProfileModal = (props) => {
             }
         }
         // Convert Height string into a Number (if field populated)
-        var errorMsg = ''
         if (profileUpdates.hasOwnProperty('height')) {
             const tempHeight = Number(profileUpdates.height)
             if (isNaN(tempHeight)) {
@@ -54,25 +54,24 @@ const EditProfileModal = (props) => {
             method: 'PATCH',
             body: JSON.stringify(profileUpdates),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }
         })
-        const user = await userData.json()
+        const userDataJson = await userData.json()
 
-        if (!user.ok) {
-            errorMsg = user.error
+        if (!userData.ok) {
+            errorMsg = userDataJson.error
             setError(errorMsg)
         }
-        if (user.ok) {
+        if (userData.ok) {
             setName('')
             setBirthday(null)
             setHeight(null)
             setWeight(null)
             setError(null)
-            console.log('User updated!', user)
-        }
 
-        props.toggleModalVisibility()
+            props.toggleModalVisibility()
+        }
     }
 
     return (
@@ -102,10 +101,10 @@ const EditProfileModal = (props) => {
                         </form>
                     </div>
                     <div className="buttons-container flex flex-row justify-center">
-                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={!error && handleSave}>Save</button>
+                        <button className="mb-3 mr-10 pr-7 pl-7 btn btn-primary rounded-md" onClick={handleSave}>Save</button>
                         <button className="ml-10 btn" onClick={toggleModalVisibility}>Cancel</button>
                     </div>
-                    {error && <div className="error">{error}</div>}
+                    {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{error}</div>}
             </div>
         </div>
     )
