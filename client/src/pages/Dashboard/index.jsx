@@ -67,9 +67,6 @@ const Dashboard = () => {
                 </div>
 
             </content>
-
-
-            </content>
             
 
             <RightPanel />
