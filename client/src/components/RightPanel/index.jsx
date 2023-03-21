@@ -3,11 +3,12 @@ import Calendar from 'react-calendar';
 import './rightPanel.css';
 import lyfeonLogo from '../../assets/lyfeon-green.png'
 
-const RightPanel = () => {
+const RightPanel = ( props ) => {
     const [date, setDate] = React.useState(new Date());
 
     const handleDateChange = (value) => {
         setDate(value);
+        props.props.props.date = value;
     };
 
     return (
@@ -17,7 +18,7 @@ const RightPanel = () => {
             </div>
             <div className='calendar'>
                 <div className="calendar-container">
-                    <Calendar onChange={setDate} value={date}/>
+                    <Calendar onChange={handleDateChange} value={date}/>
                 </div>
             </div>
             <div className='recomendationSystem'></div>
