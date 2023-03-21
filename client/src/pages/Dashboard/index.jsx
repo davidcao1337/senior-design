@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
+//import './dashboard.css';
 import './dashboard.css';
 import WeightLineChart from '../../components/Charts/WeightLineChart';
 import RightPanel from '../../components/RightPanel';
+//import RightPanel from '../../components/RightPanel/sleepRightPanel'
 
 const Dashboard = () => {
     useEffect(() => {
@@ -21,7 +23,15 @@ const Dashboard = () => {
     return (
         <section className="dashboard">
             <NavBar />
-            <div className="dashboard-header">My Dashboard</div>
+            <content>
+                <titleContainer>
+                    <div> My Dashboard</div>
+                </titleContainer>
+
+            
+            
+                        
+            {/* <div className="dashboard-header">My Dashboard</div> */}
             {/* <div className="content">
                 {items.map(item => (
                     <div key={item.id}>
@@ -55,6 +65,9 @@ const Dashboard = () => {
                     <div className="nutrition-value">12g</div>
                 </div>
             </div>
+
+            </content>
+            
 
             <RightPanel />
         </section>
