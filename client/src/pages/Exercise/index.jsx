@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './exercise.css';
 import NavBar from '../../components/NavBar';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
@@ -82,12 +82,7 @@ const Exercise = () => {
                 <exerciseLogSection>
                     <exerciseLabel><div> Exercise goal </div></exerciseLabel>
                     <div className="text-center font-semibold text-3xl">
-                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
-                            goals[0].goalType === 'exercise' ? goals[0].description
-                            : goals[1].goalType === 'exercise' ? goals[1].description
-                            : "Exercise goal not found"
-                            )
-                        }
+                        {goals && goals.find(goal => goal.goalType === 'exercise')?.description}
                     </div>
                 </exerciseLogSection>
                 </innerContainer>

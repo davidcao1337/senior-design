@@ -35,7 +35,7 @@ const SleepRightPanel = () => {
                  </Popup>
                 </div>
             </div>
-            <div className='recomendationSystem'>Recommendations:</div>
+            <div className='recomendationSystem'></div>
         </div>
         
     );

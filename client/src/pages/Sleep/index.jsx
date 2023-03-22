@@ -76,12 +76,7 @@ const Sleep = () => {
                                 <sleepLogSection>
                                     <sleepLabel><div> Sleep Goal </div></sleepLabel>
                                     <div class="text-center font-semibold text-2xl">
-                                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
-                                            goals[0].goalType === 'sleep' ? goals[0].description
-                                            : goals[1].goalType === 'sleep' ? goals[1].description
-                                            : "Sleep goal not found"
-                                            )
-                                        }
+                                        {goals && goals.find(goal => goal.goalType === 'sleep')?.description}
                                     </div>
                                 </sleepLogSection>
                             </statusContent>
