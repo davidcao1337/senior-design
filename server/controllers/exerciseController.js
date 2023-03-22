@@ -1,5 +1,4 @@
 import Exercise from "../models/exerciseModel.js"
-import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
 
 const getAllExercise = async(req, res) => {

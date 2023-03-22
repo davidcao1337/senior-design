@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-function SleepLine() {
+function SleepLine(props) {
   const chartRef = useRef(null);
   const { user } = useAuthContext();
 
@@ -106,7 +106,7 @@ function SleepLine() {
 
     return (
         <div>
-            <div ref={chartRef} style={{width:'100%',height:'300%'}}></div>
+            <div ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }

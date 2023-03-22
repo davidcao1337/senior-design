@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-function ExerciseBar() {
+function ExerciseBar(props) {
   const { user } = useAuthContext()
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
@@ -95,7 +95,7 @@ function ExerciseBar() {
     
     return (
         <div>
-            <div className="Bar h-full w-full" ref={chartRef} style={{width:'100%',height:'400%'}}></div>
+            <div className="exerciseBar" ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }
