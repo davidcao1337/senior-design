@@ -92,7 +92,7 @@ const AddActivity = (props) => {
                             </div>
                             <div className="ml-5 mr-5"></div>
                             <div className='flex flex-col'>
-                                <label>Cardio type:</label>
+                                <label>Cardio name:</label>
                                 <input 
                                     className={emptyFields.includes('ExerciseType') ? 'error' : ''}
                                     class="mb-6 border-2 w-full rounded-[5px] px-2 py-2" 

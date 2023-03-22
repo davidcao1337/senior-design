@@ -77,7 +77,7 @@ const Sleep = () => {
                                 </div>
                                 <div className="sleepLogSection">
                                     <div className="sleepLabel"> Sleep Goal </div>
-                                    <div class="text-center font-semibold text-2xl">
+                                    <div className="text-center font-semibold text-2xl">
                                         {goals && goals.find(goal => goal.goalType === 'sleep')?.description}
                                     </div>
                                 </div>
