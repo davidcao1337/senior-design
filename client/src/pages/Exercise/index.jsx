@@ -49,49 +49,49 @@ const Exercise = () => {
         <section>
             <NavBar />
             <content>
-            <titleContainer>
+            <div className="titleContainer">
                 <div>Exercise</div>
-            </titleContainer>
-            <exerciseLogContainer>
-                <cardHeader>
-                    <cardTitle>Weekly Summary</cardTitle>
-                </cardHeader>
-                <innerContainer>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Exercise Time </div></exerciseLabel>
-                    <exerciseDisplay>
+            </div>
+            <div className="exerciseLogContainer">
+                <div className="cardHeader">
+                    <div className="cardTitle">Weekly Summary</div>
+                </div>
+                <div className="innerContainer">
+                <div className="exerciseLogSection">
+                    <div className="exerciseLabel"> Exercise Time </div>
+                    <div className="exerciseDisplay">
                         <div className="exercise-info"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.time || 0);
                             }, 0)} 
                             <p>mins</p>
                         </div>    
-                    </exerciseDisplay>
-                </exerciseLogSection>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Calories Burned </div></exerciseLabel>
-                    <exerciseDisplay>
+                    </div>
+                </div>
+                <div className="exerciseLogSection">
+                    <div className="exerciseLabel"> Calories Burned </div>
+                    <div className="exerciseDisplay">
                         <div className="exercise-info"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.calorie || 0);
                             }, 0)}  
                             <p>kCals</p>
                         </div>
-                    </exerciseDisplay>
-                </exerciseLogSection>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Exercise goal </div></exerciseLabel>
+                    </div>
+                </div>
+                <div className="exerciseLogSection">
+                    <div className="exerciseLabel"> Exercise goal </div>
                     <div className="text-center font-semibold text-3xl">
                         {goals && goals.find(goal => goal.goalType === 'exercise')?.description}
                     </div>
-                </exerciseLogSection>
-                </innerContainer>
-            </exerciseLogContainer>
-            <activityContent>
-                <activityContainer>
-                    <cardHeaderTypeTwo>
-                        <activityTitleText>Activities</activityTitleText>
-                    </cardHeaderTypeTwo>
+                </div>
+                </div>
+            </div>
+            <div className="activityContent">
+                <div className="activityContainer">
+                    <div className="cardHeaderTypeTwo">
+                        <div className="activityTitleText">Activities</div>
+                    </div>
                     <div className="scrollable-exercises">
                         <div className="exercises">
                             {exercises && exercises.map((exercise) => (
@@ -99,14 +99,12 @@ const Exercise = () => {
                             ))}
                         </div>            
                     </div>
-                </activityContainer>
-                <chartContainer>
-                    <cardHeader>
-                        <cardTitle> Weekily Progress </cardTitle>
-                    </cardHeader>
-                    <ExerciseBarChart width='100%' height='330px'/>
-                </chartContainer>
-            </activityContent>
+                </div>
+                <div className="chartContainer">
+                    <div className="cardTitle"> Weekily Progress </div>
+                    <ExerciseBarChart width='100%' height='380%'/>
+                </div>
+            </div>
             </content>
             <RightPanel />
         </section>

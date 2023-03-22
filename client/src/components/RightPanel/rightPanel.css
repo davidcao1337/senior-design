@@ -50,6 +50,19 @@
     order: 3;
     border-top: 3px solid #F5F6FA;
 }
+.recTitle {
+    width: 100%;
+    color:#18B283;
+    flex-grow : 1;
+    background-color: white;
+    order: 3;
+    border-top: 3px solid #F5F6FA;
+}
+
+.recomendation {
+    color: black;
+    text-decoration: none;
+}
 
 .react-calendar {
     width: 100%;
