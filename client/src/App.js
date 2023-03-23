@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import { Login } from './pages/Login/index_login';
 import { Register } from './pages/Login/index_register';
+import ForgotPassword from './pages/Login/index_forgotPassword';
 import Profile from './pages/Account/index_profile';
 import Settings from './pages/Account/index_settings';
 import Privacy from './pages/Account/index_privacy';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/dashboard" />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/account/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
           <Route path="/account/settings" element={user ? <Settings /> : <Navigate to="/login" />} />
           <Route path="/account/privacy" element={user ? <Privacy /> : <Navigate to="/login" />} />
