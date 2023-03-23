@@ -10,9 +10,13 @@ export const Login = () => {
     const {login, error, isLoading} = useLogin();
 
     let navigate = useNavigate();
-    const routeChange = () =>{
+    const routeChange = () => {
         let path = '/register'
         navigate(path);
+    }
+    const navigateForgot = () => {
+        let path = '/forgot-password'
+        navigate(path)
     }
 
     const handleSubmit = async (e) => {
@@ -40,7 +44,7 @@ export const Login = () => {
                             <input className="accent-lyfeon-green checked:checkmark-white" type="checkbox" />
                             <p className="text-[#A1A1A1]">Remember Me</p>
                         </div>
-                        <button className="float-right text-semibold text-lyfeon-green">Forgot Password?</button>
+                        <button className="float-right text-semibold text-lyfeon-green" onClick={navigateForgot}>Forgot Password?</button>
                     </div>
                     <button className="mt-10 mb-24 w-full font-extrabold text-lg text-white bg-lyfeon-green rounded-[6px] px-16 py-3" type="submit" disabled={isLoading}>Log In</button>
                     {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{error}</div>}
