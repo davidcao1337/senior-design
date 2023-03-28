@@ -17,7 +17,7 @@ app.use(bodyParser.json({limit: '10mb'}));
 app.use(express.json());
 
 // MongoDB Connection
-const uri = process.env.MONGO_DB_URI;
+const uri = 'mongodb+srv://anshuta:pXaHod1D5nqJDX2C@lyfeoncluster.7xvhbkd.mongodb.net/?retryWrites=true&w=majority';
 async function connect() {
     try {
         await mongoose.connect(uri);
