@@ -74,9 +74,15 @@ const ExerciseRightPanel = () => {
                 </Popup>
             </div>
         </div>
-        <div className='recTitle underline'>Recommendations:
-            <div className='recomendation'> Your favorite exercise: {mostFrequentType} </div>
+        <div className='recTitle'>
+          <div className='p-5'>
+              <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                  <h5 class="mb-2 text-center text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Your favorite exercise</h5>
+                  <p class="font-normal text-center text-gray-700 dark:text-gray-400">{mostFrequentType}</p>
+              </a>
+          </div>
         </div>
+        
     </div>
     );
 };
