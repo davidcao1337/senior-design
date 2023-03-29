@@ -80,7 +80,7 @@ const Profile = () => {
                         <div className="profile-container card bg-base-100">
                             <div className="card-body flex flex-col">
                                 <button onClick={toggleProfilePictureModal}>
-                                    <img src={userAvatar} width="160" height= "160" className="hover:brightness-75 mr-5 ml-5" />
+                                    <img src={userAvatar} width="160" height="160" className="hover:brightness-75 mr-5 ml-5" />
                                 </button>
                                 <div className="full-name mb-5 flex flex-row justify-center">
                                     <h1>{userName}</h1>
