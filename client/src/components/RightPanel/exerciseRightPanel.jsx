@@ -5,13 +5,12 @@ import './rightPanel.css';
 import Popup from 'reactjs-popup';
 import AddActivity from '../../pages/Exercise/addActivity';
 import lyfeonLogo from '../../assets/lyfeon-green.png';
-import { useExerciseContext } from '../../hooks/useExerciseContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const ExerciseRightPanel = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [openPopup, setOpenPopup] = useState(false);
-    const { exercises, dispatch } = useExerciseContext();
+    const [exercises, setExercises] = useState(null)
     const { user } = useAuthContext();
     const [mostFrequentType, setMostFrequentType] = useState(null);
 
@@ -21,7 +20,7 @@ const ExerciseRightPanel = () => {
 
     useEffect(() => {
         const fetchExercise = async () => {
-            const response = await fetch('/exercise', {
+            const response = await fetch('/exercise/rec', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -29,29 +28,15 @@ const ExerciseRightPanel = () => {
             const json = await response.json()
 
             if(response.ok){
-                dispatch({type: 'SET_EXERCISES', payload: json})
-                const findMostFrequentExerciseType = (exercises) => {
-                    const frequencyMap = exercises.reduce((acc, exercise) => {
-                      acc[exercise.exerciseType] = (acc[exercise.exerciseType] || 0) + 1;
-                      return acc;
-                    }, {});
-              
-                    let maxCount = 0;
-                    let mostFrequent = null;
-                    for (const exerciseType in frequencyMap) {
-                      if (frequencyMap[exerciseType] > maxCount) {
-                        maxCount = frequencyMap[exerciseType];
-                        mostFrequent = exerciseType;
-                      }
-                    }
-                    return mostFrequent;
-                  };
-              
-                  setMostFrequentType(findMostFrequentExerciseType(exercises));
+                setExercises(json)
+                
+                // TODO: Frequency Algorithm
+                
+
             }
         }
         fetchExercise();
-      }, [dispatch, user]);
+      }, [user]);
 
     return (
       <div className="right-panel">
