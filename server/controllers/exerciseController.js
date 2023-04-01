@@ -1,6 +1,12 @@
 import Exercise from "../models/exerciseModel.js"
 import mongoose from "mongoose"
 
+const getExerciseCollection = async(req, res) => {
+    const exercises = await Exercise.find()
+
+    res.status(200).json(exercises)
+}
+
 const getAllExercise = async(req, res) => {
     const user_id = req.user._id
 
@@ -87,4 +93,4 @@ const updateExercise = async(req, res) => {
     res.status(200).json(exercise)
 }
 
-export {createExercise, getAllExercise, getExercise, deleteExercise, updateExercise}
+export {createExercise, getExerciseCollection, getAllExercise, getExercise, deleteExercise, updateExercise}

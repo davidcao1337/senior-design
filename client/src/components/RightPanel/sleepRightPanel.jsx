@@ -18,7 +18,7 @@ const SleepRightPanel = () => {
         <div className="right-panel">
             <div className='userCardContainer'>
                 <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
-                <div className='userCard'></div>
+                <div className='userCardTypeA'> <div className='text-center text-xl tracking-tight'>Click a date to add sleep</div></div>
             </div>
             <div className='calendar'>
                 <div className="calendar-container">
