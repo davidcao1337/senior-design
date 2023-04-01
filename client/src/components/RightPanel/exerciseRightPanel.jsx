@@ -11,10 +11,9 @@ import { useExerciseContext } from '../../hooks/useExerciseContext';
 const ExerciseRightPanel = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [openPopup, setOpenPopup] = useState(false);
-    //const [exercises, setExercises] = useState(null)
     const { exercises, dispatch } = useExerciseContext();
     const { user } = useAuthContext();
-    const [topThreeFrequentTypes, setTopThreeFrequentTypes] = useState([])
+    const [topThreeFrequentTypes, setTopThreeFrequentTypes] = useState([]);
 
     const closePop = () => {
         setOpenPopup(false)
@@ -55,7 +54,7 @@ const ExerciseRightPanel = () => {
       <div className="right-panel">
         <div className='userCardContainer'>
             <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
-            <div className='userCard'></div>
+            <div className='userCardTypeA'> <div className='text-center text-xl tracking-tight'>Click a date to add activity</div></div>
         </div>
         <div className='calendar'>
             <div className="calendar-container">
