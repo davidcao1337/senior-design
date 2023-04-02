@@ -6,14 +6,12 @@ import Popup from 'reactjs-popup';
 import AddActivity from '../../pages/Exercise/addActivity';
 import lyfeonLogo from '../../assets/lyfeon-green.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { useExerciseContext } from '../../hooks/useExerciseContext';
 
 const ExerciseRightPanel = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [openPopup, setOpenPopup] = useState(false);
-    const { exercises, dispatch } = useExerciseContext();
+    const [exercises, setExercises] = useState([]);
     const { user } = useAuthContext();
-    const [topThreeFrequentTypes, setTopThreeFrequentTypes] = useState([]);
 
     const closePop = () => {
         setOpenPopup(false)
@@ -29,26 +27,39 @@ const ExerciseRightPanel = () => {
             const json = await response.json()
 
             if(response.ok){
-                dispatch({type: 'SET_EXERCISES', payload: json})
-                const findTopThreeFrequentExerciseTypes = (exercises) => {
-                  const frequencyMap = exercises.reduce((acc, exercise) => {
-                    acc[exercise.exerciseType] = (acc[exercise.exerciseType] || 0) + 1;
-                    return acc;
-                  }, {});
-            
-                  const sortedTypes = Object.entries(frequencyMap)
-                    .sort((a, b) => b[1] - a[1])
-                    .slice(0, 3)
-                    .map(([exerciseType]) => exerciseType);
-            
-                  return sortedTypes;
-                };
-            
-                setTopThreeFrequentTypes(findTopThreeFrequentExerciseTypes(exercises));
+              setExercises(json)
             }
         }
         fetchExercise();
-      }, [dispatch, user]);
+      }, [user]);
+
+      const topThreeFrequentTypes = findTopThreeFrequentExerciseTypes(exercises);
+
+      function findTopThreeFrequentExerciseTypes(exercises) {
+        var exercisesFreq = {}
+        
+        // Create array to track exercise frequencies
+        exercises.forEach(function(exercise) {
+          if (!Object.keys(exercisesFreq).includes(exercise.exerciseType)){
+            exercisesFreq[exercise.exerciseType] = 1
+          }
+          else {
+            exercisesFreq[exercise.exerciseType] += 1
+          }
+        })
+  
+        // Sort array in descending order
+        var sortedExercisesFreq = Object.entries(exercisesFreq)
+          .sort((a,b) => b[1] - a[1])
+          .reduce((obj, [key, value]) => {
+            obj[key] = value
+            return obj
+          }, {})
+        
+        // Get top 3 exercises
+        const topThreeExercises = Object.keys(sortedExercisesFreq).slice(0, 3)
+        return topThreeExercises
+      };
 
     return (
       <div className="right-panel">
@@ -76,11 +87,11 @@ const ExerciseRightPanel = () => {
               <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                   <h5 class="mb-2 text-center text-1xl font-bold tracking-tight text-gray-900 dark:text-white">Recommended exercises</h5>
                   <p class="font-normal text-center text-gray-700 dark:text-gray-400">
-                    {topThreeFrequentTypes[0] && topThreeFrequentTypes[0]}
+                    {topThreeFrequentTypes[0]}
                     <br />
-                    {topThreeFrequentTypes[1] && topThreeFrequentTypes[1]}
+                    {topThreeFrequentTypes[1]}
                     <br />
-                    {topThreeFrequentTypes[2] && topThreeFrequentTypes[2]}
+                    {topThreeFrequentTypes[2]}
                   </p>
               </a>
           </div>
