@@ -25,7 +25,7 @@ function SleepBar(props) {
         return
       }
       const fetchDataAndRenderChart = async () => {
-        const newData = await fetchData();
+        const newData = (await fetchData()).slice(0, 30);
         setData(newData);
   
         const chartInstance = echarts.init(chartRef.current);
@@ -38,7 +38,11 @@ function SleepBar(props) {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => {
+            data: newData.sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return dateA - dateB;
+            }).map((item) => {
               const dateObj = new Date(item.date);
               return dateObj.toISOString().split('T')[0];
             }),
