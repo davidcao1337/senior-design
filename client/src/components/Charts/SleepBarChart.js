@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-function SleepBar() {
+function SleepBar(props) {
   const chartRef = useRef(null);
   const { user } = useAuthContext();
 
@@ -25,7 +25,7 @@ function SleepBar() {
         return
       }
       const fetchDataAndRenderChart = async () => {
-        const newData = await fetchData();
+        const newData = (await fetchData()).slice(0, 30);
         setData(newData);
   
         const chartInstance = echarts.init(chartRef.current);
@@ -38,7 +38,11 @@ function SleepBar() {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => {
+            data: newData.sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return dateA - dateB;
+            }).map((item) => {
               const dateObj = new Date(item.date);
               return dateObj.toISOString().split('T')[0];
             }),
@@ -96,7 +100,7 @@ function SleepBar() {
    
     return (
         <div>
-          <div className="Bar" ref={chartRef} style={{width:'110%',height:'300%'}}></div>
+          <div className="Bar" ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }

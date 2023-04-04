@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './exercise.css';
 import NavBar from '../../components/NavBar';
 import ExerciseBarChart from '../../components/Charts/ExerciseBarChart';
@@ -49,54 +49,55 @@ const Exercise = () => {
         <section>
             <NavBar />
             <content>
-            <titleContainer>
+            <div className="titleContainer">
                 <div>Exercise</div>
-            </titleContainer>
-            <exerciseLogContainer>
-                <cardHeader>
-                    <cardTitle>Weekly Summary</cardTitle>
-                </cardHeader>
-                <innerContainer>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Exercise Time </div></exerciseLabel>
-                    <exerciseDisplay>
-                        <div className="exercise-info"> 
+            </div>
+            <div className="exerciseLogContainer">
+                <div className="cardHeader">
+                    <div className="cardTitle">Weekly Summary</div>
+                </div>
+                <div className="innerContainer">
+                <div className="exerciseLogSection">
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo"> Exercise Time </div>
+                    </div>
+                    <div className="exerciseDisplay">
+                        <div className="exercise-info mt-4"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.time || 0);
                             }, 0)} 
                             <p>mins</p>
                         </div>    
-                    </exerciseDisplay>
-                </exerciseLogSection>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Calories Burned </div></exerciseLabel>
-                    <exerciseDisplay>
-                        <div className="exercise-info"> 
+                    </div>
+                </div>
+                <div className="exerciseLogSection">
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo">Calories Burned</div>
+                    </div>
+                    <div className="exerciseDisplay">
+                        <div className="exercise-info mt-4"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.calorie || 0);
                             }, 0)}  
                             <p>kCals</p>
                         </div>
-                    </exerciseDisplay>
-                </exerciseLogSection>
-                <exerciseLogSection>
-                    <exerciseLabel><div> Exercise goal </div></exerciseLabel>
-                    <div className="text-center font-semibold text-3xl">
-                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
-                            goals[0].goalType === 'exercise' ? goals[0].description
-                            : goals[1].goalType === 'exercise' ? goals[1].description
-                            : "Exercise goal not found"
-                            )
-                        }
                     </div>
-                </exerciseLogSection>
-                </innerContainer>
-            </exerciseLogContainer>
-            <activityContent>
-                <activityContainer>
-                    <cardHeaderTypeTwo>
-                        <activityTitleText>Activities</activityTitleText>
-                    </cardHeaderTypeTwo>
+                </div>
+                <div className="exerciseLogSection">
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo"> Exercise goal </div>
+                    </div>
+                    <div className="text-center mt-4 font-semibold text-3xl">
+                        {goals && goals.find(goal => goal.goalType === 'exercise')?.description}
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div className="activityContent">
+                <div className="activityContainer">
+                    <div className="cardHeaderTypeTwo">
+                        <div className="activityTitleText">Activities</div>
+                    </div>
                     <div className="scrollable-exercises">
                         <div className="exercises">
                             {exercises && exercises.map((exercise) => (
@@ -104,14 +105,12 @@ const Exercise = () => {
                             ))}
                         </div>            
                     </div>
-                </activityContainer>
-                <chartContainer>
-                    <cardHeader>
-                        <cardTitle> Weekily Progress </cardTitle>
-                    </cardHeader>
-                    <ExerciseBarChart/>
-                </chartContainer>
-            </activityContent>
+                </div>
+                <div className="chartContainer">
+                    <div className="cardTitle"> Weekily Progress </div>
+                    <ExerciseBarChart width='100%' height='380%'/>
+                </div>
+            </div>
             </content>
             <RightPanel />
         </section>

@@ -10,14 +10,6 @@ section {
     flex-direction: row;
 }
 
-testSection {
-    background-color: #F5F6FA;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-}
-
 content {
     height: 100%;
     overflow: hidden;
@@ -30,14 +22,8 @@ content {
     flex-direction: column;
 }
 
-rightBar {
-    height: 100vh;
-    width: 260px;
-    order: 3;
-    background-color: pink;
-}
 /* Title */
-titleContainer {
+.titleContainer {
     font-size: 24px;
     font-weight: 900;
     font-style: italic;
@@ -45,7 +31,7 @@ titleContainer {
 }
 
 /* Top Container */
-exerciseLogContainer {
+.exerciseLogContainer {
     height: 200px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
@@ -57,21 +43,47 @@ exerciseLogContainer {
     flex-direction: column;
 }
 /* # Card Header # */
-cardHeader {
+.cardHeader {
     height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
 }
+.cardHeaderTypeTwo {
+    height: 80px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+.cardHeaderTypeThree {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardTitle {
+    font-weight: bold;
+    font-size: 25px;
+}
+.cardTitleTypeTwo {
+    font-weight: bold;
+    font-size: 20px;
+}
 /* # Inner Container # */
-innerContainer {
+.innerContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     height: 100%;
 }
 /* ## Card content ## */
-exerciseLogSection {
+.exerciseLogSection {
     height: 100%;
     background-color: #97dcc7;
     width: 100%;
@@ -79,8 +91,17 @@ exerciseLogSection {
     display: flex;
     flex-direction: column;
 }
+/* ### Summary Label ### */
+.exerciseLabel {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ### Exercise Display ### */
-exerciseDisplay{
+.exerciseDisplay {
     font-weight: bold;
     font-size: 2.8rem;
     height: 50px;
@@ -89,18 +110,9 @@ exerciseDisplay{
     justify-content: center;
     align-items: center;
 }
-/* ### Summary Label ### */
-exerciseLabel {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Bottom Container */
-activityContent {
-    height: 500px;
+.activityContent {
+    height: 450px;
     width: -webkit-calc(100% - 49px);
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -108,7 +120,7 @@ activityContent {
     margin-top: 20px;
 }
 /* # Activity # */
-activityContainer {
+.activityContainer {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -116,62 +128,16 @@ activityContainer {
     display: flex;
     flex-direction: column;
 }
+
 /* ## Activity Title ## */
-activityTitleText {
+.activityTitleText {
     font-weight: bold;
     font-size: 25px;
     padding-left: 20px;
 }
-/* ## Bottom Label ## */
-cardHeaderTypeTwo {
-    height: 80px;
-    width: 100%;
-    border-radius: 15px 15px 0px 0px;
-    background-color: #18B283;
-    display: flex;
-    align-items: center;
-}
-/* ## Activity Breakdown ## */
-activityBreakdown {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    padding: 20px;
-    grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-}
-activityBreakdownTypeTwo {
-    height: 50px;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-}
-/* ## Add activity button ## 
-addActivityButton{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    padding-top: 5px;
-    justify-content: right;
-}*/
-/* ### Cross Card List ### */
-activityList{
-    height: 100%;
-    width: 100%;
-}
-.tag{
-    font-weight: bold;
-    margin-top: 10px;
-}
-/* ### activityBreakdownContent ### */
-activityBreakdownContent{
-    width: 100px;
-    height: 100%;
-}
 
 /* # Chart # */
-chartContainer {
+.chartContainer {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -180,78 +146,7 @@ chartContainer {
     display: flex;
     flex-direction: column;
 }
-/* ## Chart Title ## */
-cardTitle {
-    font-size: 20px;
-}
-/* ## Chart Content ## */
-chartContent {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-popupExeContainer {
-    height: fit-content;
-    width: 280px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 5px;
-}
 
-popupExeContainer .popupTitle{
-    text-align: center;
-    height: 48px;
-    font-size: 20px;
-    padding: 10px;
-}
-
-popupDivider {
-    min-height: 48px;
-    border-color: black;
-    border-top-width: 2px;
-}
-
-typeSelect {
-    display: flex;
-    flex-direction: row;
-}
-submitButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-exerciseRightPanel {
-    right: 0;
-    height: 100%;
-    width: 260px;
-    order: 3;
-    background-color: #f5f5f5;
-    border-left: 1px solid #ddd;
-}
-
-exerciseCalendar{
-    display: flex;
-    height: 30%;
-    width: 100%;
-    padding-bottom: 20px;
-    align-items: center;
-}
-taskSelection.label {
-    display: block;
-}
-taskSelection.input {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-}
 .exercise-info p,
 .exercise-info p:before {
   display: inline;
@@ -267,7 +162,7 @@ taskSelection.input {
     height: 50px; 
 }  
 .scrollable-exercises {
-    max-height: 380px;
+    max-height: 350px;
     overflow-y: auto;
 }
 .scrollable-exercises::-webkit-scrollbar {

@@ -13,15 +13,20 @@ const RightPanel = ( props ) => {
 
     return (
         <div className="right-panel">
+                    
+
+
             <div className='userCardContainer'>
+                <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
                 <div className='userCard'></div>
+                
             </div>
             <div className='calendar'>
                 <div className="calendar-container">
                     <Calendar onChange={handleDateChange} value={date}/>
                 </div>
             </div>
-            <div className='recomendationSystem'></div>
+            <div className='recomendationSystem'>Recommendations:</div>
         </div>
     );
 };

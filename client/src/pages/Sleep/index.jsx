@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import NavBar from '../../components/NavBar';
 import SleepBarChart from '../../components/Charts/SleepBarChart';
 import SleepLineChart from '../../components/Charts/SleepLineChart';
@@ -49,50 +49,53 @@ const Sleep = () => {
         <section>
             <NavBar />
             <content>
-                    <titleContainer>
+                    <div className="titleContainer">
                         <div>Sleep</div>
-                    </titleContainer>
-                    <sleepLogContainer>
-                        <cardHeader>
-                            <cardTitle>Last Night Summary</cardTitle>
-                        </cardHeader>
-                        <statusContainer>
-                            <statusContent>
-                                <sleepLogSection>
-                                    <sleepLabel><div> Sleep Score </div></sleepLabel>
-                                    <sleepScore><div> 87 </div></sleepScore>
-                                </sleepLogSection>
-                                <sleepLogSection>
-                                    <sleepLabel><div> Sleep Time </div></sleepLabel>
-                                    <sleepTime>
+                    </div>
+                    <div className="sleepLogContainer">
+                        <div className="cardHeader">
+                            <div className="cardTitle mt-2 mb-2">Last Night Summary</div>
+                        </div>
+                        <div className="statusContainer">
+                            <div className="statusContent">
+                                <div className="sleepLogSection">
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Score </div>
+                                </div>
+                                    <div className="sleepScore"> 
+                                        {sleeps && sleeps.length > 0 && sleeps[0].hours !== undefined && Math.floor((sleeps[0].hours+sleeps[0].minutes/60)/8*100)}  
+                                    </div>
+                                </div>
+                                <div className="sleepLogSection">
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Time </div>
+                                </div>
+                                    <div className="sleepTime">
                                         <div className="sleep-info"> 
                                             {sleeps && sleeps.length > 0 && sleeps[0].hours !== undefined && sleeps[0].hours} 
                                             <p>Hrs</p>
                                             {sleeps && sleeps.length > 0 && sleeps[0].minutes !== undefined && sleeps[0].minutes} 
                                             <p>Mins</p>
                                         </div>
-                                    </sleepTime>
-                                </sleepLogSection>
-                                <sleepLogSection>
-                                    <sleepLabel><div> Sleep Goal </div></sleepLabel>
-                                    <div class="text-center font-semibold text-3xl">
-                                        {goals && goals.length > 0 && goals[0] !== undefined &&  goals[1] !== undefined && (
-                                            goals[0].goalType === 'sleep' ? goals[0].description
-                                            : goals[1].goalType === 'sleep' ? goals[1].description
-                                            : "Sleep goal not found"
-                                            )
-                                        }
                                     </div>
-                                </sleepLogSection>
-                            </statusContent>
-                            <sleepBarChart>
-                                <SleepBarChart />
-                            </sleepBarChart>
-                        </statusContainer>
-                    </sleepLogContainer>
-                    <sleepBottomContent>
-                        <sleepData>
-                            <sleepDataTitle>Sleep Data</sleepDataTitle>
+                                </div>
+                                <div className="sleepLogSection">
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Goal </div>
+                                </div>
+                                    <div className="text-center mt-2 font-semibold text-xl">
+                                        {goals && goals.find(goal => goal.goalType === 'sleep')?.description}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="sleepBarChart">
+                                <SleepBarChart width='110%' height='250%'/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="sleepBottomContent">
+                        <div className="sleepData">
+                            <div className="sleepDataTitle">Sleep Data</div>
                             <div className="scrollable-sleeps">
                                 <div className="sleeps">
                                     {sleeps && sleeps.map((sleep) => (
@@ -100,12 +103,12 @@ const Sleep = () => {
                                     ))}
                                 </div>
                             </div>
-                        </sleepData>
-                    <sleepLineChart>
-                        <cardTitle>Weekly Sleep Time</cardTitle>
-                        <SleepLineChart />
-                    </sleepLineChart>
-                    </sleepBottomContent>    
+                        </div>
+                        <div className="sleepLineChart">
+                            <div className="cardTitle">Weekly Sleep Time</div>
+                            <SleepLineChart width='100%' height='210%'/>
+                        </div>
+                    </div>    
             </content>
             <RightBar />
         </section>

@@ -26,9 +26,29 @@ const ProcessEntry =({ item }) => {
     }
     return (
         <div className="entry">
-            <div>{item.itemName}</div>
-            <div>{item.servingsEaten}</div>
-            <div>{item.caloriesPerServing * item.servingsEaten}</div>
+            <div className='entryContent'>
+                <div className='entryTitle'>{item.itemName}</div>
+                <div className='entryStat'>
+                    <div className='entryCategory'>Servings Eaten: </div>
+                    <div className='entryInfo'>{item.servingsEaten}</div>
+                </div>
+                <div className='entryStat'>
+                    <div className='entryCategory'>Calories Eaten: </div>
+                    <div className='entryInfo'>{item.caloriesPerServing * item.servingsEaten}</div>
+                </div>
+                <div className='entryStat'>
+                    <div className='entryCategory'>Protein Eaten (g): </div>
+                    <div className='entryInfo'>{item.proteinPerServing * item.servingsEaten }</div>
+                </div>
+                <div className='entryStat'>
+                    <div className='entryCategory'>Carbs Eaten (g): </div>
+                    <div className='entryInfo'>{item.carbsPerServing * item.servingsEaten}</div>
+                </div>
+                <div className='entryStat'>
+                    <div className='entryCategory'>Fat Eaten (g): </div>
+                    <div className='entryInfo'>{item.fatPerServing * item.servingsEaten}</div>
+                </div>
+            </div>
             <span onClick={handleClick}><FontAwesomeIcon icon={faTrashCan} size="1x"></FontAwesomeIcon></span>
         </div>
     )

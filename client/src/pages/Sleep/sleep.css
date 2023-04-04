@@ -15,22 +15,48 @@ content {
     order: 2;
 }
 
-
 /* General */
-titleContainer {
+.titleContainer {
     font-size: 24px;
     font-weight: 900;
     font-style: italic;
     font-family: emoji;
 }
-cardTitle {
+.cardHeader {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.cardHeaderTypeTwo {
+    height: 80px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+.cardHeaderTypeThree {
+    height: 40px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cardTitle {
     font-weight: bold;
     font-size: 25px;
 }
-
+.cardTitleTypeTwo {
+    font-weight: bold;
+    font-size: 20px;
+}
 /* Top Container */
-sleepLogContainer {
-    height: 450px;
+.sleepLogContainer {
+    height: 355px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
     border-radius: 15px;
@@ -40,21 +66,21 @@ sleepLogContainer {
     flex-direction: column;
 }
 /* # Status Bar + Sleep Bar Chart # */
-statusContainer{
+.statusContainer {
     height: 380px;
     width: -webkit-calc(100%);
     flex-direction: column;
     display: flex;
 }
 /* ## Status Bar ## */
-statusContent{
+.statusContent {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr;
     gap: 10px;
-    height: 100%;
+    height: 95px;
 }
 /* ### Sleep Log Section ### */
-sleepLogSection {
+.sleepLogSection {
     height: 100%;
     background-color: #97dcc7;
     width: 100%;
@@ -63,7 +89,7 @@ sleepLogSection {
     flex-direction: column;
 }
 /* #### Sleep Label #### */
-sleepLabel {
+.sleepLabel {
     height: 30px;
     width: 100%;
     display: flex;
@@ -71,62 +97,53 @@ sleepLabel {
     align-items: center;
 }
 /* #### sleep Score #### */
-sleepScore{
+.sleepScore {
     font-weight: bold;
-    font-size: 3.5rem;
-    height: 80px;
+    font-size: 3.0rem;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 /* #### sleep Time #### */
-sleepTime{
+.sleepTime {
     font-weight: bold;
-    font-size: 2.8rem;
-    height: 70px;
+    font-size: 2.0rem;
+    height: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* ## Add Sleep ## */
-addSleep{
-    margin-right: auto;
-    padding-top: 15px;
-}
 /* ## Sleep Bar Chart ## */
-sleepBarChart{
+.sleepBarChart {
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     justify-content: center;
-    /*padding-top: 15px;*/
 }
 
 /* Bottom Container */
-sleepBottomContent {
-    height: 380px;
+.sleepBottomContent {
+    height: 300px;
     width: -webkit-calc(100% - 49px);
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
     margin-top: 20px;
 }
-sleepAveContainer {
-    height: 360px;
-    width: -webkit-calc(100% - 49px);
-    background-color: white;
+.sleepData {
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
     border-radius: 15px;
-    padding: 22px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 20px;
+    display: flex;
     flex-direction: column;
 }
-sleepDataTitle {
+.sleepDataTitle {
     font-weight: bold;
     font-size: 25px;
     padding-left: 20px;
@@ -137,16 +154,9 @@ sleepDataTitle {
     display: flex;
     align-items: center;
 }
-sleepData {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-}
+
 /* # Line Chart # */
-sleepLineChart{
+.sleepLineChart {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -155,77 +165,11 @@ sleepLineChart{
     display: flex;
     flex-direction: column;
 }
-/* ## Bottom Title ## */
-chartHeader {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-
-popupContainer {
-    height: fit-content;
-    width: 250px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 5px;
-}
-
-popupContainer .popupTitle{
-    text-align: center;
-    height: 48px;
-    font-size: 20px;
-    padding: 10px;
-}
-
-popupDivider {
-    min-height: 48px;
-    border-color: black;
-    border-top-width: 2px;
-}
-
-typeSelect {
-    display: flex;
-    flex-direction: row;
-}
 
 input {
     float: right;
     padding-right: 20px;
     text-align: left;
-}
-
-submitButton{
-    justify-content: center;
-    align-items: center;
-}
-
-sleepRightPanel {
-    right: 0;
-    height: 100%;
-    width: 260px;
-    order: 3;
-    background-color: #f5f5f5;
-    border-left: 1px solid #ddd;
-}
-
-addSleepTime{
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    margin-top: 10px;
-}
-sleepCalendar{
-    display: flex;
-    margin-bottom: 10px;
-    height: 30%;
-    width: 100%;
-    padding-bottom: 20px;
-    align-items: center;
 }
 
 .sleep-info p,
@@ -235,7 +179,7 @@ sleepCalendar{
   font-weight: 200;
 }
 .scrollable-sleeps {
-    max-height: 280px;
+    max-height: 210px;
     overflow-y: auto;
 }
 .scrollable-sleeps::-webkit-scrollbar {

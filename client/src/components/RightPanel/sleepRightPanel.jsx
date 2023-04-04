@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import '../../pages/Sleep/sleep.css';
+import './rightPanel.css';
 import Popup from 'reactjs-popup';
 import AddSleepData from '../../pages/Sleep/addSleepData';
+import lyfeonLogo from '../../assets/lyfeon-green.png';
 
 const SleepRightPanel = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -16,14 +17,14 @@ const SleepRightPanel = () => {
     return (
         <div className="right-panel">
             <div className='userCardContainer'>
-                <div className='userCard'></div>
+                <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
+                <div className='userCardTypeA'> <div className='text-center text-xl tracking-tight'>Click a date to add sleep</div></div>
             </div>
             <div className='calendar'>
                 <div className="calendar-container">
                     <Calendar 
                         onChange={setSelectedDate}
                         value={selectedDate}
-                        calendarType="US"
                         onClickDay={() => setOpenPopup(true)}
                     />
                     <Popup open={openPopup} onClose={() => setOpenPopup(false)} position="left center">

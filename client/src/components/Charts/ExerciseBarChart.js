@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
-function ExerciseBar() {
+function ExerciseBar(props) {
   const { user } = useAuthContext()
   const chartRef = useRef(null);
   const [data, setData] = useState([]);
@@ -37,7 +37,11 @@ function ExerciseBar() {
           },
           xAxis: {
             type: 'category',
-            data: newData.map((item) => {
+            data: newData.sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return dateA - dateB;
+            }).map((item) => {
               const dateObj = new Date(item.date);
               return dateObj.toISOString().split('T')[0];
             }),
@@ -95,7 +99,7 @@ function ExerciseBar() {
     
     return (
         <div>
-            <div className="Bar h-full w-full" ref={chartRef} style={{width:'100%',height:'400%'}}></div>
+            <div className="exerciseBar" ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }
