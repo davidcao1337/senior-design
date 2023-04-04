@@ -28,14 +28,35 @@ content {
     display: flex;
     align-items: center;
 }
+.cardHeaderTypeTwo {
+    height: 80px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+.cardHeaderTypeThree {
+    height: 40px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .cardTitle {
     font-weight: bold;
     font-size: 25px;
 }
-
+.cardTitleTypeTwo {
+    font-weight: bold;
+    font-size: 20px;
+}
 /* Top Container */
 .sleepLogContainer {
-    height: 350px;
+    height: 355px;
     width: -webkit-calc(100% - 49px);
     background-color: white;
     border-radius: 15px;
@@ -78,7 +99,7 @@ content {
 /* #### sleep Score #### */
 .sleepScore {
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 3.0rem;
     height: 50px;
     width: 100%;
     display: flex;
@@ -88,7 +109,7 @@ content {
 /* #### sleep Time #### */
 .sleepTime {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     height: 50px;
     width: 100%;
     display: flex;

@@ -54,18 +54,22 @@ const Sleep = () => {
                     </div>
                     <div className="sleepLogContainer">
                         <div className="cardHeader">
-                            <div className="cardTitle">Last Night Summary</div>
+                            <div className="cardTitle mt-2 mb-2">Last Night Summary</div>
                         </div>
                         <div className="statusContainer">
                             <div className="statusContent">
                                 <div className="sleepLogSection">
-                                    <div className="sleepLabel"> Sleep Score </div>
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Score </div>
+                                </div>
                                     <div className="sleepScore"> 
                                         {sleeps && sleeps.length > 0 && sleeps[0].hours !== undefined && Math.floor((sleeps[0].hours+sleeps[0].minutes/60)/8*100)}  
                                     </div>
                                 </div>
                                 <div className="sleepLogSection">
-                                    <div className="sleepLabel"> Sleep Time </div>
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Time </div>
+                                </div>
                                     <div className="sleepTime">
                                         <div className="sleep-info"> 
                                             {sleeps && sleeps.length > 0 && sleeps[0].hours !== undefined && sleeps[0].hours} 
@@ -76,8 +80,10 @@ const Sleep = () => {
                                     </div>
                                 </div>
                                 <div className="sleepLogSection">
-                                    <div className="sleepLabel"> Sleep Goal </div>
-                                    <div className="text-center font-semibold text-2xl">
+                                <div className="cardHeaderTypeThree">
+                                    <div className="cardTitleTypeTwo"> Sleep Goal </div>
+                                </div>
+                                    <div className="text-center mt-2 font-semibold text-xl">
                                         {goals && goals.find(goal => goal.goalType === 'sleep')?.description}
                                     </div>
                                 </div>
