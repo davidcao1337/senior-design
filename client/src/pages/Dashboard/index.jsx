@@ -5,6 +5,12 @@ import './dashboard.css';
 import WeightLineChart from '../../components/Charts/WeightLineChart';
 import RightPanel from '../../components/RightPanel';
 //import RightPanel from '../../components/RightPanel/sleepRightPanel'
+import NutritionProgressBar from './NutritionProgressBar';
+import ProgressBar from '../Nutrition/ProgressBar';
+import index from '../Nutrition/index';
+import { useFoodItemContext } from '../../hooks/useFoodItemContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
+
 
 
 const Dashboard = () => {
@@ -28,9 +34,6 @@ const Dashboard = () => {
                     <div> My Dashboard</div>
                 </titleContainer>
 
-
-
-
                 {/* <div className="dashboard-header">My Dashboard</div> */}
                 {/* <div className="content">
                 {items.map(item => (
@@ -40,6 +43,21 @@ const Dashboard = () => {
                     </div>
                 ))}
             </div> */}
+
+                {/* <div className="Pbar">
+                    <h2 className="chart-label">Nutrition breakdown2:</h2>
+                    <ProgressBar props={{ caloriesEaten, macroCals, color }} />
+                    
+                </div> */}
+
+                <div className="Pbar">
+                    <h2 className="chart-label">Nutrition breakdown2:</h2>
+                    <NutritionProgressBar />
+                </div>
+
+
+
+
                 <div className="charts">
                     <h2 className="chart-label">Your Sleep Recently:</h2>
                     <SleepBarChart />
