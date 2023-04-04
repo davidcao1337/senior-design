@@ -58,9 +58,11 @@ const Exercise = () => {
                 </div>
                 <div className="innerContainer">
                 <div className="exerciseLogSection">
-                    <div className="exerciseLabel"> Exercise Time </div>
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo"> Exercise Time </div>
+                    </div>
                     <div className="exerciseDisplay">
-                        <div className="exercise-info"> 
+                        <div className="exercise-info mt-4"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.time || 0);
                             }, 0)} 
@@ -69,9 +71,11 @@ const Exercise = () => {
                     </div>
                 </div>
                 <div className="exerciseLogSection">
-                    <div className="exerciseLabel"> Calories Burned </div>
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo">Calories Burned</div>
+                    </div>
                     <div className="exerciseDisplay">
-                        <div className="exercise-info"> 
+                        <div className="exercise-info mt-4"> 
                             {exercises && exercises.length > 0 && exercises.slice(0, 7).reduce((total, exercise) => {
                                 return total + (exercise.calorie || 0);
                             }, 0)}  
@@ -80,8 +84,10 @@ const Exercise = () => {
                     </div>
                 </div>
                 <div className="exerciseLogSection">
-                    <div className="exerciseLabel"> Exercise goal </div>
-                    <div className="text-center font-semibold text-3xl">
+                    <div className="cardHeaderTypeThree">
+                        <div className="cardTitleTypeTwo"> Exercise goal </div>
+                    </div>
+                    <div className="text-center mt-4 font-semibold text-3xl">
                         {goals && goals.find(goal => goal.goalType === 'exercise')?.description}
                     </div>
                 </div>

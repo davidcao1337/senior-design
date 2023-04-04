@@ -49,9 +49,31 @@ content {
     display: flex;
     align-items: center;
 }
+.cardHeaderTypeTwo {
+    height: 80px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    align-items: center;
+}
+.cardHeaderTypeThree {
+    height: 50px;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+    background-color: #18B283;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .cardTitle {
     font-weight: bold;
     font-size: 25px;
+}
+.cardTitleTypeTwo {
+    font-weight: bold;
+    font-size: 20px;
 }
 /* # Inner Container # */
 .innerContainer {
@@ -105,15 +127,6 @@ content {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-}
-/* ## Bottom Label ## */
-.cardHeaderTypeTwo {
-    height: 80px;
-    width: 100%;
-    border-radius: 15px 15px 0px 0px;
-    background-color: #18B283;
-    display: flex;
-    align-items: center;
 }
 
 /* ## Activity Title ## */
