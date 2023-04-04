@@ -45,7 +45,11 @@ function SleepLine(props) {
           xAxis: {
             type: 'category',
             boundaryGap: true,
-            data: newData.map((item) => {
+            data: newData.sort((a, b) => {
+              const dateA = new Date(a.date);
+              const dateB = new Date(b.date);
+              return dateA - dateB;
+            }).map((item) => {
               const dateObj = new Date(item.date);
               return dateObj.toISOString().split('T')[0];
             }),
