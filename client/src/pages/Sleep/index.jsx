@@ -49,9 +49,7 @@ const Sleep = () => {
         <section>
             <NavBar />
             <content>
-                    <div className="titleContainer">
-                        <div>Sleep</div>
-                    </div>
+                    <h1 className="Title mb-5 font-bold text-3xl text-[#525252]">Sleep</h1>
                     <div className="sleepLogContainer">
                         <div className="cardHeader">
                             <div className="cardTitle mt-2 mb-2">Last Night Summary</div>

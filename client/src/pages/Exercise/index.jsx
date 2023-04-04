@@ -49,9 +49,7 @@ const Exercise = () => {
         <section>
             <NavBar />
             <content>
-            <div className="titleContainer">
-                <div>Exercise</div>
-            </div>
+                <h1 className="Title mb-5 font-bold text-3xl text-[#525252]">Exercise</h1>
             <div className="exerciseLogContainer">
                 <div className="cardHeader">
                     <div className="cardTitle">Weekly Summary</div>
