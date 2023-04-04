@@ -80,6 +80,8 @@ const GoalModal = (props) => {
     const [nutrientConsumption, setNutrientConsumption] = useState("")
     const nutrientOptions = [
         { value: "Daily protein consumption (g)", label: "Daily protein consumption (g)" },
+        { value: "Daily carb consumption (g)", label: "Daily carb consumption (g)" },
+        { value: "Daily fat consumption (g)", label: "Daily fat consumption (g)" },
         { value: "Daily calorie consumption (cal)", label: "Daily calorie consumption (cal)" }
     ]
 
