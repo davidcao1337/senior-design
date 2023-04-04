@@ -41,12 +41,14 @@ const GoalJournal = (props) => {
                         <GoalDetails key={goal._id} goal={goal} />
                     ))}
                     <div className="card border border-gray-300 border-dashed">
-                        <button className="card-body" onClick={toggleModalVisibility}>
-                            <div className="flex flex-row ml-20 mr-20 space-x-3">
+                    <button className="card-body flex flex-row justify-center items-center" onClick={toggleModalVisibility}>
+                        <div className="flex items-center">
+                            <div className="w-8 flex justify-center">
                                 <FontAwesomeIcon icon={faPlus} size="2x" />
-                                <p className="text-[#748AA1] mt-1">Add Goal</p>
                             </div>
-                        </button>
+                            <p className="text-[#748AA1] ml-2 mt-1">Add Goal</p>
+                        </div>
+                    </button>
                     </div>
                 </div>
             </div>
