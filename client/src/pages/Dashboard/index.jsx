@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../../components/NavBar';
-import SleepBarChart from '../../components/Charts/SleepBarChart';
+import SleepBarChart from '../../components/Charts/SleepLineChart';
 import './dashboard.css';
 import WeightLineChart from '../../components/Charts/WeightLineChart';
 import RightPanel from '../../components/RightPanel';
@@ -52,14 +52,21 @@ const Dashboard = () => {
                 </div>
 
                 <div className="charts">
-                    <h2 className="chart-label">Your Sleep Recently:</h2>
-                    <SleepBarChart />
+                    {/* <h2 className="chart-label">Your Sleep Recently:</h2> */}
+                    {/* <SleepBarChart width='100%' height='100%' /> */}
                 </div>
 
-                <div className="chart">
-                    <h2 className="chart-label">Your Weight Over Time:</h2>
-                    <WeightLineChart />
+                {/* <SleepBarChart height='300%' width='100%' /> */}
+
+                <div className="chartContainer1">
+                    <div className="cardTitle"> Weekily Progress </div>
+                    <SleepBarChart width='100%' height='350%' />
                 </div>
+
+                {/* <div className="chart">
+                    <h2 className="chart-label">Your Weight Over Time:</h2>
+                    <WeightLineChart height={100} width={700} />
+                </div> */}
 
                 {/* <div className="nutrition-breakdown">
           <h2 className="chart-label">Nutrition Breakdown</h2>

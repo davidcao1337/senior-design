@@ -26,7 +26,7 @@ const RightPanel = ( props ) => {
                     <Calendar onChange={handleDateChange} value={date}/>
                 </div>
             </div>
-            <div className='recomendationSystem'>Recommendations:</div>
+            <div className='recomendationSystem'> </div>
         </div>
     );
 };

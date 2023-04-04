@@ -31,7 +31,7 @@ function WeightLineChart() {
             },
             series: [
                 {
-                    data: [70.5, 71.2, 70.1, 69.8, 69.5],
+                    data: [80.5, 75.2, 70.1, 67.8, 64.5],
                     itemStyle: {
                         barBorderRadius: 5,
                         borderWidth: 1,
