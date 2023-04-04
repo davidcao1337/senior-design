@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './nutrition.css';
 import RenderSelectionButtons from './GoalSelectionParameter';
-import Select from 'react-select'
+import Select from 'react-select';
+import RenderNutritionGoal from './NutritionGoalRender';
 
 const getBmr = ( weight, height, age ) => {
     const bmr = (447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)).toFixed(0);
@@ -19,9 +20,11 @@ const RenderNutitionSummaryCard = ( props ) => {
     var userBmr = ''
     var userCalorieGoal = props.props.userProps.calorieGoal
 
-    if ( userWeightData != 'N/A' && userHeightData != 'N/A' && userAgeData != 'N/A' ){
+    if ( userWeightData !== 'N/A' && userHeightData !== 'N/A' && userAgeData !== 'N/A' ){
         userBmr = getBmr( userWeightData, userHeightData, userAgeData );
     }
+
+    const nutritionGoals = props.props.userProps.goals
 
     const [goalType, setGoalType] = useState("")
     const [lbsType, setLbsType] = useState("")
@@ -87,9 +90,10 @@ const RenderNutitionSummaryCard = ( props ) => {
                     <div> Your BMR is </div>
                     <userCalc> {userBmr} </userCalc>
                 </summarySection>
-                <summarySection>
+                <RenderNutritionGoal props = {{ nutritionGoals }} />
+                {/* <summarySection>
                     <div className='goalSelect'>
-                        <div className='goalHeader'> Current Goal </div>
+                        <div className='goalHeader'> Nutrition Goals </div>
                         <Select 
                             className="mb-6"
                             id="goalType" 
@@ -97,8 +101,8 @@ const RenderNutitionSummaryCard = ( props ) => {
                             onChange={handleGoalSelect} 
                         />
                     </div>
-                </summarySection>
-                <summarySection>
+                </summarySection> */}
+                {/* <summarySection>
                     <Select 
                         className="mb-6"
                         id="lbsGoal" 
@@ -116,7 +120,7 @@ const RenderNutitionSummaryCard = ( props ) => {
                     <div> You have </div>
                     <userCalc> {(calculateGoal(goalType, lbsType) - totalCaloriesEaten) || 'select options'} </userCalc>
                     <div> calories remaining </div>
-                </summarySection>
+                </summarySection> */}
             </summaryContent>
         </summaryContainer>
     )
