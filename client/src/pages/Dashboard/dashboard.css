@@ -9,7 +9,28 @@ titleContainer {
     font-family: emoji;
 }
 
+.macroGraphs{
+    width: 90%;
+    height: 23%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
+}
 
+
+
+.chartContainer1 {
+    width: 90%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
 
 .chartContainer1 {
@@ -21,6 +42,7 @@ titleContainer {
     display: flex;
     flex-direction: column;
 }
+
 /* .charts {
     position: absolute;
     bottom: 0;
@@ -36,7 +58,7 @@ titleContainer {
     right: 0;
     margin: 1rem;
     height: 650px;
-    width: 1250px; 
+    width: 1250px;
 }
 
 

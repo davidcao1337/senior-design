@@ -28,7 +28,7 @@ const Dashboard = () => {
             }
         }
 
-        
+
 
         if (user) {
             fetchFoodItems();
@@ -66,7 +66,7 @@ const Dashboard = () => {
             totalCarbs = totalCarbs + (foodItems[i].servingsEaten * foodItems[i].carbsPerServing)
 
         }
-        
+
         proteinCals = totalProtein * 4
 
         fatCals = totalFat * 9
@@ -78,23 +78,23 @@ const Dashboard = () => {
 
     }
 
- 
 
-/*     useEffect(() => {
-        // Reset values
-        setCaloriesEaten(0);
-        setProteinEaten(0);
-        setCarbsEaten(0);
-        setFatEaten(0);
 
-        // Calculate total values from food items
-        foodItems.forEach((item) => {
-            setCaloriesEaten((caloriesEaten) => caloriesEaten + item.calories);
-            setProteinEaten((proteinEaten) => proteinEaten + item.protein);
-            setCarbsEaten((carbsEaten) => carbsEaten + item.carbs);
-            setFatEaten((fatEaten) => fatEaten + item.fat);
-        });
-    }, [foodItems]); */
+    /*     useEffect(() => {
+            // Reset values
+            setCaloriesEaten(0);
+            setProteinEaten(0);
+            setCarbsEaten(0);
+            setFatEaten(0);
+    
+            // Calculate total values from food items
+            foodItems.forEach((item) => {
+                setCaloriesEaten((caloriesEaten) => caloriesEaten + item.calories);
+                setProteinEaten((proteinEaten) => proteinEaten + item.protein);
+                setCarbsEaten((carbsEaten) => carbsEaten + item.carbs);
+                setFatEaten((fatEaten) => fatEaten + item.fat);
+            });
+        }, [foodItems]); */
 
 
 
@@ -102,28 +102,31 @@ const Dashboard = () => {
         <section className="dashboard">
             <NavBar />
             <content>
-                <titleContainer>
+                <h1 className="Title mb-5 font-bold text-3xl text-[#525252]">My Dashboard</h1>
+{/*                 <titleContainer>
                     <div> My Dashboard</div>
-                </titleContainer>
+                </titleContainer> */}
+                
 
                 <div className='macroGraphs'>
+                    <div className="cardTitle"> Nutrition Breakdown </div>
 
-                    <protein> Protein </protein>
+                        <protein> Protein </protein>
 
-                    <ProgressBar props={{ caloriesEaten: totalCals, macroCals: proteinCals, color: "#6a1b9a" }} />
+                        <ProgressBar props={{ caloriesEaten: totalCals, macroCals: proteinCals, color: "#6a1b9a" }} />
 
-                    <carbs> Carbs </carbs>
+                        <carbs> Carbs </carbs>
 
-                    <ProgressBar props={{ caloriesEaten: totalCals, macroCals: carbCals, color: "#00695c" }} />
+                        <ProgressBar props={{ caloriesEaten: totalCals, macroCals: carbCals, color: "#00695c" }} />
 
-                    <fat> Fat </fat>
+                        <fat> Fat </fat>
 
-                    <ProgressBar props={{ caloriesEaten: totalCals, macroCals: fatCals, color: "#ef6c00" }} />
+                        <ProgressBar props={{ caloriesEaten: totalCals, macroCals: fatCals, color: "#ef6c00" }} />
 
                 </div>
 
                 <div className="Pbar">
-                    <h2 className="chart-label">Nutrition Breakdown:</h2>
+                    <h2 className="chart-label"> <br></br></h2>
 
                 </div>
 
