@@ -52,7 +52,7 @@ const Sleep = () => {
                     <h1 className="Title mb-5 font-bold text-3xl text-[#525252]">Sleep</h1>
                     <div className="sleepLogContainer">
                         <div className="cardHeader">
-                            <div className="cardTitle mt-2 mb-2">Last Night Summary</div>
+                            <div className="cardTitle mt-2 mb-2">Last Night's Summary</div>
                         </div>
                         <div className="statusContainer">
                             <div className="statusContent">
