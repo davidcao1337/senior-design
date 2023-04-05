@@ -63,7 +63,6 @@ content {
     border-radius: 15px 15px 0px 0px;
     background-color: #18B283;
     display: flex;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -112,7 +111,7 @@ content {
 }
 /* Bottom Container */
 .activityContent {
-    height: 450px;
+    height: 465px;
     width: -webkit-calc(100% - 49px);
     display: grid;
     grid-template-columns: 1fr 2fr;

@@ -99,7 +99,7 @@ function ExerciseBar(props) {
     
     return (
         <div>
-            <div className="exerciseBar" ref={chartRef} style={{width: props.width, height:props.height}}></div>
+            <div ref={chartRef} style={{width: props.width, height:props.height}}></div>
         </div>
     )
 }
