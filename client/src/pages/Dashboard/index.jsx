@@ -138,7 +138,7 @@ const Dashboard = () => {
                 {/* <SleepBarChart height='300%' width='100%' /> */}
 
                 <div className="chartContainer1">
-                    <div className="cardTitle"> Weekily Progress </div>
+                    <div className="cardTitle"> Weekly Progress </div>
                     <SleepBarChart width='100%' height='350%' />
                 </div>
 
