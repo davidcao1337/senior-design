@@ -5,7 +5,7 @@ import validator from "validator"
 import bcrypt from "bcrypt"
 
 const createToken = (_id) => {
-    return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '30d' });
+    return jwt.sign({_id}, process.env.SECRET, { expiresIn: '30d' });
 }
 
 const loginUser = async(req, res) => {
