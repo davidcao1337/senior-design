@@ -224,17 +224,41 @@ input.error {
     padding-top: 0.5rem/* 8px */;
     padding-bottom: 0.5rem/* 8px */;
 }
+.react-calendar__tile:disabled {
+    background-color: black;
+}
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+    background-color: #e6e6e6;
+    border-radius: 5px;
+}
+.react-calendar__tile--now {
+    border-radius: 5px;
+    background: #18B283;
+}
 .react-calendar__tile--now abbr {
     color: white;
   }
-.react-calendar__tile--now {
-    border-radius: 5px;
-    background-color: #97dcc7;
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+    background: #97dcc7;
 }
-.react-calendar__tile--active {
-    border-radius: 5px;
-    background-color: #18B283;
+.react-calendar__tile--hasActive {
+    background: #97dcc7;
 }
-.react-calendar__tile--active abbr {
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+    background: #97dcc7;
+}
+.react-calendar__tile--active abbr{
+    color: black;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+    background: white;
     color: white;
+    border-radius: 5px;
+}
+.react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #e6e6e6;
 }
