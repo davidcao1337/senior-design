@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell, faEllipsisVertical, faMoon, faTrophy, faUtensils, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useGoalsContext } from '../../hooks/useGoalsContext';
+import classnames from 'classnames';
 
 const GoalDetails = ({ goal }) => {
     const { user } = useAuthContext()
@@ -37,7 +38,14 @@ const GoalDetails = ({ goal }) => {
         <div className="card border border-gray-300">
             <div className="card-body">
                 <div className="flex flex-row">
-                    <FontAwesomeIcon className="mr-5" size="2x" 
+                    <FontAwesomeIcon 
+                    className={classnames('mr-5', {
+                        'text-[#e11d48]': goal.goalType === 'exercise',
+                        'text-[#0284c7]': goal.goalType === 'nutrition',
+                        'text-[#7c3aed]': goal.goalType === 'sleep',
+                        'text-[#fcd34d]': goal.goalType === 'trophy',
+                    })}
+                    size="2x" 
                     icon={
                         goal.goalType === 'exercise' ? faDumbbell
                         : goal.goalType === 'nutrition' ? faUtensils
