@@ -12,7 +12,7 @@ const NutritionRightPanel = () => {
       <div className="right-panel">
         <div className='userCardContainer'>
             <center><img src={lyfeonLogo}  alt="Lyfeon Logo"  className="logo" /></center>
-            <div className='userCardTypeA'> <div className='text-center text-xl tracking-tight'>Click a date to add activity</div></div>
+            <div className='userCardTypeA'> <div className='text-center text-xl tracking-tight'>Eating healthy!</div></div>
         </div>
         <div className='calendar'>
             <div className="calendar-container">
