@@ -255,6 +255,7 @@ const NutritionRightPanel = (props) => {
                 </div>
               </div>
             </div>
+            { userRecommendations && userRecommendations.length > 1 && 
             <div className='recommendationContainer'>
               <div className='recommendationTitle'>{userRecommendations[1].itemName}</div>
               <div className='foodPropsContainer'>
@@ -276,6 +277,8 @@ const NutritionRightPanel = (props) => {
                 </div>
               </div>
             </div>
+            }
+            { userRecommendations && userRecommendations.length > 2 && 
             <div className='recommendationContainer'>
               <div className='recommendationTitle'>{userRecommendations[2].itemName}</div>
               <div className='foodPropsContainer'>
@@ -297,6 +300,7 @@ const NutritionRightPanel = (props) => {
                 </div>
               </div>
             </div>
+            }
           </a>
         </div>
         }
