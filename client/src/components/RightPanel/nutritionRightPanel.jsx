@@ -70,7 +70,7 @@ const NutritionRightPanel = (props) => {
               recFoodCals.splice( j, 0, newFood )
               break
             }
-            else if( j === recFoodCals.length && recFoodCals[j].recommended > recPercentage){
+            else if( j === (recFoodCals.length - 1) && recFoodCals[j].recommended > recPercentage){
               recFoodCals.push(newFood)
               break
             }
@@ -99,7 +99,7 @@ const NutritionRightPanel = (props) => {
               recFoodPro.splice( j, 0, newFood )
               break
             }
-            else if( j === recFoodPro.length && recFoodPro[j].recommended > recPercentage){
+            else if( j === (recFoodPro.length - 1) && recFoodPro[j].recommended > recPercentage){
               recFoodPro.push(newFood)
               break
             }
@@ -128,7 +128,7 @@ const NutritionRightPanel = (props) => {
               recFoodCarb.splice( j, 0, newFood )
               break
             }
-            else if( j === recFoodCarb.length && recFoodCarb[j].recommended > recPercentage){
+            else if( j === (recFoodCarb.length - 1) && recFoodCarb[j].recommended > recPercentage){
               recFoodCarb.push(newFood)
               break
             }
@@ -157,7 +157,7 @@ const NutritionRightPanel = (props) => {
               recFoodFat.splice( j, 0, newFood )
               break
             }
-            else if( j === recFoodFat.length && recFoodFat[j].recommended > recPercentage){
+            else if( j === (recFoodFat.length - 1) && recFoodFat[j].recommended > recPercentage){
               recFoodFat.push(newFood)
               break
             }
@@ -191,7 +191,7 @@ const NutritionRightPanel = (props) => {
             refinedRecommendation.splice( j, 0, initialRecommendations[i] )
             break
           }
-          else if( j === refinedRecommendation.length && refinedRecommendation[j].recommended > initialRecommendations[i].recommended ){
+          else if( j === (refinedRecommendation.length - 1) && refinedRecommendation[j].recommended > initialRecommendations[i].recommended ){
             refinedRecommendation.push( initialRecommendations[i] )
             break
           }

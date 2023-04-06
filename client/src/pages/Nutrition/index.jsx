@@ -367,11 +367,11 @@ const Nutrition = () => {
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Meal Category: </div>
-                                                    <div className='macroBreakdownSectionMealCategory'>{mostCalsItem.mealCategory}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostCalsItem.mealCategory}</div>
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Calories: </div>
-                                                    <div className='macroBreakdownSectionStat'>{mostCalsItem.caloriesPerServing}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostCalsItem.caloriesPerServing}</div>
                                                 </div>
                                             </div>
                                             <div className='macroBreakDownSection'>
@@ -382,11 +382,11 @@ const Nutrition = () => {
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Meal Category: </div>
-                                                    <div className='macroBreakdownSectionMealCategory'>{mostProteinItem.mealCategory}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostProteinItem.mealCategory}</div>
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Protein: </div>
-                                                    <div className='macroBreakdownSectionStat'>{mostProteinItem.proteinPerServing}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostProteinItem.proteinPerServing}</div>
                                                 </div>
                                             </div>
                                             <div className='macroBreakDownSection'>
@@ -397,11 +397,11 @@ const Nutrition = () => {
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Meal Category: </div>
-                                                    <div className='macroBreakdownSectionMealCategory'>{mostFatItem.mealCategory}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostFatItem.mealCategory}</div>
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Fat: </div>
-                                                    <div className='macroBreakdownSectionStat'>{mostFatItem.fatPerServing}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostFatItem.fatPerServing}</div>
                                                 </div>
                                             </div>
                                             <div className='macroBreakDownSection'>
@@ -412,11 +412,11 @@ const Nutrition = () => {
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Meal Category: </div>
-                                                    <div className='macroBreakdownSectionMealCategory'>{mostCarbsItem.mealCategory}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostCarbsItem.mealCategory}</div>
                                                 </div>
                                                 <div className='macroBreakdownRow'>
                                                     <div className='macroBreakdownItem'>Carbs: </div>
-                                                    <div className='macroBreakdownSectionStat'>{mostCarbsItem.carbsPerServing}</div>
+                                                    <div className='macroBreakdownSectionItem'>{mostCarbsItem.carbsPerServing}</div>
                                                 </div>
                                             </div>
                                     </div>
