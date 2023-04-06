@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { useFoodItemContext } from '../../hooks/useFoodItemContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useFoodsContext } from '../../hooks/useFoodsContext'
 import './nutrition.css';
 
 const AddFoodEntryPopup = ( props ) => {
     // initial setup of contexts for add food
     const { user } = useAuthContext()
     const { dispatch } = useFoodItemContext();
+    const { dispatch: foodDbDispatch } = useFoodsContext();
 
     const { isOpen, toggleModalVisibility } = props
 
@@ -52,6 +54,7 @@ const AddFoodEntryPopup = ( props ) => {
             setError(json.error)
         }
         if(response.ok) {
+            await addFoodToDatabase( itemName, calsPerServing, proteinPerServing, fatPerServing, carbsPerServing );
             setItemName('')
             setServingsEaten('')
             setCalsPerServing('')
@@ -62,6 +65,30 @@ const AddFoodEntryPopup = ( props ) => {
             setError(null)
             console.log("new food item added", json)
             dispatch({type: 'CREATE_FOOD', payload: json})
+            props.toggleModalVisibility()
+        }
+    };
+
+    const addFoodToDatabase = async ( itemName, calsPerServing, proteinPerServing, fatPerServing, carbsPerServing ) => {
+
+        const newDbItem = {itemName: itemName, caloriesPerServing: calsPerServing, proteinPerServing: proteinPerServing, fatPerServing: fatPerServing, carbsPerServing: carbsPerServing}
+
+        const response = await fetch('/foods', {
+            method: 'POST',
+            body: JSON.stringify(newDbItem),
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+        const json = await response.json()
+
+        if(!response.ok) {
+            setError(json.error)
+        }
+        if(response.ok) {
+            console.log("new food item added", json)
+            foodDbDispatch({type: 'CREATE_FOOD', payload: json})
         }
     };
 

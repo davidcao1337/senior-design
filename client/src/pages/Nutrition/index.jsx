@@ -9,7 +9,6 @@ import CalculateCaloriePopup from './calculateCalorieGoal';
 import FoodDiaryEntries from './foodDiaryEntries';
 import RenderNutritionGoals from './NutritionGoalRender';
 import NutritionRightPanel from '../../components/RightPanel/nutritionRightPanel';
-import RightPanel from '../../components/RightPanel'
 import { useFoodItemContext } from '../../hooks/useFoodItemContext';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useGoalsContext } from '../../hooks/useGoalsContext';
@@ -188,11 +187,13 @@ const Nutrition = () => {
             if( goals[i].goalType === "nutrition"){
                 nutritionGoals.push(goals[i])
             }
-            i++
         }
     }
 
     var userCalorieGoal = 0
+    var userProteinGoal = 0
+    var userCarbGoal = 0
+    var userFatGoal = 0
     if( nutritionGoals && nutritionGoals.length > 0 ){
         for( i = 0; i < nutritionGoals.length; i++){
             if( nutritionGoals[i].description.includes("Daily calorie consumption (cal):")){
@@ -200,9 +201,25 @@ const Nutrition = () => {
                 const calorieGoalInfo = calorieGoalSplit[1]
                 const calorieGoalInfoSplit = calorieGoalInfo.split(" ")
                 userCalorieGoal = parseInt(calorieGoalInfoSplit[1])
-                console.log('test')
             }
-            i++
+            if( nutritionGoals[i].description.includes("Daily protein consumption (g):")){
+                const proteinGoalSplit = nutritionGoals[i].description.split(":")
+                const proteinGoalInfo = proteinGoalSplit[1]
+                const proteinGoalInfoSplit = proteinGoalInfo.split(" ")
+                userProteinGoal = parseInt(proteinGoalInfoSplit[1])
+            }
+            if( nutritionGoals[i].description.includes("Daily carb consumption (g):")){
+                const carbGoalSplit = nutritionGoals[i].description.split(":")
+                const carbGoalInfo = carbGoalSplit[1]
+                const carbGoalInfoSplit = carbGoalInfo.split(" ")
+                userCarbGoal = parseInt(carbGoalInfoSplit[1])
+            }
+            if( nutritionGoals[i].description.includes("Daily fat consumption (g):")){
+                const fatGoalSplit = nutritionGoals[i].description.split(":")
+                const fatGoalInfo = fatGoalSplit[1]
+                const fatGoalInfoSplit = fatGoalInfo.split(" ")
+                userFatGoal = parseInt(fatGoalInfoSplit[1])
+            }
         }
     }
 
@@ -221,7 +238,10 @@ const Nutrition = () => {
         protein: totalProtein,
         fat: totalFat,
         carbs: totalCarbs,
-        calorieGoal: '',
+        calorieGoal: userCalorieGoal,
+        proteinGoal: userProteinGoal,
+        carbGoal: userCarbGoal,
+        fatGoal: userFatGoal,
         lbsGoal: '',
         weightGoal: '',
         goals: nutritionGoals
@@ -329,7 +349,7 @@ const Nutrition = () => {
                             </div>
                             <div className='estimatedWeightCalculatorContainer'>
                                 <div className='cardTitleContainer'>
-                                    <div className='cardTitleFoodDiary'>Macro Breakdown</div>
+                                    <div className='cardTitleFoodDiary'>Daily Macro Breakdown</div>
                                 </div>
                                 {foodItems && foodItems.length === 0 && 
                                     <div className='cardEmptyState'>
@@ -406,7 +426,7 @@ const Nutrition = () => {
                     </div>
                 </div>
             </content>
-            <NutritionRightPanel props = {{ props, userProps }}/>
+            <NutritionRightPanel userProps = {{ userProps }}/>
             {isModalOpen &&
                 <AddFoodEntryPopup
                     isOpen={isModalOpen}

@@ -1,9 +1,5 @@
-import React, {useEffect, useState} from 'react';
 import './nutrition.css';
 import ProcessEntry from './EntryItem';
-import Popup from 'reactjs-popup';
-import AddFoodPopup from './diary';
-import FoodEntryList from './EntryList';
 
 const FoodDiaryEntries = ( props ) => {
 
