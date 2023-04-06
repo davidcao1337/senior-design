@@ -7,6 +7,7 @@ import goalsHandler from "./routes/goalsHandler.js"
 import sleepHandler from "./routes/sleepHandler.js"
 import exerciseHandler from "./routes/exerciseHandler.js"
 import foodItemHandler from "./routes/foodItemHandler.js"
+import foodHandler from "./routes/foodHandler.js"
 import dotenv from "dotenv"
 
 // Configurations
@@ -41,6 +42,7 @@ app.use("/goals", goalsHandler);
 app.use('/sleep', sleepHandler);
 app.use('/exercise', exerciseHandler);
 app.use('/nutrition', foodItemHandler);
+app.use('/foods', foodHandler)
 
 // Server Start
 const PORT = process.env.PORT || 5000 // Ensure that port number of proxy matches in client/package.json

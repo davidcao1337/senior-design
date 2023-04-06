@@ -1,6 +1,13 @@
 import FoodItem from '../models/foodItemModel.js';
 import mongoose from "mongoose"
 
+// get all food items across database
+const getFoodItemCollection = async(req, res) => {
+    const foodItems = await FoodItem.find()
+
+    res.status(200).json(foodItems)
+}
+
 // get all food items
 const getFoodItems = async( req, res) => {
     const user_id = req.user._id
@@ -99,5 +106,6 @@ export {
     getFoodItems,
     getFoodItem,
     deleteFoodItem,
-    updateFoodItem
+    updateFoodItem,
+    getFoodItemCollection
 }

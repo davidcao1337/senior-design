@@ -10,14 +10,6 @@ section {
     flex-direction: row;
 }
 
-testSection {
-    background-color: #F5F6FA;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-}
-
 content {
     height: 100%;
     overflow: hidden;
@@ -100,6 +92,7 @@ content {
 }
 
 .foodDiaryEmptyStateMessage {
+    color: black;
     font-size: 20px;
     text-align: center;
     margin-top: 10px;
@@ -303,30 +296,11 @@ content {
     flex-direction: row;
 }
 
-rightBar {
-    height: 100vh;
-    width: 260px;
-    order: 3;
-    background-color: pink;
-}
-
 .titleContainer {
     font-size: 24px;
     font-weight: 900;
     font-style: italic;
     font-family: emoji;
-}
-
-card-container {
-    height: 310px;
-    width: -webkit-calc(100% - 49px);
-    background-color: white;
-    padding-left: 22px;
-    padding-right: 22px;
-    padding-bottom: 22px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
 }
 
 .cardContainer {
@@ -341,35 +315,11 @@ card-container {
     border-radius: 15px;
 }
 
-cardHeader {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
 .cardHeader {
     height: 80px;
     width: 100%;
     display: flex;
     align-items: center;
-}
-
-cardHeaderBottom {
-    height: 80px;
-    width: 100%;
-    background-color: #97dcc7;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    display: flex;
-    align-items: center;
-}
-
-cardTitle {
-    font-size: 20px;
-    margin-left: 20px;
-    align-items: center;
-    display: flex;
 }
 
 .cardTitle {
@@ -379,35 +329,6 @@ cardTitle {
     display: flex;
 }
 
-foodLogSection .addFood {
-    position: absolute;
-    margin-left: auto;
-    bottom: 0px;
-}
-
-addFood {
-    margin-left: auto;
-}
-
-foodLog {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-foodLog .grid-item {
-    display: flex;
-    justify-content: center;
-}
-
-diaryContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    height: 100%;
-}
-
 .diaryContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -415,144 +336,9 @@ diaryContainer {
     height: 100%;
 }
 
-foodLogSection {
-    height: 100%;
-    background-color: #F5F6FA;
-    width: 100%;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-mealLabel {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    background-color: #1aa981;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-labels {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px;
-}
-
-popupContainer {
-    height: 300px;
-    width: 250px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 15px;
-}
-
-popupContainer .popupTitle{
-    text-align: center;
-    height: 48px;
-    font-size: 20px;
-    padding: 10px;
-}
-
-popupDivider {
-    min-height: 48px;
-    border-color: black;
-    border-top-width: 2px;
-}
-
-typeSelect {
-    display: flex;
-    flex-direction: row;
-}
-
-bottomContent {
-    height: 340px;
-    width: -webkit-calc(100% - 49px);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-}
-
-nutritionBreakdownContainer {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-nutritionBreakdown {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-    padding-left: 20px;
-}
-
-summaryContainer {
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-summaryContent {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-    justify-content: center;
-}
-
-summarySection {
-    display: flex;
-    justify-content: center;
-}
-
 .goalSelect {
     display: flex;
     flex-direction: column;
-}
-
-.goalHeader {
-    padding-bottom: 5px;
-    font-weight: bold;
-    color: #1aa981;
-}
-
-userCalc { 
-    padding-left: 10px;
-    padding-right: 10px;
-    font-weight: bold
-}
-
-activeSel {
-    background-color: #1aa981;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    margin-right: 20px;
-    border-radius: 5px;
-}
-
-inactiveSel {
-    margin-right: 20px;
-}
-
-selectionGoal{
-    display: flex;
 }
 
 .entry {
@@ -591,24 +377,4 @@ selectionGoal{
     margin: 0 0 10px 0;
     font-size: 1.2em;
     color: #18B283;
-}
-
-.entryContents {
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-.popupFields {
-    display: flex;
-    flex-direction: column;
-}
-
-.nutritionSummaryButton {
-    height: 34px;
-    width: 64px;
-    border-radius: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-width: 1px;
-    border-color: black;
 }
