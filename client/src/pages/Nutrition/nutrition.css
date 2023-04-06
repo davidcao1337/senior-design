@@ -281,6 +281,11 @@ content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows:min-content;
+    padding: 10px;
+}
+
+.macroBreakdownSectionTitle {
+    padding-bottom: 10px;
 }
 
 .macroBreakdownSectionTitle {
@@ -294,6 +299,10 @@ content {
 .macroBreakdownRow {
     display: flex;
     flex-direction: row;
+}
+
+.macroBreakdownSectionItem {
+    margin-left: 10px;
 }
 
 .titleContainer {
