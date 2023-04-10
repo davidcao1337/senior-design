@@ -45,7 +45,7 @@ LyfeON is a personalized health and wellness web app that serves as a digital jo
 - [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
 - [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/Professional%20Biography%20Twisha.md)
 7. [Test Plan](https://github.com/davidcao1337/senior-design/blob/main/assignments/test-plan.pdf)
-8. [User Manual](https://github.com/davidcao1337/senior-design/blob/main/assignments/UserDoc.md)
+8. [User Manual](https://github.com/davidcao1337/senior-design/blob/main/assignments/user-manual.md)
 9. [2023 CEAS Expo Poster](https://github.com/davidcao1337/senior-design/blob/main/assignments/LyfeON%20-%202023%20CEAS%20Expo%20Poster.pdf)
 10. Summary of Expenses
 - Total project expenditure: $0
