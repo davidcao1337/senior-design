@@ -76,8 +76,9 @@ Graph of weekly sleep time
 **User Profile**<br />
 
 1. Click the avatar at the top left to enter the user profile.
-2. Click the avatar at the top left to enter the user profile. Edit the information by clicking the "Edit Profile" button. Enter the full name, date of birth, height, and weight, and click the "save" button to submit the new information.
-3. Click the "Add Goal" card to add a goal for exercise, nutrition, or sleep. 
+2. Edit the information by clicking the "Edit Profile" button. Enter the full name, date of birth, height, and weight, and click the "save" button to submit the new information.
+3. Click the profile avatar to edit the account's profile picture.
+4. Click the "Add Goal" card to add a goal for exercise, nutrition, or sleep. 
 
 **Dashboard**<br />
 
@@ -112,3 +113,16 @@ Database for all user data to see health trends across time
 
 * **Data Visualization**<br />
 Dynamic visual representations of data
+
+## Frequently Asked Questions (FAQ)
+**1. What makes this app different from other health apps?**<br />
+LyfeON features a recommendation system that creates a personalized experience for the user. In addition, our fitness tracker provides a way for users to track strength training whereas other fitness apps only track cardio exercises.<br />
+
+**2. Can I use my Apple Watch or other wearable devices to track my sleep?**<br />
+LyfeON currently does not support integration with Apple Watch or other wearable devices. However, this is a planned feature in the future so stay tuned!<br />
+
+**3. Does the user have to input most of the data?**<br />
+Yes, LyfeON is a digital health journal that allows users to log their health data. In the future, we plan on automating this process as much as possible in order to improve the user experience.<br />
+
+**4. Is my data shared with third-parties?**<br />
+No, LyfeON is committed to privacy and will never share your data with any third-parties or outside sources.
