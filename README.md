@@ -50,4 +50,4 @@ LyfeON is a personalized health and wellness web app that serves as a digital jo
 10. Summary of Expenses
 - Total project expenditure: $0
 11. [Summary of Hours](https://github.com/davidcao1337/senior-design/blob/main/assignments/summary-hours.md)
-12. Appendix
+12. [Appendix](https://github.com/davidcao1337/senior-design/blob/main/assignments/appendix.md)
