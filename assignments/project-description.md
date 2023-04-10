@@ -13,4 +13,4 @@
 - Web App Development & Data Science
 
 ### Project Abstract
-LyfeOn is an interactive web application which will take active user data to recommend proper nutrition and lifestyle habits to enhance users overall health. After an initial assessment when the user first creates their account, the application will then use a series of recommendation algorithms and calculations to curate an individualized experience, an exciting way to make health an easy goal for any user to maintain.
+LyfeON is a personalized health and wellness web app that serves as a digital journal that helps users log and track their health in three major areas: fitness, nutrition, and sleep. The app features a recommendation system that helps users make healthy meal and workout plans based on their goals and needs. LyfeON provides an easy way for users to visualize their progress towards meeting their health goals.
