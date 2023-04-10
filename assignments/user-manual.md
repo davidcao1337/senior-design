@@ -118,7 +118,7 @@ Dynamic visual representations of data
 **1. What makes this app different from other health apps?**<br />
 LyfeON features a recommendation system that creates a personalized experience for the user. In addition, our fitness tracker provides a way for users to track strength training whereas other fitness apps only track cardio exercises.<br />
 
-**2. Can I use my Apple Watch or other wearable devices to track my sleep?**<br />
+**2. Can I use my Apple Watch or other wearable devices to track my sleep/exercise?**<br />
 LyfeON currently does not support integration with Apple Watch or other wearable devices. However, this is a planned feature in the future so stay tuned!<br />
 
 **3. Does the user have to input most of the data?**<br />
