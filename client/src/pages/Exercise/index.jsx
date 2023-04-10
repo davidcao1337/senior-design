@@ -105,7 +105,7 @@ const Exercise = () => {
                     </div>
                 </div>
                 <div className="chartContainer">
-                    <div className="cardTitle"> Weekily Progress </div>
+                    <div className="cardTitle"> Weekly Progress </div>
                     <ExerciseBarChart width='100%' height='380%'/>
                 </div>
             </div>
