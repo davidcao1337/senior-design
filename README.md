@@ -14,30 +14,40 @@ University of Cincinnati Senior Capstone Project, 2022 - 2023 School Year
 
 #### Project Abstract
 
-LyfeOn is an interactive web application which will take active user data to recommend proper nutrition and lifestyle habits to enhance users overall health. After an initial assessment when the user first creates their account, the application will then use a series of recommendation algorithms and calculations to curate an individualized experience, an exciting way to make health an easy goal for any user to maintain.
+LyfeON is a personalized health and wellness web app that serves as a digital journal that helps users log and track their health in three major areas: fitness, nutrition, and sleep. The app features a recommendation system that helps users make healthy meal and workout plans based on their goals and needs. LyfeON provides an easy way for users to visualize their progress towards meeting their health goals.
 
 #### Project Navigation
 1. [Project Description](https://github.com/davidcao1337/senior-design/blob/main/assignments/project-description.md)
-2. User Stories and Design Diagrams
+2. User Stories, Design Diagrams, & UI Design
 - [User Stories](https://github.com/davidcao1337/senior-design/blob/main/assignments/user-stories.md)
 - Design Diagrams:
   - [D0](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D0.png)
   - [D1](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D1.png)
   - [D2](https://github.com/davidcao1337/senior-design/blob/main/assignments/design-diagrams/D2.png)
+- [UI Specification & Design Concepts](https://github.com/davidcao1337/senior-design/tree/main/assignments/ui-design)
 3. Project Tasks and Timelines
 - [Tasklist](https://github.com/davidcao1337/senior-design/blob/main/assignments/task-list.md)
 - [Milestones Table](https://github.com/davidcao1337/senior-design/blob/main/assignments/milestones-table.md)
-4. [PPT Slideshow](https://docs.google.com/presentation/d/1S2nOp2JjXoYmQpBGL4Jdbmn3u9XlAGZldg46kK1Oppk/edit?usp=sharing)
+4. PowerPoint Slideshows
+- [Fall 2022 Presentation](https://docs.google.com/presentation/d/1S2nOp2JjXoYmQpBGL4Jdbmn3u9XlAGZldg46kK1Oppk/edit?usp=sharing)
+- [Spring 2023 Final Presentation](https://docs.google.com/presentation/d/1wCW2uzGAwCx5xni9zLBIXjtDKJ5cL96dZFQWpkxvHoc/edit?usp=sharing)
 5. Self-Assessmant Essays
-- [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-cao.docx)
-- [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-zhou.docx)
-- [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-ramsey.docx)
-- [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-anshu.pdf)
+- Initial Fall 2022
+  - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-cao.docx)
+  - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-zhou.docx)
+  - [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-ramsey.docx)
+  - [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/capstone-assessments/capstone-assessment-anshu.pdf)
+- Final Spring 2023
+  - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/final-self-assessments/final-self-assessment-cao.pdf)
 6. Professional Biographies
 - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-cao.md)
 - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-zhou.md)
 - [Sarah](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/RamseySarah.md)
 - [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/Professional%20Biography%20Twisha.md)
-7. Budget
-- We're going to budget around $100 of free credit provided by Microsoft Azure through their student plans. We plan on using Azure for our website hosting as well as their data analytics tools.
-8. Appendix
+7. [Test Plan](https://github.com/davidcao1337/senior-design/blob/main/assignments/test-plan.pdf)
+8. [User Manual](https://github.com/davidcao1337/senior-design/blob/main/assignments/UserDoc.md)
+9. [2023 CEAS Expo Poster](https://github.com/davidcao1337/senior-design/blob/main/assignments/LyfeON%20-%202023%20CEAS%20Expo%20Poster.pdf)
+10. Summary of Expenses
+- Total project expenditure: $0
+11. [Summary of Hours](https://github.com/davidcao1337/senior-design/blob/main/assignments/summary-hours.md)
+12. Appendix
