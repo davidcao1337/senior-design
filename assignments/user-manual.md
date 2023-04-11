@@ -67,6 +67,8 @@ LyfeOn is a personalized health and wellness web app that serves as a digital jo
 
 ## Using the Application
 
+[Video Demo](https://www.youtube.com/watch?v=1Z24yjUapWQ)
+
 **Registration and Login**<br />
 
 1. Click "Create an account" at the bottom of the registration page. The user can re-switch to the sign-in page by clicking "Sign in here" at the bottom of the registration page.
