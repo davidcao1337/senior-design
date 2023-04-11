@@ -30,40 +30,40 @@ LyfeOn is a personalized health and wellness web app that serves as a digital jo
 ## 2. Feature Overview<br />
 
 * **Login Page**<br />
-Account registration and login
+  * Account registration and login
 
 * **User Profile**<br />
-Information of age, height, weight, BMI<br />
-Personalized avatar<br />
-Exercise goal, Diet goal, sleep goal
+  * Information of age, height, weight, BMI<br />
+  * Personalized avatar<br />
+  * Exercise goal, Diet goal, sleep goal
 
 * **Dashboard**<br />
-Graph of weekly sleep<br />
-Graph of nutrition breakdown<br />
-Graph of weekly exercise
+  * Graph of weekly sleep<br />
+  * Graph of nutrition breakdown<br />
+  * Graph of weekly exercise
 
 * **Exercise**<br />
-Calculation of weekly exercise time<br />
-Calculation of weekly calories burned<br />
-Display of exercise goal<br />
-Display of recent activities<br />
-Graph of weekly exercise<br />
-Recommendation of exercises
+  * Calculation of weekly exercise time<br />
+  * Calculation of weekly calories burned<br />
+  * Display of exercise goal<br />
+  * Display of recent activities<br />
+  * Graph of weekly exercise<br />
+  * Recommendation of exercises
 
 * **Nutrition**<br />
-Display of food items<br />
-Nutrition breakdown graph<br />
-Display of nutrition goal<br />
-Macro analysis<br />
-Recommendation of foods
+  * Display of food items<br />
+  * Nutrition breakdown graph<br />
+  * Display of nutrition goal<br />
+  * Macro analysis<br />
+  * Recommendation of foods
 
 * **Sleep**<br />
-Display of sleep score<br />
-Display of sleep time<br />
-Display of sleep goal<br />
-Graph of all sleep time<br />
-Display of recent sleep data<br />
-Graph of weekly sleep time
+  * Display of sleep score<br />
+  * Display of sleep time<br />
+  * Display of sleep goal<br />
+  * Graph of all sleep time<br />
+  * Display of recent sleep data<br />
+  * Graph of weekly sleep time
 
 ## Using the Application
 
@@ -74,6 +74,8 @@ Graph of weekly sleep time
 3. Click the "Register" button to finish registration.
 4. Click the logout icon at the bottom left to sign out the current user.
 
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/login-register.png">
+
 **User Profile**<br />
 
 1. Click the avatar at the top left to enter the user profile.
@@ -81,9 +83,14 @@ Graph of weekly sleep time
 3. Click the profile avatar to edit the account's profile picture.
 4. Click the "Add Goal" card to add a goal for exercise, nutrition, or sleep. 
 
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/edit-profile.png">
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/add-goal.png">
+
 **Dashboard**<br />
 
 1. Dashboard only presents information and graphs.
+
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/dashboard.png">
 
 **Exercise**<br />
 
@@ -92,17 +99,23 @@ Graph of weekly sleep time
 3. Fill in the parameters of the blanks.
 4. Click the "Submit" button to update the exercise data.
 
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/add-exercise.png">
+
 **Nutrition**<br />
 
 1. Click "Add Food Item"
 2. Fill in the parameters of the food item in the blanks. 
 3. Click "Add Entry" to update the food item.
 
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/add-food.png">
+
 **Sleep**<br />
 
 1. Select a date from the calendar on the right.
 2. Enter the hours and minutes.
 3. Click the "Submit" button to update the sleep data.
+
+<img src="https://github.com/davidcao1337/senior-design/blob/main/assignments/manual-screenshots/add-sleep.png">
 
 ## Use of Data
 
