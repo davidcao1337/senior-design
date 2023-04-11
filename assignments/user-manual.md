@@ -12,7 +12,7 @@
 
 ## 1. Getting Started<br />
 
-* **About LyfeOn**<br />
+* **About LyfeON**<br />
 
 LyfeON is a personalized health and wellness web app that serves as a digital journal that helps users log and track their health in three major areas: fitness, nutrition, and sleep. The app features a recommendation system that helps users make a healthy meal and workout plans based on their goals and needs. LyfeON provides an easy way for users to visualize their progress toward meeting their health goals.<br />
 
