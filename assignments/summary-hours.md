@@ -2,8 +2,8 @@
 | Term              | David             | Sarah             | Youmin            | Twisha            |
 | :---              | :---              | :---              | :---              | :---              |
 | Fall Semester     | 45                | 45                | 45                | 45                |
-| Spring Semester   | 65                | 00                | 00                | 00                |
-| Year Total        | 110               | 000               | 000               | 000               |
+| Spring Semester   | 65                | 00                | 60                | 00                |
+| Year Total        | 110               | 000               | 105               | 000               |
 
 | Project Total: 000 Hours     |
 | :---                         |
@@ -25,7 +25,7 @@ Attended weekly team meetings.
 
 ###### Youmin
 
-Attended weekly team meetings.
+Attended weekly team meetings. Helped with planning, and brainstorming. Worked on designing the UI concepts for the sleep page. Responsible for functionalities, UI design, and recommendation system of the exercise and sleep page. Plotting the charts and tweaking the chart parameters for the application. Tested and fixed the defects of responsible models.
 
 ###### Twisha
 
