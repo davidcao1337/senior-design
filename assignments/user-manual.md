@@ -8,6 +8,7 @@
 2. Feature Overview
 3. Using the Application
 4. Use of Data
+5. Frequently Asked Questions (FAQ)
 
 ## 1. Getting Started<br />
 
@@ -101,7 +102,7 @@ Graph of weekly sleep time
 
 1. Select a date from the calendar on the right.
 2. Enter the hours and minutes.
-4. Click the "Submit" button to update the sleep data.
+3. Click the "Submit" button to update the sleep data.
 
 ## Use of Data
 
