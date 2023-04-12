@@ -2,8 +2,8 @@
 | Term              | David             | Sarah             | Youmin            | Twisha            |
 | :---              | :---              | :---              | :---              | :---              |
 | Fall Semester     | 45                | 45                | 45                | 45                |
-| Spring Semester   | 65                | 00                | 60                | 00                |
-| Year Total        | 110               | 000               | 105               | 000               |
+| Spring Semester   | 65                | 00                | 60                | 62                |
+| Year Total        | 110               | 000               | 105               | 107               |
 
 | Project Total: 000 Hours     |
 | :---                         |
@@ -29,4 +29,6 @@ Attended weekly team meetings. Helped with planning, and brainstorming. Worked o
 
 ###### Twisha
 
-Attended weekly team meetings.
+Attended Weekly meetings, troubleshooting meetings, and Expo. 
+Created the Dashboard module with Data Visualizations for a user’s Sleep, Nutrition, and Exercise Graphs. Created and designed the Right Panel that was incorporated into all the other pages of our web app. Learned UI-UX skills from scratch to implement on the App. Spent a lot of time troubleshooting system environment issues as well. Designed the Expo Poster to match all of the printing requirements. 
+
