@@ -40,6 +40,7 @@ LyfeON is a personalized health and wellness web app that serves as a digital jo
 - Final Spring 2023
   - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/final-self-assessments/final-self-assessment-cao.pdf)
   - [Twisha](https://github.com/davidcao1337/senior-design/blob/main/assignments/final-self-assessments/Final%20Self%20Assessment_%20Twisha%20Anshu.pdf)
+  - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/final-self-assessments/Final%20Self-Assessment%20Youmin%20Zhou.pdf)
 6. Professional Biographies
 - [David](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-cao.md)
 - [Youmin](https://github.com/davidcao1337/senior-design/blob/main/assignments/professional-bios/pro-bio-zhou.md)
