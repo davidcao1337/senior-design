@@ -3,7 +3,7 @@
 | :---              | :---              | :---              | :---              | :---              |
 | Fall Semester     | 45                | 45                | 45                | 45                |
 | Spring Semester   | 65                | 00                | 60                | 62                |
-| Year Total        | 110               | 000               | 105               | 000               |
+| Year Total        | 110               | 000               | 105               | 107               |
 
 | Project Total: 000 Hours     |
 | :---                         |
