@@ -2,10 +2,10 @@
 | Term              | David             | Sarah             | Youmin            | Twisha            |
 | :---              | :---              | :---              | :---              | :---              |
 | Fall Semester     | 45                | 45                | 45                | 45                |
-| Spring Semester   | 65                | 00                | 60                | 62                |
-| Year Total        | 110               | 000               | 105               | 107               |
+| Spring Semester   | 65                | 65                | 60                | 62                |
+| Year Total        | 110               | 110               | 105               | 107               |
 
-| Project Total: 000 Hours     |
+| Project Total: 432 Hours     |
 | :---                         |
 
 #### Justification of Hours
@@ -21,7 +21,7 @@ Attended weekly team meetings. Planned, organized, and led all meetings. Handled
 
 ###### Sarah
 
-Attended weekly team meetings.
+Attended weekly team meetings. Assisted in planning overall functionality of app. Designed UI for Nutrition and Exercise page. Created the Navigation bar and initial page setup. Primarily worked on the design and functionality of Nutrition page. Designed and implemented recommendation algorithm for nutrition page. Tested for defects and quality assurance.
 
 ###### Youmin
 
